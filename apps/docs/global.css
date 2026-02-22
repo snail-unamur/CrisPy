@@ -170,7 +170,7 @@
   }
 
   .prose h2 {
-    @apply text-2xl font-bold tracking-tight my-4 text-zinc-100 border-b border-zinc-800 pb-2;
+    @apply text-2xl font-bold tracking-tight my-4 text-zinc-800  dark:text-zinc-100 border-b border-zinc-800 pb-2;
   }
 
   .prose h3 {
@@ -255,11 +255,11 @@
 
   /* Strong & Emphasis  */
   .prose strong {
-    @apply text-zinc-100 font-bold;
+    @apply text-zinc-800  dark:text-zinc-100 font-bold;
   }
 
   .prose em {
-    @apply text-zinc-300;
+    @apply text-zinc-800  dark:text-zinc-300;
   }
 
   /* Images with Captions  */
