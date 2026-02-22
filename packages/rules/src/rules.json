@@ -1,0 +1,14 @@
+{
+  "PY001": {
+    "title": "Prefer NumPy Array",
+    "severity": "info",
+    "docsPath": "/rules/PY001",
+    "category": "performance"
+  },
+  "PY002": {
+    "title": "Add Type Hints",
+    "severity": "warning",
+    "docsPath": "/rules/PY002",
+    "category": "performance"
+  }
+}
