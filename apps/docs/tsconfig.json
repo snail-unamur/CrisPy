@@ -9,7 +9,8 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@pyquit/rules": ["../../packages/rules/src/index.ts"]
     }
   },
   "include": [
@@ -19,5 +20,6 @@
     "pages/index.mdx",
     "../../.temp/[rule].tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "references": [{ "path": "../../packages/rules" }]
 }

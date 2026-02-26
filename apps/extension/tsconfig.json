@@ -6,7 +6,11 @@
     "rootDir": "src",
     "lib": ["ES2022"],
     "types": ["node", "vscode"],
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pyquit/rules": ["../../packages/rules/src/index.ts"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "../../packages/rules" }]
