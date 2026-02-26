@@ -14,7 +14,7 @@ class NumpyArrayRule(ast.NodeVisitor):
         ):
             diagnostic = Diagnostic(
                 rule_id=self.RULE_ID,
-                message="Consider using NumPy array instead of Python list for numeric operations.",
+                message="Envisagez d'utiliser un tableau NumPy plutôt qu'une liste Python pour les opérations numériques.",
                 line=node.lineno,
                 column=node.col_offset,
                 end_line=node.end_lineno,
