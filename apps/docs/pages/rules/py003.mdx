@@ -1,0 +1,36 @@
+# PY003 - Éviter l'utilisation excessive de variables globales
+
+## Why
+
+Les globales rendent le programme difficile à comprendre (dépendances cachées) et compliquent les tests.
+
+## Bad practice
+
+```python
+count = 0
+def inc():
+    global count
+    count += 1
+    return count
+```
+
+La fonction dépend d’un état externe implicite. Tester inc() nécessite de remettre count à zéro, et l’ordre d’appel change le résultat.
+
+## Good Practice
+
+```python
+def inc(count):
+    return count + 1
+count = 0
+count = inc(count)
+```
+
+La dépendance est explicite via les paramètres. Le code devient plus prévisible, testable et réutilisable.
+
+## Compared to [C]
+
+En C, les globales existent aussi et posent les mêmes problèmes de maintenance et de concurrence. Les bonnes pratiques conseillent aussi de limiter leur usage.
+
+## Performance
+
+Performance : les globales peuvent être légèrement plus lentes en Python (lookup global vs local), mais l’enjeu principal est la maintenabilité et la testabilité.
