@@ -10,5 +10,11 @@
     "severity": "warning",
     "docsPath": "/rules/py002",
     "category": "performance"
+  },
+  "PY003": {
+    "title": "Utilisation excessive de variables globales",
+    "severity": "info",
+    "docsPath": "/rules/py003",
+    "category": "performance"
   }
 }
