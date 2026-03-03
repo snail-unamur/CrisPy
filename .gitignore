@@ -210,3 +210,5 @@ node_modules
 .turbo
 out
 .temp
+
+**/tsconfig.tsbuildinfo
