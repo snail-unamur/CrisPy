@@ -1,6 +1,7 @@
 import ast
 from rules.PY001_numpy_array import NumpyArrayRule
 from rules.PY002_string_concat_in_loop import StringConcatInLoopRule
+from rules.PY003_exessive_global_variable import ExcessiveGlobalRule
 
 
 def analyze_code(code: str):
@@ -9,6 +10,7 @@ def analyze_code(code: str):
     rules = [
         NumpyArrayRule(),
         StringConcatInLoopRule(),
+        ExcessiveGlobalRule()
     ]
 
     diagnostics = []

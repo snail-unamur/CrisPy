@@ -4,3 +4,9 @@ phrase = ""
 for mot in mots:
     phrase += mot + " "
 print(phrase)
+
+count = 0
+def inc():
+    global count
+    count += 1
+    return count
