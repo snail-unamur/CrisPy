@@ -8,4 +8,9 @@ export type RuleMeta = {
   docsPath: string;
 };
 
-export const ruleMap = rules as Record<string, RuleMeta>;
+export const ruleMap: Record<string, RuleMeta> = rules as Record<
+  string,
+  RuleMeta
+>;
+
+export default ruleMap;
