@@ -16,5 +16,11 @@
     "severity": "info",
     "docsPath": "/rules/py003",
     "category": "performance"
+  },
+  "PY006": {
+    "title": "Slicing de Listes",
+    "severity": "warning",
+    "docsPath": "/rules/py006",
+    "category": "performance"
   }
 }

@@ -1,0 +1,73 @@
+# PY006 - Slicing de Listes
+
+## Why
+
+La création d'une tranche (`slice`) sur une grande liste produit une copie complète en mémoire. Cela peut doubler ou multiplier la consommation mémoire et provoquer des ralentissements lorsqu'on travaille avec de gros ensembles de données.
+
+## Bad practice
+
+```python
+# Mauvaise approche - copie complète
+large_list = list(range(10**6))  # 1 M éléments, ~8 Mo
+sub_list = large_list[::2]       # Copie 500 k éléments, +4 Mo !
+
+sub_list2 = large_list[100:1000]   # Copie 900 éléments
+sub_list3 = large_list[-100:]      # Copie 100 éléments, +800 octets
+```
+
+Pour chaque tranche, Python alloue une nouvelle liste et copie les éléments. Enchaîner les slices ou en créer plusieurs multiplie l'occupation mémoire et génère de la charge inutile pour le ramasse‑miettes.
+
+## Good Practice
+
+### Utiliser `itertools.islice` pour l'itération
+
+```python
+import itertools
+
+large_list = list(range(10**6))
+
+# parcourir chaque 2e élément sans copie
+for element in itertools.islice(large_list, 0, len(large_list), 2):
+    print(element)
+
+# parcours d'un intervalle
+for element in itertools.islice(large_list, 100, 1000):
+    print(element)
+
+# derniers éléments
+for element in itertools.islice(large_list, len(large_list) - 100, None):
+    print(element)
+```
+
+`islice` renvoie un itérateur qui lit un élément à la fois, évitant toute copie.
+
+### Générateurs personnalisés
+
+```python
+# pour des slices plus complexes
+
+def my_slice(seq, start, end, step=1):
+    for i in range(start, end, step):
+        if i < len(seq):
+            yield seq[i]
+
+large_list = list(range(10**6))
+for element in my_slice(large_list, 0, 10**6, 2):
+    print(element)
+```
+
+Encore une fois, aucun tampon supplémentaire n'est alloué.
+
+### Quand un slice normal est acceptable
+
+- Vous avez besoin d'accès aléatoire (`lst[i]` plusieurs fois);
+- Vous modifiez la sous‑liste ; dans ce cas la copie est voulue;
+- Vous travaillez avec un tableau NumPy : le slicing retourne une *vue* et ne copie pas les données.
+
+## Compared to [C]
+
+En C, un « slice » n'existe pas tel quel, mais la création d'un tableau temporaire a le même coût mémoire. On privilégie les pointeurs et l'indexation sans recopier.
+
+## Performance
+
+Un slice de 500 000 éléments occupe +4 Mo de mémoire. Utiliser `islice` maintient l'empreinte au niveau de la liste originale (~8 Mo). Pour plusieurs tranches, les économies deviennent substantielles.
