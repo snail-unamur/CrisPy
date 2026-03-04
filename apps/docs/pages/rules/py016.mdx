@@ -1,0 +1,69 @@
+# PY016 – Ne pas masquer les noms intégrés (`list`, `dict`, etc.)
+
+## Pourquoi
+Utiliser des noms de variables qui masquent les fonctions intégrées de Python peut provoquer des comportements inattendus.
+
+Une fois qu’un nom intégré est réassigné, la fonction ou le type original n’est plus accessible dans la même portée.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+list = [1, 2, 3]
+str = "bonjour"
+
+my_sum = sum(list)
+```
+
+### Explication
+En assignant à `list` et `str`, on écrase les fonctions intégrées `list()` et `str()`.
+
+Cela peut provoquer des erreurs plus loin dans le code (par exemple, il devient impossible d’appeler `list()` pour créer une nouvelle liste).
+
+---
+
+## ✅ Bonne pratique
+
+```python
+my_list = [1, 2, 3]
+greeting = "bonjour"
+
+my_sum = sum(my_list)
+```
+
+### Explication
+Choisir des noms de variables descriptifs permet de conserver l’accès aux fonctions intégrées.
+
+`list()` et `str()` restent disponibles, et le code est plus clair.
+
+---
+
+## Comparaison avec le C
+
+En C :
+
+- Les mots-clés comme `int`, `char`, etc. ne peuvent pas être utilisés comme noms de variables.
+- Cependant, il est possible de masquer des noms de fonctions avec des identifiants, ce qui peut créer des conflits similaires.
+
+Python autorise la réaffectation des noms intégrés, ce qui rend ce problème plus fréquent.
+
+---
+
+## Comment cela fonctionne
+
+Lorsqu’on assigne une valeur à un nom comme `list` dans une portée donnée, ce nom pointe vers le nouvel objet dans l’espace de noms local.
+
+La fonction intégrée `list()` est alors masquée jusqu’à la fin de la portée ou jusqu’à suppression de la variable (`del list`).
+
+La résolution des noms suit la règle LEGB (Local, Enclosing, Global, Built-in).
+
+---
+
+## Performance
+
+Masquer une fonction intégrée n’a pas d’impact direct sur les performances.
+
+Cependant, cela peut introduire des bugs subtils difficiles à diagnostiquer.
+
+Il est donc plus sûr et plus clair de choisir des noms de variables qui ne sont pas en conflit avec les fonctions intégrées.

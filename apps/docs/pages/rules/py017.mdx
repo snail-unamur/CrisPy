@@ -1,0 +1,74 @@
+# PY017 – Utiliser `any()` et `all()`
+
+## Pourquoi
+Écrire des boucles manuelles avec des variables indicatrices pour vérifier si au moins un élément ou tous les éléments satisfont une condition rend le code plus verbeux et moins lisible.
+
+`any()` et `all()` expriment l’intention de manière concise et idiomatique.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+found = False
+
+for x in numbers:
+    if x % 2 == 0:
+        found = True
+        break
+
+if found:
+    print("There is an even number")
+```
+
+### Explication
+Cette approche nécessite une variable supplémentaire (`found`) et un `break`.
+
+Elle alourdit le code et peut introduire des erreurs — notamment si l’on oublie de réinitialiser l’indicateur ou si la logique de boucle est mal gérée.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+if any(x % 2 == 0 for x in numbers):
+    print("There is an even number")
+
+if all(x > 0 for x in numbers):
+    print("All numbers are positive")
+```
+
+### Explication
+`any()` retourne `True` dès que la première condition vraie est rencontrée (évaluation avec court-circuit).
+
+`all()` retourne `False` dès que la première condition fausse est rencontrée.
+
+Ces fonctions sont implémentées en C pour les types intégrés et sont à la fois plus expressives et généralement plus rapides que des boucles Python explicites.
+
+---
+
+## Comparaison avec le C
+
+En C, il n’existe pas d’équivalent standard à `any` ou `all`.
+
+On écrit généralement des boucles manuelles avec des indicateurs, similaires à l’exemple de mauvaise pratique.
+
+Python fournit directement ces abstractions de plus haut niveau.
+
+---
+
+## Comment cela fonctionne
+
+`any()` et `all()` prennent un itérable et évaluent les éléments séquentiellement.
+
+Elles arrêtent l’itération dès que le résultat est déterminé (évaluation avec court-circuit).
+
+Cela évite des vérifications inutiles une fois le résultat connu.
+
+---
+
+## Performance
+
+Comme elles sont implémentées en C, `any()` et `all()` sont légèrement plus rapides que des boucles Python équivalentes.
+
+Le principal avantage reste cependant la lisibilité et la réduction du risque d’erreurs.

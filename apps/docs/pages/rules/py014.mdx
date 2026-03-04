@@ -1,0 +1,72 @@
+# PY014 – Utiliser `set` pour les tests d’appartenance
+
+## Pourquoi
+Chercher un élément dans une liste parcourt la liste jusqu’à trouver l’élément (complexité O(n)).
+
+Les ensembles (`set`) utilisent une table de hachage, ce qui permet des tests d’appartenance en temps constant en moyenne (O(1)).
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+if 3 in my_list:
+    print("Found")
+```
+
+### Explication
+`3 in my_list` vérifie les éléments un par un jusqu’à trouver `3`.
+
+Avec de grandes listes, cela devient lent — surtout si les tests d’appartenance sont répétés.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+my_set = {1, 2, 3, 4, 5}
+
+if 3 in my_set:
+    print("Found")
+```
+
+### Explication
+Les ensembles sont implémentés à l’aide de tables de hachage.
+
+Un test d’appartenance calcule le hash de l’élément recherché puis vérifie directement le compartiment correspondant, ce qui est beaucoup plus rapide pour de grandes collections.
+
+---
+
+## Comparaison avec le C
+
+En C :
+
+- Vérifier l’appartenance dans un tableau nécessite une boucle manuelle  
+- Si le tableau est trié, on peut utiliser une recherche binaire  
+- Utiliser une bibliothèque de table de hachage permet un comportement similaire au `set` de Python
+
+Python fournit cette structure optimisée nativement.
+
+---
+
+## Comment cela fonctionne
+
+Un `set` calcule une valeur de hachage pour chaque élément afin de déterminer où le stocker dans la table de hachage.
+
+Lors d’un test avec `in` :
+
+1. Python calcule le hash de l’élément recherché  
+2. Il vérifie le compartiment correspondant  
+3. En cas de collision de hash, une courte vérification séquentielle est effectuée dans ce compartiment
+
+---
+
+## Performance
+
+Pour des milliers d’éléments, utiliser un `set` pour des tests d’appartenance répétés est nettement plus rapide qu’une liste.
+
+Créer un `set` a un coût initial, mais celui-ci est amorti lorsque plusieurs recherches sont effectuées.
+
+Le principal gain apparaît lorsque les vérifications d’appartenance sont fréquentes.

@@ -1,0 +1,77 @@
+# PY015 – Utiliser `''.join(list)` pour la concaténation de chaînes
+
+## Pourquoi
+Concaténer de nombreuses chaînes avec l’opérateur `+` à l’intérieur d’une boucle crée des chaînes intermédiaires à chaque étape.
+
+Cela entraîne une complexité O(n²) et une utilisation inefficace de la mémoire.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+words = ["Le", "Python", "est", "génial"]
+
+sentence = ""
+for w in words:
+    sentence += w + " "
+
+print(sentence)
+```
+
+### Explication
+Chaque `+=` crée une nouvelle chaîne.
+
+Pour une liste de mille mots, cela crée mille objets chaîne intermédiaires avant de produire le résultat final.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+words = ["Le", "Python", "est", "génial"]
+
+sentence = " ".join(words)
+print(sentence)
+```
+
+### Explication
+`str.join()` est implémenté en C.
+
+Il alloue la mémoire nécessaire une seule fois, puis copie chaque sous-chaîne dans ce tampon.
+
+Cela le rend nettement plus efficace pour de grandes collections de chaînes.
+
+---
+
+## Comparaison avec le C
+
+En C :
+
+- Concaténer des chaînes avec `strcat()` ou `sprintf()` nécessite de préallouer un tampon suffisamment grand.
+- Un équivalent efficace de `join()` consiste à calculer d’abord la longueur totale, puis à utiliser `memcpy()` ou `snprintf()`.
+
+`join()` en Python abstrait ce modèle optimisé.
+
+---
+
+## Comment cela fonctionne
+
+`str.join()` :
+
+1. Parcourt la liste de chaînes  
+2. Calcule la longueur totale nécessaire  
+3. Alloue un seul nouvel objet chaîne  
+4. Copie chaque morceau dans la mémoire allouée  
+
+Contrairement à une boucle avec `+=`, aucune chaîne intermédiaire n’est créée.
+
+---
+
+## Performance
+
+Pour des milliers de chaînes, `join()` peut être des ordres de grandeur plus rapide qu’un `+` répété dans une boucle.
+
+Il réduit également la fragmentation mémoire et la création d’objets temporaires.
+
+Plus le volume de données est important, plus le gain de performance est élevé.
