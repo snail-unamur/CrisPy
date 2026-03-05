@@ -3,6 +3,7 @@ from rules.PY001_numpy_array import NumpyArrayRule
 from rules.PY002_string_concat_in_loop import StringConcatInLoopRule
 from rules.PY003_exessive_global_variable import ExcessiveGlobalRule
 from rules.PY006_list_slicing import ListSlicingRule
+from rules.PY004_parellel_list_iteration import ParallelListIteration
 
 
 def analyze_code(code: str):
@@ -11,8 +12,9 @@ def analyze_code(code: str):
     rules = [
         NumpyArrayRule(),
         StringConcatInLoopRule(),
-        ExcessiveGlobalRule(),
+        ExcessiveGlobalRule(), 
         ListSlicingRule(),
+        ParallelListIteration()
     ]
 
     diagnostics = []

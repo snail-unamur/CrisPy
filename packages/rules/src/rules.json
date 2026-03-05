@@ -17,13 +17,19 @@
     "docsPath": "/rules/py003",
     "category": "performance"
   },
+  "PY004": {
+    "title": "Utiliser zip() pour itérer sur deux listes en parallèle",
+    "severity": "info",
+    "docsPath": "/rules/py004",
+    "category": "performance"
+  },
   "PY006": {
     "title": "Slicing de Listes",
     "severity": "warning",
     "docsPath": "/rules/py006",
     "category": "performance"
   },
-  
+
   "PY011": {
     "title": "Toujours retourner un type cohérent",
     "severity": "warning",

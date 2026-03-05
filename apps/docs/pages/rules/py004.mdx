@@ -1,0 +1,62 @@
+# PY004 – Utiliser `zip()` pour itérer sur deux listes en parallèle
+
+## Pourquoi ?
+
+`zip()` aligne les éléments de plusieurs itérables.  
+Il permet d'éviter la gestion manuelle des indices.
+
+---
+
+## ❌ Mauvaise Pratique
+
+```python
+a = ["Alice", "Bob"]
+b = [20, 25]
+
+for i in range(len(a)):
+    print(a[i], b[i])
+```
+
+### Explanation
+
+Si les listes n'ont pas la même longueur, cela peut entraîner des erreurs (`IndexError`) ou une logique incorrecte.
+Cela mélange la mécanique d'itération avec la logique métier.
+
+---
+
+## ✅ Good Practice
+
+```python
+a = ["Alice", "Bob"]
+b = [20, 25]
+
+for name, age in zip(a, b):
+    print(name, age)
+```
+
+### Explanation
+
+L'intention est explicite : itérer sur des paires `(nom, age)`.
+`zip()` s'arrête automatiquement à l'itérable le plus court, évitant ainsi les erreurs d'indice hors limites.
+
+---
+
+## Compared to C
+
+### How It Works
+
+En C, vous itérez sur deux tableaux en utilisant le même indice.
+Vous devez vous assurer manuellement que les deux tableaux ont des tailles compatibles.
+
+```c
+for (int i = 0; i < n; i++) {
+    printf("%s %d", a[i], b[i]);
+}
+```
+
+---
+
+## Performance
+
+`zip()` est un itérateur efficace (aucune nouvelle liste n'est créée par défaut).
+L'avantage principal réside dans la réduction des bugs liés à l'indexation et dans l'écriture d'un code plus clair et direct.

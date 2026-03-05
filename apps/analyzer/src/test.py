@@ -15,3 +15,8 @@ def inc():
 big_list = list(range(1000))
 sub = big_list[100:200]
 step = big_list[::10]
+
+a = ["Alice", "Bob"]
+b = [20, 25]
+for i in range(len(a)):
+    print(a[i], b[i])
