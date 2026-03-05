@@ -47,8 +47,8 @@ class StringConcatInLoopRule(ast.NodeVisitor):
                                 ),
                                 line=stmt.lineno,
                                 column=stmt.col_offset,
-                                end_line=stmt.end_lineno,
-                                end_column=stmt.end_col_offset
+                                end_line=stmt.end_lineno, # type: ignore
+                                end_column=stmt.end_col_offset # type: ignore
                             )
 
                             self.diagnostics.append(diagnostic)

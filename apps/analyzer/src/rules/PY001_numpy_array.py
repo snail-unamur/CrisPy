@@ -17,8 +17,8 @@ class NumpyArrayRule(ast.NodeVisitor):
                 message="Envisagez d'utiliser un tableau NumPy plutôt qu'une liste Python pour les opérations numériques.",
                 line=node.lineno,
                 column=node.col_offset,
-                end_line=node.end_lineno,
-                end_column=node.end_col_offset
+                end_line=node.end_lineno, # type: ignore
+                end_column=node.end_col_offset # type: ignore
             )
 
             self.diagnostics.append(diagnostic)

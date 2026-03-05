@@ -24,8 +24,8 @@ class ExcessiveGlobalRule(ast.NodeVisitor):
                 ),
                 line=node.lineno,
                 column=node.col_offset,
-                end_line=node.end_lineno,
-                end_column=node.end_col_offset,
+                end_line=node.end_lineno, # type: ignore
+                end_column=node.end_col_offset, # type: ignore
             )
 
             self.diagnostics.append(diagnostic)
