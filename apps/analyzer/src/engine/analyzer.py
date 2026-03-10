@@ -4,6 +4,14 @@ from rules.PY002_string_concat_in_loop import StringConcatInLoopRule
 from rules.PY003_exessive_global_variable import ExcessiveGlobalRule
 from rules.PY006_list_slicing import ListSlicingRule
 from rules.PY004_parellel_list_iteration import ParallelListIteration
+from rules.PY011_return_none_conditionally import ConditionalNoneReturnRule
+from rules.PY012_anonymous_tuple_return import AnonymousTupleReturnRule
+from rules.PY013_value_equality_with_is import IsForValueComparisonRule
+from rules.PY014_membership_on_list import MembershipOnListRule
+from rules.PY015_string_join import StringJoinRule
+from rules.PY016_shadow_builtin import ShadowBuiltinRule
+from rules.PY017_any_all import AnyAllRule
+
 
 
 def analyze_code(code: str):
@@ -14,7 +22,14 @@ def analyze_code(code: str):
         StringConcatInLoopRule(),
         ExcessiveGlobalRule(), 
         ListSlicingRule(),
-        ParallelListIteration()
+        ParallelListIteration(),
+        ConditionalNoneReturnRule(),
+        AnonymousTupleReturnRule(),
+        IsForValueComparisonRule(),
+        MembershipOnListRule(),
+        StringJoinRule(),
+        ShadowBuiltinRule(),
+        AnyAllRule()
     ]
 
     diagnostics = []
