@@ -22,5 +22,48 @@
     "severity": "warning",
     "docsPath": "/rules/py006",
     "category": "performance"
+  },
+  
+  "PY011": {
+    "title": "Toujours retourner un type cohérent",
+    "severity": "warning",
+    "docsPath": "/rules/py011",
+    "category": "reliability"
+  },
+  "PY012": {
+    "title": "Préférer namedtuple / dataclass aux tuples anonymes",
+    "severity": "info",
+    "docsPath": "/rules/py012",
+    "category": "readability"
+  },
+  "PY013": {
+    "title": "Ne pas utiliser `is` pour tester l’égalité de valeur",
+    "severity": "warning",
+    "docsPath": "/rules/py013",
+    "category": "reliability"
+  },
+  "PY014": {
+    "title": "Utiliser `set` pour les tests d’appartenance",
+    "severity": "info",
+    "docsPath": "/rules/py014",
+    "category": "performance"
+  },
+  "PY015": {
+    "title": "Utiliser `''.join()` pour concaténer des chaînes",
+    "severity": "warning",
+    "docsPath": "/rules/py015",
+    "category": "performance"
+  },
+  "PY016": {
+    "title": "Ne pas masquer les noms intégrés (`list`, `dict`, etc.)",
+    "severity": "warning",
+    "docsPath": "/rules/py016",
+    "category": "reliability"
+  },
+  "PY017": {
+    "title": "Utiliser `any()` et `all()`",
+    "severity": "info",
+    "docsPath": "/rules/py017",
+    "category": "readability"
   }
 }

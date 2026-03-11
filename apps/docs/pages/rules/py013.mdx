@@ -1,0 +1,80 @@
+# PY013 – Ne pas utiliser `is` pour tester l’égalité de valeur
+
+## Pourquoi
+L’opérateur `is` vérifie l’identité des objets, pas l’égalité de valeur.  
+Utiliser `is` pour comparer des nombres, des chaînes ou des listes peut sembler fonctionner avec certains objets mis en cache, mais ce n’est pas fiable.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+s1 = "bonjour"
+s2 = "bonjour"
+
+if s1 is s2:
+    print("Equal")
+```
+
+### Explication
+`is` vérifie si `s1` et `s2` référencent exactement le même objet en mémoire.
+
+Deux chaînes différentes contenant le même texte peuvent être internées et donner l’illusion que `is` fonctionne — mais cela dépend de l’implémentation.
+
+Avec les listes ou d’autres objets mutables, `is` retournera presque toujours `False` même si le contenu est identique.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+s1 = "bonjour"
+s2 = "bonjour"
+
+if s1 == s2:
+    print("Equal")
+```
+
+### Explication
+L’opérateur `==` compare les valeurs des objets (via la méthode `__eq__`).
+
+Il doit être utilisé pour tester l’égalité des chaînes, des nombres, des listes et des objets en général.
+
+Réservez `is` pour les comparaisons avec `None` ou avec des objets sentinelles uniques.
+
+---
+
+## Comparaison avec Java
+
+En Java :
+
+- `==` compare les références d’objet  
+- `equals()` compare les valeurs  
+
+En C :
+
+- `==` compare directement les valeurs primitives  
+- Comparer des chaînes nécessite `strcmp()`
+
+Python se situe entre les deux :
+
+- `is` équivaut à une comparaison de référence  
+- `==` compare la valeur logique
+
+---
+
+## Comment cela fonctionne
+
+`is` vérifie l’identité en comparant les adresses mémoire.
+
+Python met en cache certains petits entiers et certaines chaînes littérales, ce qui peut donner l’impression que `is` fonctionne pour comparer des valeurs — mais ce n’est qu’un détail d’implémentation.
+
+`==` appelle la méthode `__eq__` du type, définie pour retourner `True` lorsque deux objets ont la même valeur logique.
+
+---
+
+## Performance
+
+Il n’existe pas de différence de performance significative entre `is` et `==` pour les types simples.
+
+Cependant, utiliser `is` à la place de `==` peut produire des résultats incorrects et entraîner des bugs subtils et difficiles à détecter.

@@ -1,0 +1,74 @@
+# PY012 – Préférer `namedtuple` / `dataclass` aux tuples anonymes pour plusieurs valeurs
+
+## Pourquoi
+Nommer les champs rend le code auto-documenté  
+et réduit les erreurs d’indexation.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+def stats(nums):
+    return (min(nums), max(nums), sum(nums)/len(nums))
+
+s = stats([1, 2, 3])
+print(s[2])  # que représente s[2] ?
+```
+
+### Explication
+Le tuple fonctionne mais manque de clarté : `s[2]` n’a aucun sens sans contexte.  
+Les erreurs liées aux index sont fréquentes et difficiles à détecter.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Stats:
+    min_: int
+    max_: int
+    mean: float
+
+def stats(nums) -> Stats:
+    return Stats(min(nums), max(nums), sum(nums)/len(nums))
+
+s = stats([1, 2, 3])
+print(s.mean)
+```
+
+### Explication
+Avec une `dataclass` (ou une `namedtuple`), on accède aux champs via `s.mean`, `s.min_`, etc.
+
+Le code devient plus lisible, explicite et plus sûr.
+
+---
+
+## Comparaison avec le C
+
+### Comment cela fonctionne
+En C, on utiliserait généralement une `struct` nommée :
+
+```c
+typedef struct {
+    int min;
+    int max;
+    double mean;
+} Stats;
+```
+
+La `dataclass` en Python fournit un équivalent de haut niveau avec génération automatique de méthodes.
+
+---
+
+## Performance
+
+Le principal avantage est la lisibilité et la maintenabilité.
+
+Une `dataclass` introduit un léger surcoût objet,  
+mais il est négligeable dans la plupart des cas.
+
+Si la performance est critique, `namedtuple` ou des structures plus compactes peuvent être préférées.

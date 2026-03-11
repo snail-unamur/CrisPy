@@ -1,0 +1,72 @@
+# PY011 – Toujours retourner un type cohérent (éviter de retourner `None` conditionnellement)
+
+## Pourquoi
+
+Une API stable est plus facile à utiliser.  
+Si une fonction retourne parfois `None`, le code appelant doit ajouter des vérifications supplémentaires partout.
+
+---
+
+## ❌ Mauvaise pratique
+
+```python
+def find_user(users, name):
+    for u in users:
+        if u == name:
+            return u
+    return None
+
+res = find_user(["a"], "b")
+print(res.upper())  # crash
+```
+
+### Explication
+
+L’appelant peut oublier de gérer le cas `None`.  
+Cela crée des erreurs à l’exécution et multiplie les vérifications de contrôle dispersées dans le code.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+def find_user(users, name):
+    for u in users:
+        if u == name:
+            return u
+    raise ValueError("Utilisateur non trouvé")
+```
+
+Approches alternatives :
+
+- Retourner une valeur sentinelle clairement documentée (ex. `""`)
+- Utiliser `Optional[str]` avec des annotations de type appropriées et imposer une gestion explicite
+
+### Explication
+
+Soit lever une exception en cas d’échec (souvent préférable),  
+soit documenter clairement une valeur de retour sentinelle.
+
+Dans du code typé, déclarer explicitement `Optional[T]` pour rendre le contrat visible.
+
+---
+
+## Comparaison avec le C
+
+### Fonctionnement
+
+En C, les fonctions retournent souvent un code d’erreur ou un pointeur `NULL`.  
+Cela nécessite également une discipline stricte de la part de l’appelant.
+
+Python fournit des exceptions expressives, rendant la gestion des erreurs plus claire et plus structurée.
+
+---
+
+## Performance
+
+Éviter les erreurs à l’exécution améliore la robustesse.
+
+Les exceptions ont un coût si elles sont utilisées comme mécanisme de contrôle normal du flux,  
+mais elles sont appropriées pour des cas réellement exceptionnels.
+
+Le principal bénéfice reste la clarté et la fiabilité de l’API.
