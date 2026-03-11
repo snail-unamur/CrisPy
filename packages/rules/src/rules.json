@@ -24,6 +24,20 @@
     "category": "performance"
   },
   
+  "PY007": {
+    "title": "Itérer sur clés et valeurs avec dict.items()",
+    "severity": "info",
+    "docsPath": "/rules/py007",
+    "category": "readability"
+  },
+
+  "PY008": {
+    "title": "Utiliser dict.get() ou setdefault() plutôt que `if key in dict`",
+    "severity": "info",
+    "docsPath": "/rules/py008",
+    "category": "readability"
+  },
+
   "PY011": {
     "title": "Toujours retourner un type cohérent",
     "severity": "warning",
