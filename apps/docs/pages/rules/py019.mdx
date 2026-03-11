@@ -1,0 +1,53 @@
+# PY019 – Éviter les boucles imbriquées lorsque c’est possible
+
+## Pourquoi
+
+Les boucles imbriquées multiplient la complexité temporelle et peuvent rapidement devenir inefficaces.
+
+## Mauvaise pratique
+
+```python
+for a in list1:
+    for b in list2:
+        if a == b:
+            print(a)
+
+```
+
+Complexité temporelle : O(n²).
+
+Les performances se dégradent rapidement lorsque la taille des données augmente.
+
+## Bonne pratique
+
+```python
+set2 = set(list2)
+
+for a in list1:
+    if a in set2:
+        print(a)
+
+```
+
+Complexité temporelle : O(n) en moyenne.
+
+## Comparé au C
+
+En C, les boucles imbriquées se comportent de manière similaire :
+
+```c
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < m; j++) {
+        if(a[i] == b[j]) { ... }
+    }
+}
+
+```
+
+L’optimisation nécessite généralement de repenser l’algorithme.
+
+Python n’optimise pas automatiquement ce type de structure pour vous.
+
+## Performance
+
+Réduire une complexité O(n²) à O(n) peut rendre un programme des centaines de fois plus rapide pour de grands volumes de données.

@@ -1,0 +1,51 @@
+# PY022 – Préférer `for` à une itération `while` manuelle
+
+## Pourquoi
+
+La fonction **`range()`** est implémentée efficacement en **C** et optimisée pour l’itération.
+
+## Mauvaise pratique
+
+```python
+i = 0
+while i < n:
+    print(i)
+    i += 1
+
+```
+
+Le contrôle manuel de la boucle introduit plus de surcharge et un risque d’erreur plus élevé.
+
+## Bonne pratique
+
+```python
+for i in range(n):
+    print(i)
+
+```
+range() génère les valeurs de manière efficace sans les stocker toutes en mémoire.
+
+## Comparé au C
+
+En C :
+
+```c
+for(int i = 0; i < n; i++) {
+    printf("%d\n", i);
+}
+
+```
+
+Il s'agit d'une boucle compteur simple.
+
+La boucle for avec range() en Python reproduit ce comportement de manière efficace.
+
+## Performance
+
+Même si les différences de performance sont relativement faibles ici, utiliser for avec range() est :
+
+  - plus lisible
+
+  - légèrement plus rapide
+
+  - moins sujet aux erreurs

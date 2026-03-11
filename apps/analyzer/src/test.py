@@ -82,3 +82,44 @@ for x in positives:
 
 if all_positive:
     print("All numbers are positive")
+
+# PY018
+numbers = [1, 2, 3, 4, 5]
+
+x = 3
+
+if x in numbers:
+    print("found")
+
+# PY019
+list1 = [1,2,3]
+list2 = [2,3,4]
+
+for a in list1:
+    for b in list2:
+        if a == b:
+            print(a)
+# PY020
+data = [1,2,3,4,5]
+
+total = sum([x*x for x in data])
+
+print(total)
+
+# PY021
+lists = [[1,2], [3,4], [5,6]]
+
+result = []
+
+for sublist in lists:
+    result = result + sublist
+
+print(result)
+
+# PY022
+i = 0
+n = 10
+
+while i < n:
+    print(i)
+    i += 1

@@ -1,0 +1,49 @@
+# PY021 – Éviter de reconstruire des listes avec + dans les boucles
+
+## Pourquoi
+
+Utiliser l'opérateur **+** pour concaténer des listes crée **une nouvelle liste à chaque fois**.
+
+## Mauvaise pratique
+
+```python
+
+result = []
+for sublist in lists:
+    result = result + sublist
+
+```
+
+Chaque utilisation de + crée une nouvelle liste et copie tous les éléments précédents.
+
+Complexité temporelle : O(n²).
+
+## Bonne pratique
+
+```python
+result = []
+for sublist in lists:
+    result.extend(sublist)
+
+```
+
+La méthode extend() modifie la liste en place, sans créer de nouvelle liste.
+
+Complexité temporelle : O(n).
+
+## Comparé au C
+
+En C, les tableaux ne peuvent pas grandir dynamiquement.
+Il faut allouer suffisamment de mémoire à l’avance.
+
+Python masque ces opérations de redimensionnement, mais une utilisation naïve peut provoquer de nombreuses réallocations et copies de mémoire.
+
+## Performance
+
+Utiliser extend() permet :
+
+ - d’éviter les copies répétées
+
+ - de réduire les allocations mémoire
+
+ - d’améliorer fortement la scalabilité du programme
