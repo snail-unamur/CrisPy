@@ -1,5 +1,5 @@
 # PY001
- a = [1, 3, 4, 5]
+a = [1, 3, 4, 5]
 
 # PY002
 mots = ["Python", "est", "génial"]
@@ -10,7 +10,6 @@ print(phrase)
 
 # PY003
 count = 0
-
 def inc():
     global count
     count += 1
@@ -21,45 +20,65 @@ big_list = list(range(1000))
 sub = big_list[100:200]
 step = big_list[::10]
 
-# PY007
-d = {"a": 1, "b": 2}
-for k in d:
-    v = d[k]
-    print(k, v)
-for k, v in d.items():
-    print(k, v)
+a = ["Alice", "Bob"]
+b = [20, 25]
+for i in range(len(a)):
+    print(a[i], b[i])
 
-# PY008
-d2 = {}
-key = "x"
-if key in d2:
-    val = d2[key]
-else:
-    val = 0
+# PY011
+def find_user(users, name):
+    for u in users:
+        if u == name:
+            return u
+    return None
 
-val = d2.get(key, 0)
-val2 = d2.setdefault(key, 0)
+# PY012
+def stats(nums):
+    return (min(nums), max(nums), sum(nums) / len(nums))
 
-# PY009
-from collections import defaultdict
+# PY013
+s1 = "bonjour"
+if s1 is "bonjour":
+    print("Equal")
 
-dd = defaultdict(int)
-for x in ["a", "b", "a"]:
-    dd[x] += 1
+lst = [1, 2]
+if lst is [1, 2]:
+    print("same")
 
-dd2 = defaultdict(list)
-dd2["key"].append("value")
+# PY014
+my_list = [1, 2, 3, 4, 5]
+if 3 in my_list:
+    print("Found")
 
-# PY010 - mutable default argument example (should trigger diagnostic)
-def add_item(x, items=[]):
-    items.append(x)
-    return items
+# PY015
+words = ["Le", "Python", "est", "rapide"]
+sentence = ""
+for w in words:
+    sentence += w + " "
+print(sentence)
 
-# correct version
+# PY016
+list = [1, 2, 3]
+str = "bonjour"
+print(sum(list))
 
-def add_item_safe(x, items=None):
-    if items is None:
-        items = []
-    items.append(x)
-    return items
+# PY017
+numbers = [1, 3, 5, 8]
+found = False
+for x in numbers:
+    if x % 2 == 0:
+        found = True
+        break
 
+if found:
+    print("There is an even number")
+
+positives = [1, 2, -1]
+all_positive = True
+for x in positives:
+    if x <= 0:
+        all_positive = False
+        break
+
+if all_positive:
+    print("All numbers are positive")
