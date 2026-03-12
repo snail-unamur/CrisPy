@@ -1,0 +1,66 @@
+# PY008 - Utiliser `dict.get()` ou `setdefault()` à la place de `if key in dict`
+
+## 🧠 Pourquoi
+
+Les méthodes `get()` et `setdefault()` simplifient la gestion des valeurs par défaut, réduisent les branches conditionnelles et rendent le code plus compact.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# Mauvaise pratique
+# test de présence suivi d'un accès
+d = {}
+key = "x"
+
+if key in d:
+    val = d[key]
+else:
+    val = 0
+```
+
+### Problèmes
+
+- Verbosité et répétition
+- Deux opérations distinctes : test d'appartenance puis récupération
+- La logique devient rapidement lourde lorsqu'elle s'imbrique
+
+---
+
+## ✅ Bonne pratique
+
+```python
+val = d.get(key, 0)
+
+# ou pour initialiser automatiquement
+val = d.setdefault(key, 0)
+```
+
+### Pourquoi c'est mieux
+
+- `get()` renvoie une valeur par défaut sans lever d'exception
+- `setdefault()` crée la clé si elle n'existe pas et retourne sa valeur
+- Fewer lines and clearer intent
+
+---
+
+## Comparaison avec C
+
+Dans un code C utilisant une table de hachage, on vérifie généralement la présence d'une clé à l'aide d'une fonction puis on gère l'initialisation manuellement.
+Python propose des outils intégrés (`get`, `setdefault`) qui encapsulent cette logique de haut niveau.
+
+---
+
+## 🔍 Performance
+
+`get()` évite un double accès au dictionnaire et réduit le nombre de branches. Bien que l'écart soit faible en exécution, le code résultant est plus facile à lire et à maintenir.
+
+---
+
+## ▲ Quand s'en soucier ?
+
+- 📌 Vous devez fournir une valeur par défaut si une clé est absente
+- 📌 Vous initialisez/accédez à une clé dans des boucles ou du code critique
+
+Dans les autres cas, `if key in d` peut suffire, mais préférez `get()`/`setdefault()` pour simplifier la logique.

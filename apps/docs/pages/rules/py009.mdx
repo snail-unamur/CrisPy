@@ -1,0 +1,81 @@
+# PY009 - Utiliser `collections.defaultdict()` pour éviter l'initialisation manuelle
+
+## 🧠 Pourquoi
+
+`defaultdict` permet de définir une valeur par défaut (liste, entier, ensemble, etc.)
+opérationnelle dès la première affectation, évitant ainsi de répéter le même motif
+d'initialisation.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# mauvaise pratique
+
+d = {}
+
+for x in ["a", "b", "a"]:
+    if x not in d:
+        d[x] = 0
+    d[x] += 1
+```
+
+### Problèmes
+
+- Répétition du motif `if x not in d: d[x] = ...`
+- Places multiples où une erreur peut survenir
+- Code verbeux et moins clair
+
+---
+
+## ✅ Bonne pratique
+
+```python
+from collections import defaultdict
+
+d = defaultdict(int)
+
+for x in ["a", "b", "a"]:
+    d[x] += 1
+```
+
+### Explication
+
+`defaultdict(int)` fournit `0` comme valeur par défaut : on peut incrémenter
+sans condition préalable.
+
+Pour une liste :
+
+```python
+from collections import defaultdict
+
+d = defaultdict(list)
+d["key"].append("value")
+```
+
+---
+
+## Comparaison avec C
+
+En C, l'initialisation automatique n'existe pas : on doit explicitement tester la
+présence d'une clé et créer l'entrée si nécessaire. `defaultdict` encapsule ce
+comportement directement dans l'objet dictionnaire.
+
+---
+
+## 🔍 Performance
+
+On évite un test d'appartenance explicite (`x not in d`) à chaque itération.
+Cela réduit le nombre d'opérations et rend la boucle plus directe.
+Le bénéfice principal reste toutefois un code plus propre et sécurisé.
+
+---
+
+### Quand s'en préoccuper ?
+
+- Vous initialisez systématiquement des valeurs dans des boucles
+- Vous construisez des compteurs, des regroupements ou des collections dynamiques
+
+Dans les rares cas où l'initialisation est ponctuelle, une vérification explicite
+reste acceptable, mais `defaultdict` offre une solution idiomatique et concise.

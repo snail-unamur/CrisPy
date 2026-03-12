@@ -1,0 +1,64 @@
+# PY007 - Itérer sur clés et valeurs avec `dict.items()`
+
+## Pourquoi ?
+
+La méthode `dict.items()` renvoie un itérateur de paires `(clé, valeur)`. C'est l'interface standard et la plus lisible pour parcourir simultanément la clé et la valeur d'un dictionnaire.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# Mauvaise pratique
+# On itère sur les clés, puis on fait un accès explicite à chaque valeur
+d = {"a": 1, "b": 2}
+
+for k in d:
+    v = d[k]
+    print(k, v)
+```
+
+### Problèmes
+
+- Recherche supplémentaire dans le dictionnaire à chaque itération (`d[k]`)
+- Le code masque le fait qu'on veut à la fois la clé et la valeur
+- Moins lisible et moins idiomatique
+
+---
+
+## ✅ Bonne pratique
+
+```python
+d = {"a": 1, "b": 2}
+
+for k, v in d.items():
+    print(k, v)
+```
+
+### Pourquoi c'est mieux
+
+- Lecture directe des deux éléments sans lookup additionnel
+- Le style est immédiatement reconnaissable par tout développeur Python
+- Plus clair : on sait que la boucle manipule des paires
+
+---
+
+## Comparaison avec C
+
+En C, une table de hachage expose généralement un itérateur sur des *entrées* `(clé, valeur)`.
+Python fournit `dict.items()` comme abstraction de haut niveau pour reproduire ce comportement. Faire deux opérations séparées (récupérer la clé puis chercher la valeur) reviendrait à redessiner manuellement cet itérateur.
+
+---
+
+## Performance
+
+L'utilisation de `d[k]` à l'intérieur de la boucle effectue un accès supplémentaire au dictionnaire pour chaque élément. Bien que l'impact soit mineur en petits volumes, sur de grandes structures ou dans des boucles serrées, la surcharge cumulée et le coût cognitif sont réels. `dict.items()` évite cet accès inutile et reste plus clair.
+
+---
+
+##  Quand s'en soucier ?
+
+-  Vous manipulez à la fois la clé et la valeur de façon systématique
+-  Vous écrivez du code qui sera lu ou maintenu par d'autres
+
+Dans les autres cas (seulement clés ou seulement valeurs), utilisez `for k in d:` ou `for v in d.values()`.
