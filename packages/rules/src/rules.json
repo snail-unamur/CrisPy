@@ -31,6 +31,18 @@
     "category": "readability"
   },
 
+  "PY009": {
+    "title": "Utiliser collections.defaultdict() pour l'initialisation automatique",
+    "severity": "info",
+    "docsPath": "/rules/py009",
+    "category": "readability"
+  },
+  "PY010": {
+    "title": "Ne pas utiliser d'arguments par défaut mutables",
+    "severity": "warning",
+    "docsPath": "/rules/py010",
+    "category": "reliability"
+  },
   "PY008": {
     "title": "Utiliser dict.get() ou setdefault() plutôt que `if key in dict`",
     "severity": "info",
