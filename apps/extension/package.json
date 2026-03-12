@@ -59,7 +59,15 @@
     "clean": "rm -rf out"
   },
   "dependencies": {
-    "@pyquit/rules": "workspace:*"
+    "@pyquit/rules": "workspace:*",
+    "marked": "^17.0.4",
+    "rehype-pretty-code": "^0.14.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "shiki": "^4.0.1",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
