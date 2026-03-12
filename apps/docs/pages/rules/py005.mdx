@@ -1,0 +1,53 @@
+# Préférer le Typage Explicite (Type Hinting)
+
+## Pourquoi
+
+Bien que Python soit un langage à typage dynamique, l'utilisation des Type Hints (annotations de type) permet d'améliorer la lisibilité,
+de faciliter l'autocomplétion dans les IDE et de détecter les erreurs avant l'exécution grâce à des outils comme **mypy**.
+
+## Mauvaise pratique
+
+```python
+def calculer_total(prix, quantite):
+    return prix * quantite
+
+resultat = calculer_total("10", 5) # Erreur potentielle à l'exécution
+```
+
+**Explication** : Sans annotations, l'intention du développeur est floue.
+Un utilisateur pourrait passer une chaîne de caractères au lieu d'un nombre,
+ce qui provoquerait un crash ou un comportement imprévisible au moment de l'exécution.
+
+## Bonne pratique
+
+```python
+def calculer_total(prix: float, quantite: int) -> float:
+    return prix * quantite
+
+# L'IDE t'avertira si tu essaies de passer autre chose qu'un float ou un int.
+```
+
+**Explication** : En spécifiant float et int, on documente le code directement dans sa structure.
+Cela permet aux outils d'analyse statique de vérifier la cohérence des données sans même lancer le programme.
+
+## Comparaison avec le langage C
+
+En Python, le typage est dynamique et fort : une variable peut changer de type au cours du temps, mais les opérations entre types incompatibles sont interdites.
+
+En C, le typage est statique. Le type doit être déclaré à la compilation et ne peut jamais changer.
+Cela permet une gestion mémoire extrêmement rigoureuse mais moins flexible.
+
+```c
+int score = 100;
+float pi = 3.14;
+```
+
+## Performance et Maintenance
+
+L'utilisation des annotations de type en Python n'améliore pas directement la vitesse d'exécution (le moteur Python les ignore globalement au moment de l'exécution). Cependant, il s'agit d'un levier de performance pour le développement :
+
+- **Réduction de la dette technique**: Moins de bugs de type "TypeError" en production.
+
+- **Refactoring sécurisé**: Si vous changez la structure d'un objet, le linter vous indiquera immédiatement toutes les fonctions qui ne sont plus à jour.
+
+- **Optimisation future**: Des outils comme Cython ou Mojo utilisent ces types pour compiler le code vers du langage machine beaucoup plus rapide.

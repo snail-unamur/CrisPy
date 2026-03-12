@@ -17,13 +17,25 @@
     "docsPath": "/rules/py003",
     "category": "performance"
   },
+  "PY004": {
+    "title": "Utilisez `zip()` pour parcourir plusieurs listes",
+    "severity": "info",
+    "docsPath": "/rules/py004",
+    "category": "performance"
+  },
+  "PY005": {
+    "title": "Utilisez le Typage Explicite",
+    "severity": "info",
+    "docsPath": "/rules/py005",
+    "category": "readability"
+  },
   "PY006": {
     "title": "Slicing de Listes",
     "severity": "warning",
     "docsPath": "/rules/py006",
     "category": "performance"
   },
-  
+
   "PY007": {
     "title": "Itérer sur clés et valeurs avec dict.items()",
     "severity": "info",
@@ -92,35 +104,40 @@
     "docsPath": "/rules/py017",
     "category": "readability"
   },
-   "PY018": {
+  "PY018": {
     "title": "Utiliser un Set pour les tests d’appartenance fréquents",
     "severity": "warning",
     "docsPath": "/rules/py018",
     "category": "performance"
   },
-   "PY019": {
+  "PY019": {
     "title": "Éviter les boucles imbriquées lorsque c’est possible",
     "severity": "danger",
     "docsPath": "/rules/py019",
     "category": "performance"
   },
-   "PY020": {
+  "PY020": {
     "title": "Préférer les générateurs aux listes temporaires",
     "severity": "warning",
     "docsPath": "/rules/py020",
     "category": "performance"
   },
-   "PY021": {
+  "PY021": {
     "title": "Éviter de reconstruire des listes avec + dans les boucles",
     "severity": "danger",
     "docsPath": "/rules/py021",
     "category": "performance"
   },
-   "PY022": {
+  "PY022": {
     "title": "Préférer `for` à une itération `while` manuelle",
     "severity": "info",
     "docsPath": "/rules/py022",
     "category": "performance"
+  },
+  "PY026": {
+    "title": "Préférer le set pour la recherche d'appartenance",
+    "severity": "info",
+    "docsPath": "/rules/py026",
+    "category": "performance"
   }
-  
 }

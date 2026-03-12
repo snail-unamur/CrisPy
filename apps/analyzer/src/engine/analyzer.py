@@ -15,6 +15,8 @@ from rules.PY014_membership_on_list import MembershipOnListRule
 from rules.PY015_string_join import StringJoinRule
 from rules.PY016_shadow_builtin import ShadowBuiltinRule
 from rules.PY017_any_all import AnyAllRule
+from rules.PY005_prefer_explicit_typing import ExplicitTypingRule
+from rules.PY026_set_membership import SetMembershipRule
 
 
 
@@ -26,6 +28,7 @@ def analyze_code(code: str):
         StringConcatInLoopRule(),
         ExcessiveGlobalRule(), 
         ListSlicingRule(),
+        ExplicitTypingRule(),
         DictItemsRule(),
         DictGetSetdefaultRule(),
         DefaultDictRule(),
@@ -37,7 +40,8 @@ def analyze_code(code: str):
         MembershipOnListRule(),
         StringJoinRule(),
         ShadowBuiltinRule(),
-        AnyAllRule()
+        AnyAllRule(),
+        SetMembershipRule()
     ]
 
     diagnostics = []
