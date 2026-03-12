@@ -1,0 +1,51 @@
+# PY020 – Préférer les générateurs aux listes temporaires
+
+## Pourquoi
+
+Créer des listes intermédiaires consomme de la mémoire inutilement.
+
+## Mauvaise pratique
+
+```python
+total = sum([x*x for x in data])
+
+```
+
+Cela crée une liste temporaire complète avant d'effectuer la somme.
+
+Complexité mémoire : O(n) d'espace supplémentaire.
+
+## Bonne pratique
+
+```python
+total = sum(x*x for x in data)
+
+```
+
+Le générateur produit les valeurs de manière paresseuse (lazy evaluation), sans les stocker toutes en mémoire en même temps.
+
+Complexité mémoire : O(1) d'espace supplémentaire.
+
+## Comparé au C
+
+En C, les boucles calculent les valeurs sans créer de conteneurs intermédiaires :
+
+```c
+int total = 0;
+for(int i = 0; i < n; i++) {
+    total += numbers[i] * numbers[i];
+}
+
+```
+
+En Python, les list comprehensions allouent de la mémoire, sauf si elles sont remplacées par des générateurs.
+
+## Performance
+
+Les générateurs :
+
+ - réduisent l'utilisation de la mémoire
+
+ - améliorent le comportement du cache
+
+ - évitent les allocations inutiles

@@ -1,0 +1,45 @@
+# PY018 – Utiliser un Set pour les tests d’appartenance fréquents
+
+ 
+## Pourquoi
+ 
+Les listes nécessitent une recherche linéaire pour vérifier si un élément est présent.
+Les sets utilisent des tables de hachage, ce qui permet une recherche en temps constant en moyenne.
+ 
+## Mauvaise pratique
+ 
+```python
+if x in my_list:
+    ...
+```
+ 
+Si my_list est grande et que le test d’appartenance est effectué fréquemment, les performances se dégradent fortement.
+ 
+## Bonne pratique
+ 
+```python
+my_set = set(my_list)
+
+if x in my_set:
+    ...
+```
+ 
+La recherche dans un set utilise le hachage et se fait généralement en temps constant.
+ 
+## Comparé au C
+ 
+En C, rechercher un élément dans un tableau nécessite une itération manuelle :
+```c
+for(int i = 0; i < size; i++) {
+    if(numbers[i] == x) { ... }
+}
+
+```
+La complexité est également O(n).
+
+Pour obtenir une complexité O(1), il faut implémenter une table de hachage manuellement.
+
+Python abstrait ce mécanisme grâce au type set.
+ 
+## Performance
+Pour de grands ensembles de données, les sets sont beaucoup plus rapides que les listes pour les tests d’appartenance.
