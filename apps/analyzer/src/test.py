@@ -1,48 +1,35 @@
-<<<<<<< HEAD
-a = [1,3,4,5]
-=======
 # PY001
-a = [1, 3, 4, 5]
+ a = [1, 3, 4, 5]
 
 # PY002
->>>>>>> a826a1d6920b733e30ac77fbc3d5769787816f41
 mots = ["Python", "est", "génial"]
 phrase = ""
 for mot in mots:
     phrase += mot + " "
 print(phrase)
 
-<<<<<<< HEAD
-=======
 # PY003
->>>>>>> a826a1d6920b733e30ac77fbc3d5769787816f41
 count = 0
+
 def inc():
     global count
     count += 1
     return count
 
-<<<<<<< HEAD
-
-=======
 # PY006
->>>>>>> a826a1d6920b733e30ac77fbc3d5769787816f41
 big_list = list(range(1000))
 sub = big_list[100:200]
 step = big_list[::10]
 
-<<<<<<< HEAD
-# exemples d'itération de dictionnaire 
+# PY007
 d = {"a": 1, "b": 2}
 for k in d:
     v = d[k]
     print(k, v)
-
-# bon pattern, ne déclenche rien
 for k, v in d.items():
     print(k, v)
 
-# exemples d'utilisation de get/setdefault 
+# PY008
 d2 = {}
 key = "x"
 if key in d2:
@@ -50,70 +37,29 @@ if key in d2:
 else:
     val = 0
 
-# bonnes variantes
 val = d2.get(key, 0)
 val2 = d2.setdefault(key, 0)
-=======
-a = ["Alice", "Bob"]
-b = [20, 25]
-for i in range(len(a)):
-    print(a[i], b[i])
 
-# PY011
-def find_user(users, name):
-    for u in users:
-        if u == name:
-            return u
-    return None
+# PY009
+from collections import defaultdict
 
-# PY012
-def stats(nums):
-    return (min(nums), max(nums), sum(nums) / len(nums))
+dd = defaultdict(int)
+for x in ["a", "b", "a"]:
+    dd[x] += 1
 
-# PY013
-s1 = "bonjour"
-if s1 is "bonjour":
-    print("Equal")
+dd2 = defaultdict(list)
+dd2["key"].append("value")
 
-lst = [1, 2]
-if lst is [1, 2]:
-    print("same")
+# PY010 - mutable default argument example (should trigger diagnostic)
+def add_item(x, items=[]):
+    items.append(x)
+    return items
 
-# PY014
-my_list = [1, 2, 3, 4, 5]
-if 3 in my_list:
-    print("Found")
+# correct version
 
-# PY015
-words = ["Le", "Python", "est", "rapide"]
-sentence = ""
-for w in words:
-    sentence += w + " "
-print(sentence)
+def add_item_safe(x, items=None):
+    if items is None:
+        items = []
+    items.append(x)
+    return items
 
-# PY016
-list = [1, 2, 3]
-str = "bonjour"
-print(sum(list))
-
-# PY017
-numbers = [1, 3, 5, 8]
-found = False
-for x in numbers:
-    if x % 2 == 0:
-        found = True
-        break
-
-if found:
-    print("There is an even number")
-
-positives = [1, 2, -1]
-all_positive = True
-for x in positives:
-    if x <= 0:
-        all_positive = False
-        break
-
-if all_positive:
-    print("All numbers are positive")
->>>>>>> a826a1d6920b733e30ac77fbc3d5769787816f41
