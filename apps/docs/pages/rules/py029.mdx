@@ -1,0 +1,61 @@
+# PY029 – Ordonner correctement les clauses `except` (du spécifique au général)
+
+## 🧠 Pourquoi
+
+Lorsque plusieurs clauses `except` sont présentes, Python les examine dans l’ordre pour trouver la première qui correspond au type d’exception levé. Si une clause générique (`Exception`) apparaît avant une clause plus spécifique (`ZeroDivisionError`), celle‑ci ne sera jamais exécutée et la précision du traitement des erreurs sera perdue.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+try:
+    result = 5 / 0
+except Exception as e:
+    print("Exception générique")
+# Cette clause ne sera jamais atteinte
+except ZeroDivisionError as e:
+    print("Division par zéro")
+```
+
+### Problèmes
+
+* Les exceptions spécifiques deviennent inaccessibles.
+* Le traitement devient trop générique, masquant des erreurs précises
+* Difficile de déboguer et de comprendre la cause réelle
+
+---
+
+## ✅ Bonne pratique
+
+```python
+try:
+    result = 5 / 0
+except ZeroDivisionError as e:
+    print("Division par zéro")
+except Exception as e:
+    print("Exception générique")
+```
+
+### Explication
+
+Placez toujours les exceptions les plus spécifiques avant les plus générales. De cette façon, Python intercepte d’abord l’exception précise, puis retombe sur des exceptions génériques en dernier recours.
+
+---
+
+## Comparaison avec d’autres langages
+
+Des langages comme Java imposent également d’ordonner les clauses `catch` du plus spécifique au plus général. L’erreur est similaire si l’ordre est inversé.
+
+---
+
+## 🔍 Performance
+
+Pas d’impact notable sur les performances, mais un gain substantiel en clarté et en robustesse.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* À chaque fois que vous gérez plusieurs types d’exceptions
+* Lorsque vous attrapez des sous‑classes d’exception

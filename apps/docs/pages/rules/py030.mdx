@@ -1,0 +1,62 @@
+# PY030 – Éviter les valeurs par défaut mutables dans les arguments de fonction
+
+## 🧠 Pourquoi
+
+Lorsque vous utilisez une liste ou un dictionnaire comme valeur par défaut d’un argument, Python crée cet objet une seule fois à la définition de la fonction. Toutes les autres appels sans valeur fournie réutiliseront le même objet, entraînant des effets secondaires surprenants.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+def append(number, number_list=[]):
+    number_list.append(number)
+    return number_list
+
+append(5)  # [5]
+append(7)  # [5, 7] — on s’attendait à [7]
+```
+
+### Problèmes
+
+* Partage involontaire d’état entre les appels.
+* Bugs difficiles à déceler car la liste accumule les éléments
+* Violation du principe de moindre surprise
+
+---
+
+## ✅ Bonne pratique
+
+```python
+def append(number, number_list=None):
+    if number_list is None:
+        number_list = []
+    number_list.append(number)
+    return number_list
+
+append(5)  # [5]
+append(7)  # [7]
+```
+
+### Explication
+
+Utiliser `None` comme valeur sentinelle permet de détecter quand aucun argument n’a été passé et d’initialiser une nouvelle liste à chaque appel. Cette technique s’applique de même aux dictionnaires et à tout objet mutable.
+
+---
+
+## Comparaison avec d’autres langages
+
+En JavaScript ou C++, des constructeurs sont appelés à chaque appel, évitant ce piège. En Python, par conception, les valeurs par défaut sont évaluées une fois lors de la définition.
+
+---
+
+## 🔍 Performance
+
+Aucune différence de performance significative. L’objectif est d’éviter des comportements inattendus.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* À chaque fois que vous déclarez un paramètre ayant pour valeur par défaut une liste, un dictionnaire ou tout objet mutable
+* Lorsque la fonction est appelée plusieurs fois sans argument explicite

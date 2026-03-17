@@ -1,0 +1,57 @@
+# PY024 – Utiliser le gestionnaire de contexte `with` pour ouvrir des fichiers
+
+## 🧠 Pourquoi
+
+Ouvrir un fichier sans utiliser le mot‑clé `with` exige de se souvenir de fermer le fichier manuellement. Si une exception est levée avant l’appel à `close()`, le fichier reste ouvert, ce qui peut entraîner des fuites de descripteurs ou corrompre les données.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# Mauvaise pratique : fermeture manuelle
+f = open("data.txt", "r")
+content = f.read()
+# En cas d’exception, f.close() ne sera jamais exécuté
+f.close()
+```
+
+### Problèmes
+
+* Risque d’oublier `close()`
+* Si une exception survient avant `close()`, le fichier reste ouvert.
+* Gestion manuelle fastidieuse
+
+---
+
+## ✅ Bonne pratique
+
+```python
+# Utiliser with pour gérer l’ouverture et la fermeture
+with open("data.txt", "r") as f:
+    content = f.read()
+    # même si une exception survient, le fichier sera fermé automatiquement
+```
+
+### Explication
+
+L’instruction `with` invoque les méthodes spéciales `__enter__` et `__exit__` du fichier. Python garantit que `__exit__()` est appelée pour fermer le fichier, même en cas d’exception.
+
+---
+
+## Comparaison avec C
+
+En C, l’ouverture et la fermeture des fichiers sont manuelles. Dans un code robuste, il faut s’assurer que `fclose()` est toujours appelé, souvent via des blocs `goto` ou des structures RAII en C++. Python simplifie cela avec les context managers.
+
+---
+
+## 🔍 Performance
+
+Aucun impact significatif sur la vitesse. L’important est la robustesse et la prévention des fuites de ressources.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* À chaque fois que vous ouvrez un fichier ou une ressource similaire (socket, mutex…)
+* Lorsque des exceptions peuvent interrompre l’exécution

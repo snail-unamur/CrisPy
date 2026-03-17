@@ -1,0 +1,60 @@
+# PY023 – Éviter les imports génériques (`from module import *`)
+
+## 🧠 Pourquoi
+
+L’utilisation d’un import générique (`from module import *`) rend difficile de savoir quels noms sont introduits dans l’espace de noms courant. Cela complique les analyses statiques, peut provoquer des collisions de noms et nuit à la lisibilité du code. Il est recommandé de n’importer que les éléments nécessaires:contentReference[oaicite:0]{index=0}.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# Import générique — déconseillé
+from math import *
+print(sqrt(16))  # on ne sait pas d’où vient sqrt
+````
+
+### Problèmes
+
+* Impossible de voir quelles fonctions/variables sont importées
+* Risque de masquage de noms existants
+* Difficile pour les outils d’analyse de détecter les noms non définis
+
+---
+
+## ✅ Bonne pratique
+
+```python
+# Import ciblé
+from math import ceil
+
+value = ceil(2.7)
+
+# ou importer le module complet pour garder le contexte
+import math
+value = math.ceil(2.7)
+```
+
+### Explication
+
+Importer explicitement les fonctions utilisées rend le code plus clair et limite les risques de collision. Quand la liste des éléments est longue ou que le nom du module apporte une information contextuelle, importer le module entier avec un alias (`import module as mod`) est préférable.
+
+---
+
+## Comparaison avec d’autres langages
+
+En C, inclure un en‑tête (`#include <math.h>`) insère toutes les déclarations et peut polluer l’espace de noms. En Python, vous pouvez choisir ce que vous importez et ainsi limiter ces effets.
+
+---
+
+## 🔍 Performance
+
+Le type d’import n’a pas d’impact notable sur les performances. L’objectif principal est la lisibilité et l’isolement des dépendances.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Vous travaillez dans un module partagé et souhaitez éviter les collisions
+* Vous voulez que les dépendances soient explicites
+* Vous utilisez un outil d’analyse statique ou un linter

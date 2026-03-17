@@ -1,0 +1,56 @@
+# PY032 – Préférer les compréhensions de liste aux `map()` et `filter()` pour les transformations simples
+
+## 🧠 Pourquoi
+
+Pour les transformations simples, les compréhensions de liste sont plus concises et plus lisibles que les appels à `map()` ou `filter()`. Bien que ces fonctions soient équivalentes sur le plan fonctionnel, la lisibilité est un critère important en Python.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+values = [1, 2, 3]
+
+# Transformation avec map et lambda
+doubles = map(lambda x: x * 2, values)
+```
+
+### Problèmes
+
+* Syntaxe plus lourde et moins claire
+* En Python 3, `map()` renvoie un itérateur ; il faut le convertir en liste pour l’utiliser
+* Moins flexible et plus difficile à lire.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+values = [1, 2, 3]
+
+# Transformation avec une compréhension de liste
+doubles = [x * 2 for x in values]
+```
+
+### Explication
+
+La compréhension de liste exprime directement l’opération appliquée à chaque élément. Elle est généralement plus idiomatique et lisible. Les fonctions `map()` et `filter()` restent utiles lorsque l’opération est une fonction existante (par ex. `str.upper`) ou lorsque la logique est trop complexe pour une expression simple.
+
+---
+
+## Comparaison avec d’autres langages
+
+Dans certains langages fonctionnels, l’utilisation de `map`/`filter` est la norme. En Python, les compréhensions de liste sont privilégiées pour leur clarté.
+
+---
+
+## 🔍 Performance
+
+Les compréhensions de liste sont légèrement plus rapides car elles sont implémentées en C et évitent l’appel de fonction lambda. La différence est marginale pour de petites listes.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Pour des transformations simples ou de petite taille
+* Lorsque vous privilégiez la lisibilité et la concision

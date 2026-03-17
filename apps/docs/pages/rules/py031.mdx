@@ -1,0 +1,59 @@
+# PY031 – Suivre l’approche EAFP plutôt que LBYL (Easier to Ask for Forgiveness than Permission)
+
+## 🧠 Pourquoi
+
+La communauté Python privilégie la philosophie « Easier to Ask for Forgiveness than Permission » (EAFP). Ce style consiste à supposer que les ressources existent et à gérer les problèmes via des exceptions. Le code est plus concis et évite les conditions préalables fragiles.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+import os
+
+# Style LBYL : vérifier avant d’agir
+if os.path.exists("file.txt"):
+    os.unlink("file.txt")
+```
+
+### Problèmes
+
+* Condition redondante : le fichier peut être supprimé entre le test et l’appel à `unlink`
+* Code plus verbeux et moins lisible.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+import os
+
+try:
+    os.unlink("file.txt")
+except OSError:
+    # Le fichier n’existait pas ou n’a pas pu être supprimé
+    pass
+```
+
+### Explication
+
+On assume que l’opération peut se faire et on capture l’exception en cas d’erreur. Cela évite les conditions superflues et gère les éventuelles races conditions.
+
+---
+
+## Comparaison avec d’autres langages
+
+En C, le style LBYL est courant car les exceptions n’existent pas. Python fournit un modèle d’exceptions puissant et encourage son utilisation pour simplifier le flux de contrôle.
+
+---
+
+## 🔍 Performance
+
+La gestion des exceptions a un léger coût, mais pour des opérations courantes comme la suppression de fichiers, la différence est négligeable. Le gain en robustesse et en lisibilité l’emporte largement.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Lors de l’accès à des fichiers, sockets ou autres ressources qui peuvent être absentes
+* Lorsque plusieurs processus ou threads peuvent modifier l’état entre la vérification et l’action

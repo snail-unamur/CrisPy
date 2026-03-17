@@ -1,0 +1,52 @@
+# PY028 – Ne pas inclure l’information de type dans les noms de variables (éviter la notation hongroise)
+
+## 🧠 Pourquoi
+
+Python est un langage à typage dynamique (duck typing). Le nom d’une variable ne garantit pas son type. Inclure des préfixes de type (par exemple `n_int`, `s_str`) peut induire en erreur et conduire à des hypothèses erronées sur la nature des données.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+n_int = "Hello, World!"  # on suppose que c’est un entier
+result = 4 / n_int       # TypeError !
+```
+
+### Problèmes
+
+* Noms de variables trompeurs.
+* Peut conduire à des opérations invalides parce qu’on pense manipuler un type différent
+* Rend le code moins lisible et moins pythonique
+
+---
+
+## ✅ Bonne pratique
+
+```python
+message = "Hello, World!"
+# nommer selon la signification plutôt que le type
+```
+
+### Explication
+
+Choisir des noms de variables descriptifs reflétant le contenu ou la responsabilité de la variable, et non son type. Les annotations de type (PEP 484) peuvent documenter le type prévu sans polluer le nom de variable.
+
+---
+
+## Comparaison avec d’autres langages
+
+La notation hongroise a été popularisée dans des langages comme C où le typage est explicite. En Python, elle est inutile et contre‑productive.
+
+---
+
+## 🔍 Performance
+
+Aucune incidence sur la performance, mais une grande incidence sur la lisibilité et la maintenance.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Lorsque vous nommez des variables publiques ou partagées
+* Lorsque vous revoyez du code provenant d’autres langages

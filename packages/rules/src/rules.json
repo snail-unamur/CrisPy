@@ -134,7 +134,67 @@
     "docsPath": "/rules/py022",
     "category": "performance"
   },
+  "PY023": {
+    "title": "Éviter les imports génériques (`from module import *`)",
+    "severity": "warning",
+    "docsPath": "/rules/py023",
+    "category": "readability"
+  },
+  "PY024": {
+    "title": "Utiliser `with` pour ouvrir des fichiers",
+    "severity": "warning",
+    "docsPath": "/rules/py024",
+    "category": "reliability"
+  },
+  "PY025": {
+    "title": "Utiliser `isinstance()` pour comparer des types",
+    "severity": "info",
+    "docsPath": "/rules/py025",
+    "category": "readability"
+  },
   "PY026": {
+    "title": "Utiliser les compréhensions de dictionnaire",
+    "severity": "info",
+    "docsPath": "/rules/py026",
+    "category": "readability"
+  },
+  "PY027": {
+    "title": "Utiliser l’unpacking pour mettre à jour plusieurs variables",
+    "severity": "info",
+    "docsPath": "/rules/py027",
+    "category": "readability"
+  },
+  "PY028": {
+    "title": "Ne pas inclure le type dans les noms de variables",
+    "severity": "info",
+    "docsPath": "/rules/py028",
+    "category": "readability"
+  },
+  "PY029": {
+    "title": "Ordonner correctement les clauses `except`",
+    "severity": "warning",
+    "docsPath": "/rules/py029",
+    "category": "reliability"
+  },
+  "PY030": {
+    "title": "Éviter les valeurs par défaut mutables dans les arguments de fonction",
+    "severity": "warning",
+    "docsPath": "/rules/py030",
+    "category": "reliability"
+  },
+  "PY031": {
+    "title": "Préférer EAFP à LBYL",
+    "severity": "info",
+    "docsPath": "/rules/py031",
+    "category": "readability"
+  },
+  "PY032": {
+    "title": "Préférer les compréhensions de liste à `map()` et `filter()`",
+    "severity": "info",
+    "docsPath": "/rules/py032",
+    "category": "readability"
+  },
+  "PY033": {
     "title": "Préférer le set pour la recherche d'appartenance",
     "severity": "info",
     "docsPath": "/rules/py026",

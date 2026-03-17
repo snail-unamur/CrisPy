@@ -1,0 +1,60 @@
+# PY027 – Utiliser l’unpacking pour mettre à jour plusieurs variables
+
+## 🧠 Pourquoi
+
+Le « unpacking » (décomposition) permet d’assigner plusieurs variables en une seule instruction. Cela rend le code plus concis et évite l’utilisation de variables temporaires, améliorant ainsi la lisibilité.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+# Implémentation de l’algorithme d’Euclide sans unpacking
+def gcd(a, b):
+    while b != 0:
+        temp = b
+        b = a % b
+        a = temp
+    return a
+```
+
+### Problèmes
+
+* Utilisation d’une variable temporaire inutile
+* Trois lignes d’affectation pour ce qui peut être fait en une seule.
+* Risque d’erreur en réassignant les mauvaises variables
+
+---
+
+## ✅ Bonne pratique
+
+```python
+def gcd(a, b):
+    while b != 0:
+        # échange en une seule opération
+        a, b = b, a % b
+    return a
+```
+
+### Explication
+
+L’affectation multiple est atomique : Python crée un tuple temporaire avec les valeurs de droite puis l’affecte aux variables de gauche. Cela rend le code plus concis et pythonique.
+
+---
+
+## Comparaison avec C
+
+En C, l’échange de deux variables nécessite une variable temporaire ou une astuce XOR. Python simplifie cette opération grâce au tuple unpacking.
+
+---
+
+## 🔍 Performance
+
+Le gain de performance est marginal, mais l’écriture est plus claire. L’unpacking est implémenté en C et évite des opérations inutiles au niveau Python.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Lors de l’échange de deux variables
+* Lors de l’assignation simultanée de plusieurs valeurs, par exemple pour mettre à jour plusieurs indicateurs d’état

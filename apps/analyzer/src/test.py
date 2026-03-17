@@ -82,3 +82,77 @@ for x in positives:
 
 if all_positive:
     print("All numbers are positive")
+
+# PY023
+from math import *
+
+value = ceil(2.7)
+print(value)
+
+# PY024
+f = open("demo.txt", "r")
+content = f.read()
+print(content)
+f.close()
+
+# PY025
+class Animal:
+    pass
+
+class Dog(Animal):
+    pass
+
+obj = Dog()
+if type(obj) is Animal:
+    print("Animal")
+
+# PY026
+numbers = [1, 2, 3, 4]
+double_map = dict([(n, n * 2) for n in numbers])
+print(double_map)
+
+# PY027
+def gcd(a, b):
+    while b != 0:
+        temp = b
+        b = a % b
+        a = temp
+    return a
+
+print(gcd(12, 8))
+
+# PY028
+name_str = "Alice"
+count_int = 5
+items_list = [1, 2, 3]
+config_dict = {"mode": "dev"}
+
+# PY029
+try:
+    x = 10 / 0
+except Exception:
+    print("Generic exception")
+except ZeroDivisionError:
+    print("Division by zero")
+
+# PY030
+def append_item(item, items=[]):
+    items.append(item)
+    return items
+
+print(append_item(1))
+print(append_item(2))
+
+# PY031
+import os
+
+if os.path.exists("temp.txt"):
+    os.remove("temp.txt")
+
+# PY032
+values = [1, 2, 3, 4]
+doubles = map(lambda x: x * 2, values)
+evens = filter(lambda x: x % 2 == 0, values)
+
+print(list(doubles))
+print(list(evens))

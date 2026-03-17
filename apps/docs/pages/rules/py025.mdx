@@ -1,0 +1,64 @@
+# PY025 – Utiliser `isinstance()` pour comparer des types
+
+## 🧠 Pourquoi
+
+La fonction `isinstance()` est conçue pour vérifier l’appartenance à un type ou à une hiérarchie de types. Elle prend en charge l’héritage : une instance d’une classe dérivée est considérée comme instance de la classe de base. Utiliser `type()` et comparer avec `is` empêche de reconnaître les sous‑classes et rend le code fragile.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+import types
+
+class Rectangle(object):
+    pass
+
+obj = Rectangle()
+# Mauvais : compare le type exact
+if type(obj) is types.ListType:
+    print("obj est une liste")
+```
+
+### Problèmes
+
+* Ne détecte pas les sous‑classes
+* Utilise l’opérateur `is` pour comparer des types, ce qui est une comparaison d’identité, pas d’égalité.
+* Difficulté à maintenir lorsque la hiérarchie de classes évolue
+
+---
+
+## ✅ Bonne pratique
+
+```python
+# Bon : utilise isinstance
+if isinstance(obj, list):
+    print("obj est une liste ou une sous‑classe de list")
+
+# On peut également tester plusieurs types
+if isinstance(obj, (int, float)):
+    print("obj est un nombre")
+```
+
+### Explication
+
+`isinstance()` accepte un objet et un type (ou un tuple de types). Elle renvoie `True` si l’objet est une instance de ce type ou de l’un de ses sous‑types. Cela rend votre code plus flexible et conforme aux principes de l’héritage.
+
+---
+
+## Comparaison avec C
+
+En C, il n’existe pas de réflexion de type à l’exécution. Le type d’une variable est connu à la compilation. Python permet de vérifier dynamiquement le type, mais il faut utiliser l’outil approprié (`isinstance()`).
+
+---
+
+## 🔍 Performance
+
+La différence de performance entre `type()` et `isinstance()` est négligeable. L’enjeu principal est la sécurité et la maintenabilité.
+
+---
+
+## ▲ Quand s’en soucier ?
+
+* Vous vérifiez qu’un argument est d’un type particulier
+* Vous souhaitez supporter des sous‑classes

@@ -3,6 +3,7 @@ from rules.PY001_numpy_array import NumpyArrayRule
 from rules.PY002_string_concat_in_loop import StringConcatInLoopRule
 from rules.PY003_exessive_global_variable import ExcessiveGlobalRule
 from rules.PY004_parellel_list_iteration import ParallelListIteration
+from rules.PY005_prefer_explicit_typing import ExplicitTypingRule
 from rules.PY006_list_slicing import ListSlicingRule
 from rules.PY007_dict_items import DictItemsRule
 from rules.PY008_dict_get_setdefault import DictGetSetdefaultRule
@@ -15,8 +16,18 @@ from rules.PY014_membership_on_list import MembershipOnListRule
 from rules.PY015_string_join import StringJoinRule
 from rules.PY016_shadow_builtin import ShadowBuiltinRule
 from rules.PY017_any_all import AnyAllRule
-from rules.PY005_prefer_explicit_typing import ExplicitTypingRule
-from rules.PY026_set_membership import SetMembershipRule
+from rules.PY023_WildcardImport import WildcardImportRule
+from rules.PY024_OpenWithoutWith import UseWithOpenRule
+from rules.PY025_TypeComparisonInsteadOfIsInstance import IsInstanceRule
+from rules.PY026_DictInsteadOfDictComprehension import DictComprehensionRule
+from rules.PY027_NoTupleUnpacking import MultipleAssignmentUnpackingRule
+from rules.PY028_TypeInVariableName import TypeInVariableNameRule
+from rules.PY029_BadExceptOrder import ExceptOrderRule
+from rules.PY030_MutableDefaultArgument import MutableDefaultArgumentRule
+from rules.PY031_LBYLInsteadOfEAFP import EAFPInsteadOfLBYLRule
+from rules.PY032_MapFilterInsteadOfListComprehension import ListComprehensionInsteadOfMapFilterRule
+from rules.PY033_set_membership import SetMembershipRule
+
 
 
 
@@ -41,6 +52,16 @@ def analyze_code(code: str):
         StringJoinRule(),
         ShadowBuiltinRule(),
         AnyAllRule(),
+        WildcardImportRule(),
+        UseWithOpenRule(),
+        IsInstanceRule(),
+        DictComprehensionRule(),
+        MultipleAssignmentUnpackingRule(),
+        TypeInVariableNameRule(),
+        ExceptOrderRule(),
+        MutableDefaultArgumentRule(),
+        EAFPInsteadOfLBYLRule(),
+        ListComprehensionInsteadOfMapFilterRule(),
         SetMembershipRule()
     ]
 
