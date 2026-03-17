@@ -1,4 +1,4 @@
-import { Brand } from "@/global";
+import { Brand } from "@/components/global";
 
 import {
   SidebarMenu,

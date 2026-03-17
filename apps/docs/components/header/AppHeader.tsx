@@ -2,7 +2,7 @@ import { House, Moon, Sun } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Search } from "@/global";
+import { Search } from "@/components/global";
 import Link from "next/link";
 import { useTheme } from "@/providers/theme-provider";
 import { Button } from "../ui/button";
