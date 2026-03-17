@@ -3,7 +3,7 @@ from models.diagnostic import Diagnostic
 
 
 class SetMembershipRule(ast.NodeVisitor):
-    RULE_ID = "PY004"
+    RULE_ID = "PY033"
 
     def __init__(self):
         self.diagnostics = []

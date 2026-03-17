@@ -1,4 +1,13 @@
 import ast
+from rules.PY034_MemoryLocalityRule import MemoryLocalityRule
+from rules.PY035_ObjectOverheadRule import ObjectOverheadRule
+from rules.PY036_UnboundedGrowthRule import UnboundedGrowthRule
+from rules.PY037_DataFragmentationRule import DataFragmentationRule
+from rules.PY018_ListMembership import ListMembershipRule
+from rules.PY019_NestedLoopRule import NestedLoopRule
+from rules.PY020_GeneratorInsteadOfListRule import GeneratorInsteadOfListRule
+from rules.PY021_ListConcatInLoopRule import ListConcatInLoopRule
+from rules.PY022_PreferForRangeRule import PreferForRangeRule
 from rules.PY001_numpy_array import NumpyArrayRule
 from rules.PY002_string_concat_in_loop import StringConcatInLoopRule
 from rules.PY003_exessive_global_variable import ExcessiveGlobalRule
@@ -35,34 +44,44 @@ def analyze_code(code: str):
     tree = ast.parse(code)
 
     rules = [
-        NumpyArrayRule(),
-        StringConcatInLoopRule(),
-        ExcessiveGlobalRule(), 
-        ListSlicingRule(),
-        ExplicitTypingRule(),
-        DictItemsRule(),
-        DictGetSetdefaultRule(),
-        DefaultDictRule(),
-        MutableDefaultRule(),
-        ParallelListIteration(),
-        ConditionalNoneReturnRule(),
-        AnonymousTupleReturnRule(),
-        IsForValueComparisonRule(),
-        MembershipOnListRule(),
-        StringJoinRule(),
-        ShadowBuiltinRule(),
-        AnyAllRule(),
-        WildcardImportRule(),
-        UseWithOpenRule(),
-        IsInstanceRule(),
-        DictComprehensionRule(),
-        MultipleAssignmentUnpackingRule(),
-        TypeInVariableNameRule(),
-        ExceptOrderRule(),
-        MutableDefaultArgumentRule(),
-        EAFPInsteadOfLBYLRule(),
-        ListComprehensionInsteadOfMapFilterRule(),
-        SetMembershipRule()
+       NumpyArrayRule(),
+StringConcatInLoopRule(),
+ExcessiveGlobalRule(), 
+ListSlicingRule(),
+ExplicitTypingRule(),
+DictItemsRule(),
+DictGetSetdefaultRule(),
+DefaultDictRule(),
+MutableDefaultRule(),
+ParallelListIteration(),
+ConditionalNoneReturnRule(),
+AnonymousTupleReturnRule(),
+IsForValueComparisonRule(),
+MembershipOnListRule(),
+StringJoinRule(),
+ShadowBuiltinRule(),
+AnyAllRule(),
+WildcardImportRule(),
+UseWithOpenRule(),
+IsInstanceRule(),
+DictComprehensionRule(),
+MultipleAssignmentUnpackingRule(),
+TypeInVariableNameRule(),
+ExceptOrderRule(),
+MutableDefaultArgumentRule(),
+EAFPInsteadOfLBYLRule(),
+ListComprehensionInsteadOfMapFilterRule(),
+SetMembershipRule(),
+PreferForRangeRule(),
+ListConcatInLoopRule(),
+GeneratorInsteadOfListRule(),
+NestedLoopRule(),
+ListMembershipRule(),
+MemoryLocalityRule(),
+ObjectOverheadRule(),
+UnboundedGrowthRule(),
+DataFragmentationRule()
+        
     ]
 
     diagnostics = []

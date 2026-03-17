@@ -3,7 +3,7 @@ from models.diagnostic import Diagnostic
 
 
 class ExplicitTypingRule(ast.NodeVisitor):
-    RULE_ID = "PY002"
+    RULE_ID = "PY005"
 
     def __init__(self):
         self.diagnostics = []

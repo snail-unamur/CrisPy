@@ -83,6 +83,7 @@ for x in positives:
 if all_positive:
     print("All numbers are positive")
 
+<<<<<<< Updated upstream
 # PY023
 from math import *
 
@@ -156,3 +157,52 @@ evens = filter(lambda x: x % 2 == 0, values)
 
 print(list(doubles))
 print(list(evens))
+=======
+
+# PY018
+my_list = [1, 2, 3, 4, 5]
+if 3 in my_list:  # Cette ligne déclenche PY018
+    print("Trouvé!")
+
+# PY019
+
+for i in range(10):
+    for j in range(10):  # Cette ligne déclenche PY019
+        print(i, j)
+
+# PY020
+total = sum([x * 2 for x in range(1000)])  # Déclenche PY020
+
+# PY021
+result = []
+for i in range(100):
+    result = result + [i]  # Cette ligne déclenche PY021
+
+# PY022
+i = 0
+while i < 10:  # Cette boucle déclenche PY022
+    print(i)
+    i += 1
+
+# PY034
+matrix = [[i + j for j in range(100)] for i in range(100)]
+
+for j in range(100):
+    for i in range(100):
+        x = matrix[i][j]
+
+# PY035
+numbers = [1, 2, 3, 4, 5]
+
+# PY036
+cache = []
+
+for i in range(1000000):
+    cache.append(i)
+
+# PY037
+data = []
+
+for i in range(100000):
+    data.append([i])
+>>>>>>> Stashed changes
