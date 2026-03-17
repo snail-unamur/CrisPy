@@ -83,7 +83,6 @@ for x in positives:
 if all_positive:
     print("All numbers are positive")
 
-<<<<<<< Updated upstream
 # PY023
 from math import *
 
@@ -157,7 +156,7 @@ evens = filter(lambda x: x % 2 == 0, values)
 
 print(list(doubles))
 print(list(evens))
-=======
+
 
 # PY018
 my_list = [1, 2, 3, 4, 5]
@@ -205,4 +204,25 @@ data = []
 
 for i in range(100000):
     data.append([i])
->>>>>>> Stashed changes
+
+# PY007
+d = {"a": 1, "b": 2, "c": 3}
+for k in d:
+    print(f"{k}: {d[k]}")  # Accès redondant
+
+# PY008
+player_scores = {"alice": 10, "bob": 5}
+if "charlie" in player_scores:
+    score = player_scores["charlie"]
+else:
+    score = 0
+print(f"Score de Charlie: {score}")
+
+# PY009
+text = "le chat le chien le oiseau"
+word_count = {}
+for word in text.split():
+    if word not in word_count:
+        word_count[word] = 0
+    word_count[word] += 1
+print(word_count)  # {'le': 3, 'chat': 1, 'chien': 1, 'oiseau': 1}
