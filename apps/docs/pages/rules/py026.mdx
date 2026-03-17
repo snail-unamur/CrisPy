@@ -1,79 +1,12 @@
-<<<<<<< HEAD
-# Préférer le set pour la recherche d'appartenance
-
-## Pourquoi ?
-
-En Python, vérifier si un élément existe dans une liste nécessite de parcourir chaque élément un par un. À l'inverse,
-le set (ensemble) utilise une table de hachage(table empreinte valeur),
-ce qui rend la vérification quasi instantanée, quelle que soit la taille de la collection.
-
-## Bad practice
-
-```python
-utilisateurs = ["eren", "mikasa", "armin", "levi"]
-
-# Recherche linéaire : Python regarde chaque nom jusqu'à trouver "charlie"
-if "levi" in utilisateurs:
-    print("Accès refusé")
-```
-
-**Explication** : Si votre liste contient 1 million d'utilisateurs,
-Python effectuera potentiellement 1 million de comparaisons pour confirmer qu'un utilisateur n'est pas présent.
-C'est une complexité dite linéaire ou $O(n)$.
-
-## Good Practice
-
-```python
-# On utilise des accolades {} pour un set
-utilisateurs_bannis = {"alice", "bob", "charlie", "david"}
-
-# Recherche par hachage : l'accès est immédiat
-if "charlie" in utilisateurs_bannis:
-    print("Accès refusé")
-```
-
-**Explication** : Le set calcule une "empreinte" (hash) de l'élément pour savoir exactement où il se trouve en mémoire.
-La vérification se fait en une seule étape. C'est une complexité dite constante ou $O(1)$.
-
-## Comparaison avec le langage C
-
-En C, il n'existe pas de type "Set" natif dans la bibliothèque standard comme en Python.
-Pour obtenir la même performance, un développeur C doit implémenter manuellement une Table de Hachage (Hash Table).
-
-```c
-// Approche classique (lente) en C
-int bannis[] = {101, 102, 103, 104};
-int cible = 103;
-bool trouve = false;
-
-for(int i = 0; i < 4; i++) {
-    if(bannis[i] == cible) {
-        trouve = true;
-        break;
-    }
-}
-```
-
-## Performance
-
-L'impact sur les performances est drastique dès que le volume de données augmente.
-Voici un comparatif de temps théorique pour trouver un élément qui n'est pas dans la collection(list, set, ...):
-
-| Taille de la collection | Temps avec une Liste ($O(n)$) | Temps avec un Set ($O(1)$) |
-| :---------------------- | :---------------------------- | :------------------------- |
-| 10 éléments             | 0.0001 ms                     | 0.0001 ms                  |
-| 10 000 éléments         | 0.1 ms                        | 0.0001 ms                  |
-| 1 000 000 éléments      | 10.5 ms                       | 0.0001 ms                  |
-=======
 # PY026 – Utiliser les compréhensions de dictionnaire
 
 ## 🧠 Pourquoi
 
-Depuis Python 2.7, les compréhensions de dictionnaire permettent de construire des dictionnaires de manière concise et lisible. Cette syntaxe remplace les appels à `dict()` avec une liste de couples, qui sont verbeux et plus difficiles à lire.
+Depuis Python 2.7, les compréhensions de dictionnaire permettent de construire des dictionnaires de manière concise et lisible. Cette syntaxe remplace les appels à `dict()` avec une liste de couples, qui sont verbeux et plus difficiles à lire.
 
 ---
 
-## ❌ Anti‑Pattern
+## ❌ Anti-Pattern
 
 ```python
 numbers = [1, 2, 3]
@@ -84,8 +17,8 @@ my_dict = dict([(n, n * 2) for n in numbers])
 
 ### Problèmes
 
-* Syntaxe lourde et redondante
-* Difficile à lire, surtout avec des générateurs imbriqués.
+- Syntaxe lourde et redondante
+- Difficile à lire, surtout avec des générateurs imbriqués.
 
 ---
 
@@ -100,24 +33,23 @@ my_dict = {n: n * 2 for n in numbers}
 
 ### Explication
 
-La compréhension de dictionnaire exprime directement l’intention : pour chaque élément `n`, associer `n` à `n*2`. Le code est plus court et plus idiomatique.
+La compréhension de dictionnaire exprime directement l'intention: pour chaque élément `n`, associer `n` à `n*2`. Le code est plus court et plus idiomatique.
 
 ---
 
-## Comparaison avec d’autres langages
+## Comparaison avec d'autres langages
 
-Dans des langages comme Java ou C++, la construction d’une table associée se fait souvent à l’aide de boucles explicites. Python fournit une syntaxe dédiée qui améliore la lisibilité.
+Dans des langages comme Java ou C++, la construction d'une table associée se fait souvent à l'aide de boucles explicites. Python fournit une syntaxe dédiée qui améliore la lisibilité.
 
 ---
 
 ## 🔍 Performance
 
-Les compréhensions s’exécutent en C et sont légèrement plus rapides que l’utilisation de `dict()` avec une liste de couples. Cependant, l’avantage principal est la clarté.
+Les compréhensions s'exécutent en C et sont légèrement plus rapides que l'utilisation de `dict()` avec une liste de couples. Cependant, l’avantage principal est la clarté.
 
 ---
 
-## ▲ Quand s’en soucier ?
+## ▲ Quand s'en soucier?
 
-* Lors de la création d’un dictionnaire à partir d’un itérable
-* Pour convertir ou transformer des collections en dictionnaires
->>>>>>> a18a896 (Add test 23 à 32)
+- Lors de la création d'un dictionnaire à partir d'un itérable
+- Pour convertir ou transformer des collections en dictionnaires
