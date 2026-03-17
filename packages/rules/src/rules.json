@@ -197,7 +197,7 @@
   "PY033": {
     "title": "Préférer le set pour la recherche d'appartenance",
     "severity": "info",
-    "docsPath": "/rules/py026",
+    "docsPath": "/rules/py033",
     "category": "performance"
   }
 }
