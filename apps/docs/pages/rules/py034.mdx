@@ -1,0 +1,67 @@
+# PY034 – Favoriser la localité mémoire
+
+## Pourquoi ?
+
+Les processeurs modernes utilisent un cache mémoire pour accélérer l’accès aux données.
+Lorsque les données sont parcourues de manière contiguë, elles sont chargées efficacement.
+
+## Mauvaise pratique
+
+```python
+matrix = [[i + j for j in range(1000)] for i in range(1000)]
+
+for j in range(1000):$
+    for i in range(1000):
+        x = matrix[i][j]
+
+```
+Explication :
+Parcours colonne → accès non contigu → mauvais usage du cache.
+
+## Bonne pratique
+
+```python
+for i in range(1000):
+    for j in range(1000):
+        x = matrix[i][j]
+
+```
+Explication :
+Parcours ligne → accès contigu → cache optimisé.
+
+## Comparaison avec le langage C
+
+```c
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < m; j++) {
+        x = matrix[i][j];
+    }
+}
+```
+
+Les tableaux sont contigus → ordre d’accès critique.
+
+## Comparaison avec Java
+```java
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < m; j++) {
+        x = matrix[i][j];
+    }
+}
+```
+
+En Java, les tableaux 2D sont en réalité des tableaux de références (pas totalement contigus).
+
+Mais :
+
+ - parcourir ligne par ligne reste plus cache-friendly
+
+ - parcours colonne peut être beaucoup plus lent
+
+## Performance
+
+- Réduction des cache misses
+
+- Accès mémoire plus rapide
+
+- Gains importants sur grandes matrices

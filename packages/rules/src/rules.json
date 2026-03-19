@@ -199,5 +199,29 @@
     "severity": "info",
     "docsPath": "/rules/py033",
     "category": "performance"
+  },
+  "PY034": {
+    "title": "Favoriser la localité mémoire",
+    "severity": "warning",
+    "docsPath": "/rules/py034",
+    "category": "mémoire"
+  },
+  "PY035": {
+    "title": "Réduire le coût des objets Python",
+    "severity": "warning",
+    "docsPath": "/rules/py035",
+    "category": "mémoire"
+  },
+  "PY036": {
+    "title": "Éviter la croissance mémoire non contrôlée",
+    "severity": "danger",
+    "docsPath": "/rules/py036",
+    "category": "mémoire"
+  },
+  "PY037": {
+    "title": "Éviter la fragmentation des données",
+    "severity": "warning",
+    "docsPath": "/rules/py037",
+    "category": "mémoire"
   }
 }
