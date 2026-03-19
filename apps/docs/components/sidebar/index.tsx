@@ -36,7 +36,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarFooter>
         <SidebarMenuButton asChild>
           <Link
-            href="https://ika.com"
+            href="https://marketplace.visualstudio.com/items?itemName=snail-unamur.pyquit&ssr=false#qna"
+            target="_blank"
+            rel="noopener noreferrer"
             role="button"
             className="flex justify-center items-center py-6 px-3! text-lg text-foreground! bg-green-500! hover:bg-green-700! rounded-4xl!"
           >
