@@ -9,7 +9,7 @@ export function Brand() {
   const { theme } = useTheme();
 
   return (
-    <Link href="/app" className=" flex items-center gap-1.5">
+    <Link href="/" className=" flex items-center gap-1.5">
       <Image
         src={theme == "dark" ? logo : logoB}
         alt="logo-image"
