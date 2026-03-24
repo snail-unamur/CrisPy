@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { ruleMap } from "@pyquit/rules";
 
 export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
   provideCodeActions(
@@ -6,19 +7,61 @@ export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
     range: vscode.Range,
     context: vscode.CodeActionContext,
   ): vscode.CodeAction[] {
-    return context.diagnostics.map((diagnostic) => {
-      const action = new vscode.CodeAction(
+    const actions: vscode.CodeAction[] = [];
+
+    for (const diagnostic of context.diagnostics) {
+      const ruleCode = String(diagnostic.code);
+      const rule = ruleMap[ruleCode];
+      const ruleSlug = rule?.slug || ruleCode;
+
+      // Show rule detail
+      const showDetails = new vscode.CodeAction(
         "Show rule details",
         vscode.CodeActionKind.QuickFix,
       );
 
-      action.command = {
+      showDetails.command = {
         command: "pyquit.showRuleDetails",
         title: "Show rule details",
-        arguments: [diagnostic.code],
+        arguments: [ruleCode],
       };
 
-      return action;
-    });
+      actions.push(showDetails);
+
+      // Disable rule for the nex line
+      const disableNextLine = new vscode.CodeAction(
+        `Disable for next line`,
+        vscode.CodeActionKind.QuickFix,
+      );
+      disableNextLine.edit = new vscode.WorkspaceEdit();
+
+      const line = diagnostic.range.start.line;
+
+      disableNextLine.edit.insert(
+        document.uri,
+        new vscode.Position(line, 0),
+        `# pyquit-disable-next-line ${ruleSlug}\n`,
+      );
+
+      actions.push(disableNextLine);
+
+      // Disable rule for the file
+      const disableFile = new vscode.CodeAction(
+        `Disable for the entire file`,
+        vscode.CodeActionKind.QuickFix,
+      );
+
+      disableFile.edit = new vscode.WorkspaceEdit();
+
+      disableFile.edit.insert(
+        document.uri,
+        new vscode.Position(0, 0),
+        `# pyquit-disable ${ruleSlug}\n`,
+      );
+
+      actions.push(disableFile);
+    }
+
+    return actions;
   }
 }
