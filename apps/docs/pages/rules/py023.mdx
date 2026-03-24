@@ -12,13 +12,13 @@ L’utilisation d’un import générique (`from module import *`) rend difficil
 # Import générique — déconseillé
 from math import *
 print(sqrt(16))  # on ne sait pas d’où vient sqrt
-````
+```
 
 ### Problèmes
 
-* Impossible de voir quelles fonctions/variables sont importées
-* Risque de masquage de noms existants
-* Difficile pour les outils d’analyse de détecter les noms non définis
+- Impossible de voir quelles fonctions/variables sont importées
+- Risque de masquage de noms existants
+- Difficile pour les outils d’analyse de détecter les noms non définis
 
 ---
 
@@ -55,6 +55,6 @@ Le type d’import n’a pas d’impact notable sur les performances. L’object
 
 ## ▲ Quand s’en soucier ?
 
-* Vous travaillez dans un module partagé et souhaitez éviter les collisions
-* Vous voulez que les dépendances soient explicites
-* Vous utilisez un outil d’analyse statique ou un linter
+- Vous travaillez dans un module partagé et souhaitez éviter les collisions
+- Vous voulez que les dépendances soient explicites
+- Vous utilisez un outil d’analyse statique ou un linter
