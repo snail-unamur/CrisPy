@@ -2,6 +2,7 @@ import rules from "./rules.json";
 
 export type RuleMeta = {
   title: string;
+  slug: string;
   description?: string;
   severity: "info" | "warning" | "error";
   category: string;

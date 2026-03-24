@@ -1,225 +1,259 @@
 {
   "PY001": {
     "title": "Prefer NumPy Array",
+    "slug": "prefer-numpy-array",
     "severity": "info",
     "docsPath": "/rules/py001",
     "category": "performance"
   },
   "PY002": {
     "title": "Concaténation de Chaînes dans Boucles",
+    "slug": "string-concatenation-in-loops",
     "severity": "warning",
     "docsPath": "/rules/py002",
     "category": "performance"
   },
   "PY003": {
     "title": "Utilisation excessive de variables globales",
+    "slug": "excessive-global-variables",
     "severity": "info",
     "docsPath": "/rules/py003",
     "category": "performance"
   },
   "PY004": {
     "title": "Utilisez `zip()` pour parcourir plusieurs listes",
+    "slug": "use-zip-for-multiple-lists",
     "severity": "info",
     "docsPath": "/rules/py004",
     "category": "performance"
   },
   "PY005": {
     "title": "Utilisez le Typage Explicite",
+    "slug": "use-explicit-typing",
     "severity": "info",
     "docsPath": "/rules/py005",
     "category": "readability"
   },
   "PY006": {
     "title": "Slicing de Listes",
+    "slug": "list-slicing",
     "severity": "warning",
     "docsPath": "/rules/py006",
     "category": "performance"
   },
-
   "PY007": {
     "title": "Itérer sur clés et valeurs avec dict.items()",
+    "slug": "iterate-with-dict-items",
     "severity": "info",
     "docsPath": "/rules/py007",
     "category": "readability"
   },
-
+  "PY008": {
+    "title": "Utiliser dict.get() ou setdefault() plutôt que `if key in dict`",
+    "slug": "use-dict-get-or-setdefault",
+    "severity": "info",
+    "docsPath": "/rules/py008",
+    "category": "readability"
+  },
   "PY009": {
     "title": "Utiliser collections.defaultdict() pour l'initialisation automatique",
+    "slug": "use-collections-defaultdict",
     "severity": "info",
     "docsPath": "/rules/py009",
     "category": "readability"
   },
   "PY010": {
     "title": "Ne pas utiliser d'arguments par défaut mutables",
+    "slug": "avoid-mutable-default-args",
     "severity": "warning",
     "docsPath": "/rules/py010",
     "category": "reliability"
   },
-  "PY008": {
-    "title": "Utiliser dict.get() ou setdefault() plutôt que `if key in dict`",
-    "severity": "info",
-    "docsPath": "/rules/py008",
-    "category": "readability"
-  },
-
   "PY011": {
     "title": "Toujours retourner un type cohérent",
+    "slug": "always-return-consistent-type",
     "severity": "warning",
     "docsPath": "/rules/py011",
     "category": "reliability"
   },
   "PY012": {
     "title": "Préférer namedtuple / dataclass aux tuples anonymes",
+    "slug": "prefer-namedtuple-dataclass",
     "severity": "info",
     "docsPath": "/rules/py012",
     "category": "readability"
   },
   "PY013": {
     "title": "Ne pas utiliser `is` pour tester l’égalité de valeur",
+    "slug": "avoid-is-for-value-comparison",
     "severity": "warning",
     "docsPath": "/rules/py013",
     "category": "reliability"
   },
   "PY014": {
     "title": "Utiliser `set` pour les tests d’appartenance",
+    "slug": "use-set-for-membership-tests",
     "severity": "info",
     "docsPath": "/rules/py014",
     "category": "performance"
   },
   "PY015": {
     "title": "Utiliser `''.join()` pour concaténer des chaînes",
+    "slug": "use-join-for-string-concatenation",
     "severity": "warning",
     "docsPath": "/rules/py015",
     "category": "performance"
   },
   "PY016": {
     "title": "Ne pas masquer les noms intégrés (`list`, `dict`, etc.)",
+    "slug": "avoid-shadowing-builtin-names",
     "severity": "warning",
     "docsPath": "/rules/py016",
     "category": "reliability"
   },
   "PY017": {
     "title": "Utiliser `any()` et `all()`",
+    "slug": "use-any-all",
     "severity": "info",
     "docsPath": "/rules/py017",
     "category": "readability"
   },
   "PY018": {
     "title": "Utiliser un Set pour les tests d’appartenance fréquents",
+    "slug": "use-set-for-frequent-membership-tests",
     "severity": "warning",
     "docsPath": "/rules/py018",
     "category": "performance"
   },
   "PY019": {
     "title": "Éviter les boucles imbriquées lorsque c’est possible",
+    "slug": "avoid-nested-loops",
     "severity": "danger",
     "docsPath": "/rules/py019",
     "category": "performance"
   },
   "PY020": {
     "title": "Préférer les générateurs aux listes temporaires",
+    "slug": "prefer-generators-over-temporary-lists",
     "severity": "warning",
     "docsPath": "/rules/py020",
     "category": "performance"
   },
   "PY021": {
     "title": "Éviter de reconstruire des listes avec + dans les boucles",
+    "slug": "avoid-rebuilding-lists-with-plus",
     "severity": "danger",
     "docsPath": "/rules/py021",
     "category": "performance"
   },
   "PY022": {
     "title": "Préférer `for` à une itération `while` manuelle",
+    "slug": "prefer-for-over-manual-while",
     "severity": "info",
     "docsPath": "/rules/py022",
     "category": "performance"
   },
   "PY023": {
     "title": "Éviter les imports génériques (`from module import *`)",
+    "slug": "avoid-wildcard-imports",
     "severity": "warning",
     "docsPath": "/rules/py023",
     "category": "readability"
   },
   "PY024": {
     "title": "Utiliser `with` pour ouvrir des fichiers",
+    "slug": "use-with-to-open-files",
     "severity": "warning",
     "docsPath": "/rules/py024",
     "category": "reliability"
   },
   "PY025": {
     "title": "Utiliser `isinstance()` pour comparer des types",
+    "slug": "use-isinstance-for-type-checking",
     "severity": "info",
     "docsPath": "/rules/py025",
     "category": "readability"
   },
   "PY026": {
     "title": "Utiliser les compréhensions de dictionnaire",
+    "slug": "use-dict-comprehensions",
     "severity": "info",
     "docsPath": "/rules/py026",
     "category": "readability"
   },
   "PY027": {
     "title": "Utiliser l’unpacking pour mettre à jour plusieurs variables",
+    "slug": "use-unpacking-for-multiple-assignments",
     "severity": "info",
     "docsPath": "/rules/py027",
     "category": "readability"
   },
   "PY028": {
     "title": "Ne pas inclure le type dans les noms de variables",
+    "slug": "avoid-type-in-variable-names",
     "severity": "info",
     "docsPath": "/rules/py028",
     "category": "readability"
   },
   "PY029": {
     "title": "Ordonner correctement les clauses `except`",
+    "slug": "order-except-clauses-correctly",
     "severity": "warning",
     "docsPath": "/rules/py029",
     "category": "reliability"
   },
   "PY030": {
     "title": "Éviter les valeurs par défaut mutables dans les arguments de fonction",
+    "slug": "avoid-mutable-default-args-function",
     "severity": "warning",
     "docsPath": "/rules/py030",
     "category": "reliability"
   },
   "PY031": {
     "title": "Préférer EAFP à LBYL",
+    "slug": "prefer-eafp-over-lbyl",
     "severity": "info",
     "docsPath": "/rules/py031",
     "category": "readability"
   },
   "PY032": {
     "title": "Préférer les compréhensions de liste à `map()` et `filter()`",
+    "slug": "prefer-list-comprehensions-over-map-filter",
     "severity": "info",
     "docsPath": "/rules/py032",
     "category": "readability"
   },
   "PY033": {
     "title": "Préférer le set pour la recherche d'appartenance",
+    "slug": "prefer-set-for-membership-checks",
     "severity": "info",
     "docsPath": "/rules/py033",
     "category": "performance"
   },
   "PY034": {
     "title": "Favoriser la localité mémoire",
+    "slug": "favor-memory-locality",
     "severity": "warning",
     "docsPath": "/rules/py034",
     "category": "mémoire"
   },
   "PY035": {
     "title": "Réduire le coût des objets Python",
+    "slug": "reduce-python-object-cost",
     "severity": "warning",
     "docsPath": "/rules/py035",
     "category": "mémoire"
   },
   "PY036": {
     "title": "Éviter la croissance mémoire non contrôlée",
+    "slug": "avoid-uncontrolled-memory-growth",
     "severity": "danger",
     "docsPath": "/rules/py036",
     "category": "mémoire"
   },
   "PY037": {
     "title": "Éviter la fragmentation des données",
+    "slug": "avoid-data-fragmentation",
     "severity": "warning",
     "docsPath": "/rules/py037",
     "category": "mémoire"
