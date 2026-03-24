@@ -1,13 +1,19 @@
+# pyquit-disable avoid-shadowing-builtin-names
+# pyquit-disable reduce-python-object-cost
+# pyquit-disable use-collections-defaultdict
+# pyquit-disable use-explicit-typing
+
 # PY001
+# pyquit-disable-next-line reduce-python-object-cost
 a = [1, 3, 4, 5]
 
 # PY002
 mots = ["Python", "est", "génial"]
-phrase = ""
+phrase = "" 
 for mot in mots:
     phrase += mot + " "
 print(phrase)
-
+ 
 # PY003
 count = 0
 def inc():
@@ -34,6 +40,7 @@ def find_user(users, name):
 
 # PY012
 def stats(nums):
+    # pyquit-disable-next-line prefer-namedtuple-dataclass
     return (min(nums), max(nums), sum(nums) / len(nums))
 
 # PY013
@@ -222,6 +229,7 @@ print(f"Score de Charlie: {score}")
 text = "le chat le chien le oiseau"
 word_count = {}
 for word in text.split():
+# pyquit-disable-next-line use-dict-get-or-setdefault
     if word not in word_count:
         word_count[word] = 0
     word_count[word] += 1
