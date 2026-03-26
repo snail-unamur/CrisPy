@@ -3,11 +3,6 @@ import { execFile } from "node:child_process";
 import { ruleMap } from "@pyquit/rules";
 import { mapSeverity } from "./severity";
 
-type DisableState = {
-  fileDisabled: Set<string>; // Stores slugs
-  lineDisabled: Map<number, Set<string>>; // Stores slugs
-};
-
 const SEVERITY_PRIORITY: Record<number, number> = {
   [vscode.DiagnosticSeverity.Error]: 0,
   [vscode.DiagnosticSeverity.Warning]: 1,
@@ -15,7 +10,57 @@ const SEVERITY_PRIORITY: Record<number, number> = {
   [vscode.DiagnosticSeverity.Hint]: 3,
 };
 
-function parseDisables(document: vscode.TextDocument): DisableState {
+type WorkspaceConfig = {
+  disabledRules?: string[];
+  rules?: Record<string, "off" | "warn" | "error">;
+};
+
+type DisableState = {
+  fileDisabled: Set<string>;
+  lineDisabled: Map<number, Set<string>>;
+};
+
+async function loadWorkspaceConfig(
+  currentUri: vscode.Uri,
+): Promise<WorkspaceConfig | null> {
+  let currentDir = vscode.Uri.joinPath(currentUri, "..");
+  const workspaceRoot = vscode.workspace.getWorkspaceFolder(currentUri)?.uri;
+
+  while (true) {
+    const configUri = vscode.Uri.joinPath(currentDir, ".pyquit");
+
+    try {
+      await vscode.workspace.fs.stat(configUri);
+
+      const content = await vscode.workspace.fs.readFile(configUri);
+      return JSON.parse(new TextDecoder().decode(content));
+    } catch {
+      const parentDir = vscode.Uri.joinPath(currentDir, "..");
+
+      if (
+        parentDir.toString() === currentDir.toString() ||
+        (workspaceRoot &&
+          !parentDir.toString().startsWith(workspaceRoot.toString()))
+      ) {
+        break;
+      }
+      currentDir = parentDir;
+    }
+  }
+  return null;
+}
+
+function getWorkspaceDisabledRules(config: any): Set<string> {
+  if (!config) return new Set();
+
+  return new Set(
+    Object.entries(config)
+      .filter(([_, value]) => value === "off")
+      .map(([slug]) => slug),
+  );
+}
+
+function getInFileDisabledRules(document: vscode.TextDocument): DisableState {
   const fileDisabled = new Set<string>();
   const lineDisabled = new Map<number, Set<string>>();
 
@@ -27,10 +72,14 @@ function parseDisables(document: vscode.TextDocument): DisableState {
       text.startsWith("# pyquit-disable") &&
       !text.startsWith("# pyquit-disable-next-line")
     ) {
-      const parts = text.replace("# pyquit-disable", "").trim().split(/\s+/);
+      const parts = text
+        .replace("# pyquit-disable", "")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
 
       for (const slug of parts) {
-        if (slug) fileDisabled.add(slug);
+        fileDisabled.add(slug);
       }
 
       continue;
@@ -41,7 +90,8 @@ function parseDisables(document: vscode.TextDocument): DisableState {
       const parts = text
         .replace("# pyquit-disable-next-line", "")
         .trim()
-        .split(/\s+/);
+        .split(/\s+/)
+        .filter(Boolean);
 
       let targetLine = i + 1;
 
@@ -62,7 +112,7 @@ function parseDisables(document: vscode.TextDocument): DisableState {
         const set = lineDisabled.get(targetLine)!;
 
         for (const slug of parts) {
-          if (slug) set.add(slug);
+          set.add(slug);
         }
       }
     }
@@ -70,16 +120,25 @@ function parseDisables(document: vscode.TextDocument): DisableState {
 
   return { fileDisabled, lineDisabled };
 }
+
 function isDisabled(
   ruleId: string,
   line: number,
   state: DisableState,
+  workspaceDisabled: Set<string>,
 ): boolean {
   const rule = ruleMap[ruleId];
   const slug = rule?.slug || ruleId;
 
-  if (state.fileDisabled.has("ALL") || state.fileDisabled.has(slug))
+  // workspace
+  if (workspaceDisabled.has(slug) || workspaceDisabled.has("ALL")) {
     return true;
+  }
+
+  // file
+  if (state.fileDisabled.has("ALL") || state.fileDisabled.has(slug)) {
+    return true;
+  }
 
   const lineRules = state.lineDisabled.get(line);
   return lineRules?.has(slug) || lineRules?.has("ALL") || false;
@@ -99,25 +158,40 @@ export async function runLint(
   const pythonPath =
     api.settings.getExecutionDetails(document.uri).execCommand?.[0] ?? "python";
 
+  const workspaceConfig = await loadWorkspaceConfig(document.uri);
+  const workspaceDisabled = getWorkspaceDisabledRules(workspaceConfig);
+
+  const version = document.version;
+
   execFile(pythonPath, [analyzerPath, document.fileName], (err, stdout) => {
-    if (err || document.isClosed) return;
+    if (err || document.isClosed || document.version !== version) return;
 
     try {
       const results = JSON.parse(stdout);
-      const disabled = parseDisables(document);
+      const disabled = getInFileDisabledRules(document);
       const priorityMap = new Map<number, vscode.Diagnostic>();
 
       for (const r of results) {
-        const ruleId = r.rule_id;
-        const line = r.line - 1;
+        if (!r) continue;
 
-        if (isDisabled(ruleId, line, disabled)) continue; //disabled rules
+        const ruleId = r.rule_id;
+        if (!ruleId) continue;
+
+        const line = Math.max(0, (r.line ?? 1) - 1);
+
+        if (isDisabled(ruleId, line, disabled, workspaceDisabled)) continue;
 
         const rule = ruleMap[ruleId];
         const severity = mapSeverity(rule?.severity);
+
+        const startCol = Math.max(0, (r.column ?? 1) - 1);
+
+        const endLine = Math.max(0, (r.end_line ?? r.line ?? 1) - 1);
+        const endCol = Math.max(startCol, (r.end_column ?? r.column ?? 1) - 1);
+
         const range = new vscode.Range(
-          new vscode.Position(line, r.column),
-          new vscode.Position(r.end_line - 1, r.end_column),
+          new vscode.Position(line, startCol),
+          new vscode.Position(endLine, endCol),
         );
 
         const diagnostic = new vscode.Diagnostic(
@@ -125,6 +199,7 @@ export async function runLint(
           rule?.title || `Optimization suggestion (${rule?.slug || ruleId})`,
           severity,
         );
+
         diagnostic.code = ruleId;
 
         // priority
@@ -132,6 +207,7 @@ export async function runLint(
         if (existing) {
           const newPrio = SEVERITY_PRIORITY[diagnostic.severity] ?? 99;
           const oldPrio = SEVERITY_PRIORITY[existing.severity] ?? 99;
+
           if (newPrio < oldPrio) {
             priorityMap.set(line, diagnostic);
           }
