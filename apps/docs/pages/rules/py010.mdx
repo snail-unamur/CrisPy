@@ -1,0 +1,56 @@
+# PY010 - Ne pas utiliser d'arguments par défaut mutables
+
+## 🧠 Pourquoi
+
+Les valeurs d'arguments par défaut sont évaluées **une seule fois** au moment de la définition. Une liste ou un dictionnaire par défaut est donc **partagé entre tous les appels** de la fonction.
+
+---
+
+## ❌ Anti‑Pattern
+
+```python
+def add_item(x, items=[]):
+    items.append(x)
+    return items
+
+print(add_item(1))
+print(add_item(2))  # surprise : [1, 2]
+```
+
+### Explication
+
+Le piège : `items=[]` est créé une fois. Les appels suivants réutilisent la même liste, provoquant une fuite d'état et des comportements inattendus.
+
+---
+
+## ✅ Bonne pratique
+
+```python
+def add_item(x, items=None):
+    if items is None:
+        items = []
+    items.append(x)
+    return items
+```
+
+### Explication
+
+`None` est immuable et sert de valeur sentinelle. Une nouvelle liste est créée à chaque appel si l'utilisateur n'en fournit pas.
+
+---
+
+## Comparaison avec C
+
+En C, les arguments par défaut n'existent pas de cette manière, et une fonction ne stocke pas d'état mutable entre les appels (sauf via des variables statiques ou globales).
+
+Cette faille est spécifique au modèle d'évaluation des paramètres de Python.
+
+---
+
+## 🔍 Performance
+
+Il ne s'agit pas d'une optimisation de vitesse mais d'une prévention de bogues logiques.
+
+Éviter les effets de bord involontaires réduit le temps de débogage et les tests.
+
+Le principal bénéfice est la **correction et la prévisibilité** du code.

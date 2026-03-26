@@ -3,7 +3,7 @@ from models.diagnostic import Diagnostic
 
 
 class UnboundedGrowthRule(ast.NodeVisitor):
-    RULE_ID = "PY036"
+    RULE_ID = "PY018"
 
     def __init__(self):
         self.diagnostics = []

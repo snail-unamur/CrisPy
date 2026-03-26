@@ -3,7 +3,7 @@ from models.diagnostic import Diagnostic
 
 
 class ObjectOverheadRule(ast.NodeVisitor):
-    RULE_ID = "PY035"
+    RULE_ID = "PY030"
 
     def __init__(self):
         self.diagnostics = []

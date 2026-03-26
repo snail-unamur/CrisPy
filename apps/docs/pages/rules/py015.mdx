@@ -1,77 +1,55 @@
-# PY015 – Utiliser `''.join(list)` pour la concaténation de chaînes
+# PY015 – Éviter la fragmentation des données
 
-## Pourquoi
-Concaténer de nombreuses chaînes avec l’opérateur `+` à l’intérieur d’une boucle crée des chaînes intermédiaires à chaque étape.
+## Pourquoi ?
 
-Cela entraîne une complexité O(n²) et une utilisation inefficace de la mémoire.
+Créer beaucoup de petits objets disperse les données en mémoire et réduit l’efficacité du cache.
 
----
-
-## ❌ Mauvaise pratique
+## Mauvaise pratique
 
 ```python
-words = ["Le", "Python", "est", "génial"]
-
-sentence = ""
-for w in words:
-    sentence += w + " "
-
-print(sentence)
+data = []
+for i in range(100000):
+    data.append([i])
 ```
 
-### Explication
-Chaque `+=` crée une nouvelle chaîne.
+Explication :
+Création de milliers de petits objets → fragmentation logique.
 
-Pour une liste de mille mots, cela crée mille objets chaîne intermédiaires avant de produire le résultat final.
-
----
-
-## ✅ Bonne pratique
+## Bonne pratique
 
 ```python
-words = ["Le", "Python", "est", "génial"]
-
-sentence = " ".join(words)
-print(sentence)
+data = [i for i in range(100000)]
 ```
 
-### Explication
-`str.join()` est implémenté en C.
+Explication :
+Structure compacte → meilleure localité mémoire.
 
-Il alloue la mémoire nécessaire une seule fois, puis copie chaque sous-chaîne dans ce tampon.
+## Comparaison avec le langage C
 
-Cela le rend nettement plus efficace pour de grandes collections de chaînes.
+```c
+int** data = malloc(n * sizeof(int*));
+```
 
----
+Multiples allocations → fragmentation du heap.
 
-## Comparaison avec le C
+## Comparaison avec Java
 
-En C :
+```java
+List<List<Integer>> data = new ArrayList<>();
+```
 
-- Concaténer des chaînes avec `strcat()` ou `sprintf()` nécessite de préallouer un tampon suffisamment grand.
-- Un équivalent efficace de `join()` consiste à calculer d’abord la longueur totale, puis à utiliser `memcpy()` ou `snprintf()`.
+NB: Beaucoup d’objets → surcharge mémoire et mauvaise localité.
 
-`join()` en Python abstrait ce modèle optimisé.
+```java
+int[] data = new int[n];
+```
 
----
-
-## Comment cela fonctionne
-
-`str.join()` :
-
-1. Parcourt la liste de chaînes  
-2. Calcule la longueur totale nécessaire  
-3. Alloue un seul nouvel objet chaîne  
-4. Copie chaque morceau dans la mémoire allouée  
-
-Contrairement à une boucle avec `+=`, aucune chaîne intermédiaire n’est créée.
-
----
+Structure compacte → meilleure performance.
 
 ## Performance
 
-Pour des milliers de chaînes, `join()` peut être des ordres de grandeur plus rapide qu’un `+` répété dans une boucle.
+ - Meilleure utilisation du cache
 
-Il réduit également la fragmentation mémoire et la création d’objets temporaires.
+ - Moins d’allocations mémoire
 
-Plus le volume de données est important, plus le gain de performance est élevé.
+ - Exécution plus rapide
