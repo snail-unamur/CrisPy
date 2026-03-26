@@ -1,62 +1,54 @@
-# PY030 – Éviter les valeurs par défaut mutables dans les arguments de fonction
+# PY030 – Réduire le coût des objets Python
 
-## 🧠 Pourquoi
+## Pourquoi ?
 
-Lorsque vous utilisez une liste ou un dictionnaire comme valeur par défaut d’un argument, Python crée cet objet une seule fois à la définition de la fonction. Toutes les autres appels sans valeur fournie réutiliseront le même objet, entraînant des effets secondaires surprenants.
+Chaque objet Python contient des métadonnées (type, référence, etc.), ce qui augmente fortement la mémoire utilisée.
 
----
-
-## ❌ Anti‑Pattern
+## Mauvaise pratique
 
 ```python
-def append(number, number_list=[]):
-    number_list.append(number)
-    return number_list
+numbers = [1, 2, 3, 4, 5]
 
-append(5)  # [5]
-append(7)  # [5, 7] — on s’attendait à [7]
 ```
+Explication :
+Chaque entier est un objet Python → overhead mémoire important.
 
-### Problèmes
-
-* Partage involontaire d’état entre les appels.
-* Bugs difficiles à déceler car la liste accumule les éléments
-* Violation du principe de moindre surprise
-
----
-
-## ✅ Bonne pratique
-
+## Bonne pratique
 ```python
-def append(number, number_list=None):
-    if number_list is None:
-        number_list = []
-    number_list.append(number)
-    return number_list
+import numpy as np
 
-append(5)  # [5]
-append(7)  # [7]
+numbers = np.array([1, 2, 3, 4, 5]
+)
 ```
 
-### Explication
+Explication :
+NumPy utilise des types compacts en mémoire, similaires à ceux du langage C.
 
-Utiliser `None` comme valeur sentinelle permet de détecter quand aucun argument n’a été passé et d’initialiser une nouvelle liste à chaque appel. Cette technique s’applique de même aux dictionnaires et à tout objet mutable.
+## Comparaison avec le langage C
+```c
+int numbers[5] = {1, 2, 3, 4, 5};
+```
 
----
+Aucun overhead → mémoire minimale.
 
-## Comparaison avec d’autres langages
+## Comparaison avec Java
 
-En JavaScript ou C++, des constructeurs sont appelés à chaque appel, évitant ce piège. En Python, par conception, les valeurs par défaut sont évaluées une fois lors de la définition.
+Mauvaise pratique
+```java
+Integer[] arr = {1, 2, 3, 4, 5}; // Mauvais
+```
 
----
+Bonne pratique
+```java
+int[] arr = {1, 2, 3, 4, 5}; // Bon
+```
 
-## 🔍 Performance
+Integer est un objet (comme Python), tandis que int est un type primitif plus léger.
 
-Aucune différence de performance significative. L’objectif est d’éviter des comportements inattendus.
+## Performance
 
----
+ - Réduction de la mémoire utilisée
 
-## ▲ Quand s’en soucier ?
+ - Meilleure utilisation du cache CPU
 
-* À chaque fois que vous déclarez un paramètre ayant pour valeur par défaut une liste, un dictionnaire ou tout objet mutable
-* Lorsque la fonction est appelée plusieurs fois sans argument explicite
+ - Traitements plus rapides

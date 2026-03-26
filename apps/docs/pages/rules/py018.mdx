@@ -1,45 +1,60 @@
-# PY018 – Utiliser un Set pour les tests d’appartenance fréquents
+# PY018 – Éviter la croissance mémoire non contrôlée
 
- 
-## Pourquoi
- 
-Les listes nécessitent une recherche linéaire pour vérifier si un élément est présent.
-Les sets utilisent des tables de hachage, ce qui permet une recherche en temps constant en moyenne.
- 
+## Pourquoi ?
+
+Accumuler des données inutilement entraîne une consommation mémoire excessive.
+
 ## Mauvaise pratique
- 
+
 ```python
-if x in my_list:
-    ...
+cache = []
+
+for i in range(1000000):
+    cache.append(i)
 ```
- 
-Si my_list est grande et que le test d’appartenance est effectué fréquemment, les performances se dégradent fortement.
- 
+
+Explication :
+La structure grandit sans limite → utilisation mémoire inutile.
+
 ## Bonne pratique
- 
+
 ```python
-my_set = set(my_list)
-
-if x in my_set:
-    ...
+for i in range(1000000):
+    process(i)
 ```
- 
-La recherche dans un set utilise le hachage et se fait généralement en temps constant.
- 
-## Comparé au C
- 
-En C, rechercher un élément dans un tableau nécessite une itération manuelle :
+
+Explication :
+On traite les données sans les stocker inutilement.
+
+## Comparaison avec le langage C
+
 ```c
-for(int i = 0; i < size; i++) {
-    if(numbers[i] == x) { ... }
-}
-
+int* arr = malloc(1000000 * sizeof(int));
+free(arr);
 ```
-La complexité est également O(n).
 
-Pour obtenir une complexité O(1), il faut implémenter une table de hachage manuellement.
+La mémoire doit être allouée et libérée manuellement.
 
-Python abstrait ce mécanisme grâce au type set.
- 
+## Comparaison avec Java
+
+```java
+List<Integer> list = new ArrayList<>();
+
+for(int i = 0; i < 1000000; i++) {
+    list.add(i);
+}
+```
+
+Même problème qu’en Python :
+
+ - croissance mémoire
+
+ - pression sur le Garbage Collector
+
 ## Performance
-Pour de grands ensembles de données, les sets sont beaucoup plus rapides que les listes pour les tests d’appartenance.
+
+ - Réduction de la mémoire utilisée
+
+ - Moins de pression sur le GC
+
+ - Meilleure stabilité du programme

@@ -3,7 +3,7 @@ from models.diagnostic import Diagnostic
 
 
 class DataFragmentationRule(ast.NodeVisitor):
-    RULE_ID = "PY037"
+    RULE_ID = "PY015"
 
     def __init__(self):
         self.diagnostics = []

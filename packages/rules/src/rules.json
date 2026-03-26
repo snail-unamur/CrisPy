@@ -98,11 +98,11 @@
     "category": "performance"
   },
   "PY015": {
-    "title": "Utiliser `''.join()` pour concaténer des chaînes",
-    "slug": "use-join-for-string-concatenation",
+    "title": "Éviter la fragmentation des données",
+    "slug": "avoid-data-fragmentation",
     "severity": "warning",
     "docsPath": "/rules/py015",
-    "category": "performance"
+    "category": "mémoire"
   },
   "PY016": {
     "title": "Ne pas masquer les noms intégrés (`list`, `dict`, etc.)",
@@ -119,11 +119,11 @@
     "category": "readability"
   },
   "PY018": {
-    "title": "Utiliser un Set pour les tests d’appartenance fréquents",
-    "slug": "use-set-for-frequent-membership-tests",
-    "severity": "warning",
+    "title": "Éviter la croissance mémoire non contrôlée",
+    "slug": "avoid-uncontrolled-memory-growth",
+    "severity": "danger",
     "docsPath": "/rules/py018",
-    "category": "performance"
+    "category": "mémoire"
   },
   "PY019": {
     "title": "Éviter les boucles imbriquées lorsque c’est possible",
@@ -203,12 +203,13 @@
     "category": "reliability"
   },
   "PY030": {
-    "title": "Éviter les valeurs par défaut mutables dans les arguments de fonction",
-    "slug": "avoid-mutable-default-args-function",
+    "title": "Réduire le coût des objets Python",
+    "slug": "reduce-python-object-cost",
     "severity": "warning",
     "docsPath": "/rules/py030",
-    "category": "reliability"
+    "category": "mémoire"
   },
+
   "PY031": {
     "title": "Préférer EAFP à LBYL",
     "slug": "prefer-eafp-over-lbyl",
@@ -235,27 +236,6 @@
     "slug": "favor-memory-locality",
     "severity": "warning",
     "docsPath": "/rules/py034",
-    "category": "mémoire"
-  },
-  "PY035": {
-    "title": "Réduire le coût des objets Python",
-    "slug": "reduce-python-object-cost",
-    "severity": "warning",
-    "docsPath": "/rules/py035",
-    "category": "mémoire"
-  },
-  "PY036": {
-    "title": "Éviter la croissance mémoire non contrôlée",
-    "slug": "avoid-uncontrolled-memory-growth",
-    "severity": "danger",
-    "docsPath": "/rules/py036",
-    "category": "mémoire"
-  },
-  "PY037": {
-    "title": "Éviter la fragmentation des données",
-    "slug": "avoid-data-fragmentation",
-    "severity": "warning",
-    "docsPath": "/rules/py037",
     "category": "mémoire"
   }
 }
