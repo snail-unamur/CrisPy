@@ -37,7 +37,40 @@
     "onLanguage:python",
     "onDocuments:python"
   ],
-  "contributes": {},
+  "contributes": {
+    "languages": [
+      {
+        "id": "pyquit",
+        "aliases": [
+          "PyQuit"
+        ],
+        "extensions": [
+          ".pyquit"
+        ],
+        "configuration": "./language/language-configuration.json",
+        "mimetypes": [
+          "application/json"
+        ],
+        "icon": {
+          "light": "./media/icon-light.png",
+          "dark": "./media/icon.png"
+        }
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": "*.pyquit",
+        "url": "./language/pyquit.schema.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pyquit",
+        "scopeName": "source.pyquit",
+        "path": "./language/pyquit.tmLanguage.json"
+      }
+    ]
+  },
   "installationInfo": {
     "identifier": "snail-unamur.pyquit",
     "version": "1.0.1",

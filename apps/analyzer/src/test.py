@@ -1,15 +1,14 @@
 # pyquit-disable avoid-shadowing-builtin-names
 # pyquit-disable reduce-python-object-cost
 # pyquit-disable use-collections-defaultdict
-# pyquit-disable use-explicit-typing
 
 # PY001
 # pyquit-disable-next-line reduce-python-object-cost
 a = [1, 3, 4, 5]
 
-# PY002
+# PY002 
 mots = ["Python", "est", "génial"]
-phrase = "" 
+phrase = ""
 for mot in mots:
     phrase += mot + " "
 print(phrase)
@@ -52,7 +51,7 @@ lst = [1, 2]
 if lst is [1, 2]:
     print("same")
 
-# PY014
+# PY014 disabled in config file
 my_list = [1, 2, 3, 4, 5]
 if 3 in my_list:
     print("Found")

@@ -1,0 +1,9 @@
+{
+  "scopeName": "source.pyquit",
+  "injectionSelector": "L:source.json",
+  "patterns": [
+    {
+      "include": "source.json"
+    }
+  ]
+}

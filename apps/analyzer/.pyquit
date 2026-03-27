@@ -1,0 +1,4 @@
+{
+  "use-explicit-typing": "off",
+  "avoid-type-in-variable-names": "off"
+}

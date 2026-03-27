@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PyQuit Rules Configuration",
+  "type": "object",
+  "properties": {
+    "prefer-numpy-array": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY001: Prefer NumPy Array over standard lists for numerical data."
+    },
+    "string-concatenation-in-loops": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY002: Use join() instead of + for strings in loops."
+    },
+    "excessive-global-variables": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY003: Avoid using too many global variables."
+    },
+    "use-zip-for-multiple-lists": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY004: Use zip() to iterate over multiple iterables."
+    },
+    "use-explicit-typing": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY005: Use Python type hints for better readability."
+    },
+    "list-slicing": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY006: Optimize list slicing operations."
+    },
+    "iterate-with-dict-items": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY007: Use dict.items() to get both keys and values."
+    },
+    "use-dict-get-or-setdefault": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY008: Use .get() to avoid KeyError."
+    },
+    "use-collections-defaultdict": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY009: Use defaultdict for auto-initialization."
+    },
+    "avoid-mutable-default-args": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY010: Do not use [] or {} as default function arguments."
+    },
+    "always-return-consistent-type": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY011: Ensure functions don't return mixed types (e.g., None AND Int)."
+    },
+    "prefer-namedtuple-dataclass": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY012: Use dataclasses for structured data."
+    },
+    "avoid-is-for-value-comparison": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY013: Use == instead of 'is' for value equality."
+    },
+    "use-set-for-membership-tests": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY014: Sets are O(1) for 'in' checks, lists are O(n)."
+    },
+    "avoid-data-fragmentation": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY015: Minimize memory fragmentation."
+    },
+    "avoid-shadowing-builtin-names": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY016: Don't name variables 'list', 'dict', or 'str'."
+    },
+    "use-any-all": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY017: Use any() and all() for cleaner boolean logic."
+    },
+    "avoid-uncontrolled-memory-growth": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY018: Watch out for leaking memory in long-running processes."
+    },
+    "avoid-nested-loops": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY019: Highly nested loops kill performance."
+    },
+    "prefer-generators-over-temporary-lists": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY020: Use (x for x in y) instead of [x for x in y] for large data."
+    },
+    "avoid-rebuilding-lists-with-plus": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY021: Use .append() or .extend() instead of list + list."
+    },
+    "prefer-for-over-manual-while": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY022: Use 'for' loops for standard iteration."
+    },
+    "avoid-wildcard-imports": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY023: Never use 'from module import *'."
+    },
+    "use-with-to-open-files": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY024: Use Context Managers to ensure files close."
+    },
+    "use-isinstance-for-type-checking": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY025: Use isinstance(x, int) instead of type(x) == int."
+    },
+    "use-dict-comprehensions": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY026: {k: v for ...} is cleaner than dict() constructor."
+    },
+    "use-unpacking-for-multiple-assignments": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY027: Use a, b = b, a for swapping or multi-assignment."
+    },
+    "avoid-type-in-variable-names": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY028: Don't name a variable 'user_list'; use 'users'."
+    },
+    "order-except-clauses-correctly": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY029: Catch specific exceptions before generic ones."
+    },
+    "reduce-python-object-cost": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY030: Use __slots__ to save memory on objects."
+    },
+    "prefer-eafp-over-lbyl": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY031: Easier to Ask Forgiveness than Permission (try/except)."
+    },
+    "prefer-list-comprehensions-over-map-filter": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY032: [x for x in y] is more 'Pythonic' than map()."
+    },
+    "prefer-set-for-membership-checks": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY033: Similar to PY014; prefer set for fast lookup."
+    },
+    "favor-memory-locality": {
+      "enum": ["off", "info", "warning", "danger"],
+      "description": "PY034: Structure data for better cache performance."
+    }
+  },
+  "additionalProperties": false
+}
