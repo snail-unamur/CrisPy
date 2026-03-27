@@ -1,30 +1,30 @@
-# Prefer NumPy Array
+# Privilégiez les Tableaux NumPy (NumPy Arrays)
 
-## Why
+## Pourquoi ?
 
-NumPy **arrays** provide vectorized operations and better memory efficiency.
+Les tableaux NumPy permettent d'effectuer des opérations vectorisées et offrent une meilleure efficacité en termes de gestion de la mémoire.
 
-## Bad practice
+## Mauvaise pratique
 
 ```python
 arr = [1, 2, 3]
 ```
 
-A little explanation about the bad practice
+Explication : En Python standard, une liste est flexible mais lente pour les calculs mathématiques car elle peut contenir n'importe quel type d'objet, ce qui consomme plus de ressources.
 
-## Good Practice
+## Bonne pratique
 
 ```python
 import numpy as np
 arr = np.array([1, 2, 3])
 ```
 
-A little explanation about the good practice
+Explication : En utilisant NumPy, vous stockez les données de manière compacte. Cela permet d'effectuer des calculs sur l'ensemble du tableau d'un seul coup (vectorisation) sans utiliser de boucles for explicites.
 
-## Compared to [A particular Language]
+## Comparaison avec [un langage particulier]
 
-How it works
-For instance, in C an array contains only éléments of the same datatype, ....
+Comment cela fonctionne :
+Par exemple, en C, un tableau ne contient que des éléments du même type de données, ce qui est exactement la philosophie adoptée par NumPy pour gagner en rapidité.
 
 ```c
 int numbers[5] = {1, 2, 3, 4, 5};
@@ -32,4 +32,5 @@ int numbers[5] = {1, 2, 3, 4, 5};
 
 ## Performance
 
-Talk about the antipattern in terms of performance
+L'utilisation de listes Python pour des calculs intensifs est un "anti-pattern" (une mauvaise habitude). 
+Les listes obligent Python à vérifier le type de chaque élément à chaque opération, alors que NumPy traite les données de manière groupée, ce qui est souvent des dizaines de fois plus rapide.

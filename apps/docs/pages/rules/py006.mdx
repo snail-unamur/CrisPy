@@ -1,20 +1,19 @@
 # PY006 - Slicing de Listes
 
-## Why
+## Pourquoi
 
 La création d'une tranche (`slice`) sur une grande liste produit une copie complète en mémoire. Cela peut doubler ou multiplier la consommation mémoire et provoquer des ralentissements lorsqu'on travaille avec de gros ensembles de données.
 
-## Bad practice
+## Mauvaise pratique
 
 ```python
-# Mauvaise approche - copie complète
 large_list = list(range(10**6))  # 1 M éléments, ~8 Mo
 sub_list = large_list[::2]       # Copie 500 k éléments, +4 Mo !
 
 sub_list2 = large_list[100:1000]   # Copie 900 éléments
 sub_list3 = large_list[-100:]      # Copie 100 éléments, +800 octets
 ```
-
+Explication:
 Pour chaque tranche, Python alloue une nouvelle liste et copie les éléments. Enchaîner les slices ou en créer plusieurs multiplie l'occupation mémoire et génère de la charge inutile pour le ramasse‑miettes.
 
 ## Good Practice
@@ -64,7 +63,7 @@ Encore une fois, aucun tampon supplémentaire n'est alloué.
 - Vous modifiez la sous‑liste ; dans ce cas la copie est voulue;
 - Vous travaillez avec un tableau NumPy : le slicing retourne une *vue* et ne copie pas les données.
 
-## Compared to [C]
+## Comparaison avec[C]
 
 En C, un « slice » n'existe pas tel quel, mais la création d'un tableau temporaire a le même coût mémoire. On privilégie les pointeurs et l'indexation sans recopier.
 
