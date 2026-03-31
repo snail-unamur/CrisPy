@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 
-# PyQuit
+# CrisPy
 
 <div className="flex gap-2 my-4">
   <Badge>v1.0</Badge>
@@ -17,13 +17,13 @@ import { Separator } from "@/components/ui/separator";
   <Badge variant="outline">VS Code</Badge>
 </div>
 
-**PyQuit** est une plateforme d'analyse statique basée sur des règles qui combine un analyseur Python, une extension VS Code et une documentation interactive afin de détecter et d'expliquer les problèmes liés au code Python, en mettant l'accent sur les **performances**.
+**CrisPy** est une plateforme d'analyse statique basée sur des règles qui combine un analyseur Python, une extension VS Code et une documentation interactive afin de détecter et d'expliquer les problèmes liés au code Python, en mettant l'accent sur les **performances**.
 
 <Separator className="my-8" />
 
-## Pourquoi PyQuit ?
+## Pourquoi CrisPy ?
 
-La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. PyQuit vous explique _pourquoi c'est important_ et _comment y remédier_ — grâce à des règles conçues pour détecter les pièges réels en matière de performances dans les bases de code Python.
+La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. CrisPy vous explique _pourquoi c'est important_ et _comment y remédier_ — grâce à des règles conçues pour détecter les pièges réels en matière de performances dans les bases de code Python.
 
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
   <Card>
@@ -51,7 +51,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. PyQuit
     </CardHeader>
     <CardContent>
       Diagnostics intégrés, suggestions de correction rapide et un panneau
-      PyQuit dédié — le tout sans quitter votre éditeur.
+      CrisPy dédié — le tout sans quitter votre éditeur.
     </CardContent>
   </Card>
   <Card>
@@ -69,7 +69,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. PyQuit
 
 ## Comment ça marche
 
-PyQuit se compose de trois couches étroitement intégrées :
+CrisPy se compose de trois couches étroitement intégrées :
 
 <div className="my-6 flex flex-col gap-6 border-l border-border pl-6">
   <div className="relative">
@@ -119,10 +119,10 @@ Soyez opérationnel en moins d'une minute.
 
 ### Install the VS Code extension
 
-Recherchez **PyQuit** dans la boutique d'extensions de VS Code, ou installez-le directement :
+Recherchez **CrisPy** dans la boutique d'extensions de VS Code, ou installez-le directement :
 
 ```bash
-code --install-extension snail-unamur.pyquit
+code --install-extension snail-unamur.crispy
 ```
 
 <Separator className="my-8" />
@@ -140,7 +140,7 @@ for mot in mots:
 print(phrase)
 ```
 
-PyQuit déclenche :
+CrisPy déclenche :
 
 ```shell
 PY002  [warning]  Concaténation de chaînes à l'intérieur d'une boucle détectée.
@@ -189,7 +189,7 @@ packages/rules/src/rules.json
 
 <Alert className="my-6 border-blue-500/40 bg-blue-500/10">
   <AlertDescription className="text-blue-800 dark:text-blue-200">
-    ℹ️ La configuration est facultative. PyQuit est livré avec des paramètres
+    ℹ️ La configuration est facultative. CrisPy est livré avec des paramètres
     par défaut judicieux et l' ensemble complet de règles « performance » activé
     par défaut.
   </AlertDescription>
@@ -218,7 +218,7 @@ packages/rules/src/rules.json
     </CardHeader>
     <CardContent>
       [Afficher l'extension
-      →](https://marketplace.visualstudio.com/items?itemName=snail-unamur.pyquit&ssr=false#qna)
+      →](https://marketplace.visualstudio.com/items?itemName=snail-unamur.crispy&ssr=false#qna)
     </CardContent>
   </Card>
 
@@ -236,7 +236,7 @@ packages/rules/src/rules.json
         Écrivez vos propres règles et soumettez-les aux développeurs en charge.
       </CardDescription>
     </CardHeader>
-    <CardContent>[Consulter le guide →](https://github.com/snail-unamur/PyQuit#)</CardContent>
+    <CardContent>[Consulter le guide →](https://github.com/snail-unamur/CrisPy#)</CardContent>
   </Card>
 </div>
 
@@ -244,18 +244,18 @@ packages/rules/src/rules.json
 
 ## Contributing
 
-PyQuit is open source. Rules, bug reports, and documentation improvements are all welcome.
+CrisPy is open source. Rules, bug reports, and documentation improvements are all welcome.
 
 ```bash
-git clone https://github.com/snail-unamur/PyQuit
-cd PyQuit
+git clone https://github.com/snail-unamur/CrisPy
+cd CrisPy
 ```
 
-Consultez le [Guide de contribution](https://github.com/snail-unamur/PyQuit#) pour savoir comment écrire et tester une nouvelle règle.
+Consultez le [Guide de contribution](https://github.com/snail-unamur/CrisPy#) pour savoir comment écrire et tester une nouvelle règle.
 
 <Alert className="my-6 border-yellow-500/40 bg-yellow-500/10">
   <AlertDescription className="text-yellow-800 dark:text-yellow-200">
-    ⚠️ PyQuit est un analyseur **statique** : il n'exécute jamais votre code.
+    ⚠️ CrisPy est un analyseur **statique** : il n'exécute jamais votre code.
     Toutes les analyses sont effectuées sur l'AST et le code source brut.
   </AlertDescription>
 </Alert>

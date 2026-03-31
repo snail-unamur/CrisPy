@@ -15,7 +15,7 @@ export function Brand() {
         alt="logo-image"
         className="size-8!"
       />
-      <span className="text-base font-semibold">PyQuit</span>
+      <span className="text-base font-semibold">CrisPy</span>
     </Link>
   );
 }

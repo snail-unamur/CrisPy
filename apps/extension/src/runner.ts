@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { execFile } from "node:child_process";
-import { ruleMap } from "@pyquit/rules";
+import { ruleMap } from "@crispy/rules";
 import { mapSeverity } from "./severity";
 
 const SEVERITY_PRIORITY: Record<number, number> = {
@@ -27,7 +27,7 @@ async function loadWorkspaceConfig(
   const workspaceRoot = vscode.workspace.getWorkspaceFolder(currentUri)?.uri;
 
   while (true) {
-    const configUri = vscode.Uri.joinPath(currentDir, ".pyquit");
+    const configUri = vscode.Uri.joinPath(currentDir, ".crispy");
 
     try {
       await vscode.workspace.fs.stat(configUri);
@@ -69,11 +69,11 @@ function getInFileDisabledRules(document: vscode.TextDocument): DisableState {
 
     // entire file
     if (
-      text.startsWith("# pyquit-disable") &&
-      !text.startsWith("# pyquit-disable-next-line")
+      text.startsWith("# crispy-disable") &&
+      !text.startsWith("# crispy-disable-next-line")
     ) {
       const parts = text
-        .replace("# pyquit-disable", "")
+        .replace("# crispy-disable", "")
         .trim()
         .split(/\s+/)
         .filter(Boolean);
@@ -86,9 +86,9 @@ function getInFileDisabledRules(document: vscode.TextDocument): DisableState {
     }
 
     // next line
-    if (text.startsWith("# pyquit-disable-next-line")) {
+    if (text.startsWith("# crispy-disable-next-line")) {
       const parts = text
-        .replace("# pyquit-disable-next-line", "")
+        .replace("# crispy-disable-next-line", "")
         .trim()
         .split(/\s+/)
         .filter(Boolean);
@@ -97,7 +97,7 @@ function getInFileDisabledRules(document: vscode.TextDocument): DisableState {
 
       while (targetLine < document.lineCount) {
         const nextText = document.lineAt(targetLine).text.trim();
-        if (nextText.startsWith("# pyquit-disable-next-line")) {
+        if (nextText.startsWith("# crispy-disable-next-line")) {
           targetLine++;
         } else {
           break;
@@ -218,7 +218,7 @@ export async function runLint(
 
       collection.set(document.uri, Array.from(priorityMap.values()));
     } catch (e) {
-      console.error("PyQuit JSON parse error:", e);
+      console.error("CrisPy JSON parse error:", e);
     }
   });
 }

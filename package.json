@@ -1,5 +1,5 @@
 {
-  "name": "pyquit",
+  "name": "crispy",
   "private": true,
   "packageManager": "pnpm@8.8.0",
   "workspaces": [
@@ -11,9 +11,9 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
-    "dev:docs": "pnpm --filter @pyquit/docs dev",
-    "build:rules": "pnpm --filter @pyquit/rules build",
-    "build:extension": "pnpm --filter pyquit build"
+    "dev:docs": "pnpm --filter @crispy/docs dev",
+    "build:rules": "pnpm --filter @crispy/rules build",
+    "build:extension": "pnpm --filter crispy build"
   },
   "devDependencies": {
     "turbo": "^2.0.0",

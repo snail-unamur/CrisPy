@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { ruleMap } from "@pyquit/rules";
+import { ruleMap } from "@crispy/rules";
 
-export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
+export class CrisPyCodeActionProvider implements vscode.CodeActionProvider {
   provideCodeActions(
     document: vscode.TextDocument,
     range: vscode.Range,
@@ -21,7 +21,7 @@ export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
       );
 
       showDetails.command = {
-        command: "pyquit.showRuleDetails",
+        command: "crispy.showRuleDetails",
         title: "Show rule details",
         arguments: [ruleCode],
       };
@@ -40,7 +40,7 @@ export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
       disableNextLine.edit.insert(
         document.uri,
         new vscode.Position(line, 0),
-        `# pyquit-disable-next-line ${ruleSlug}\n`,
+        `# crispy-disable-next-line ${ruleSlug}\n`,
       );
 
       actions.push(disableNextLine);
@@ -56,7 +56,7 @@ export class PyQuitCodeActionProvider implements vscode.CodeActionProvider {
       disableFile.edit.insert(
         document.uri,
         new vscode.Position(0, 0),
-        `# pyquit-disable ${ruleSlug}\n`,
+        `# crispy-disable ${ruleSlug}\n`,
       );
 
       actions.push(disableFile);

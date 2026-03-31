@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@pyquit/rules": ["../../packages/rules/src/index.ts"]
+      "@crispy/rules": ["../../packages/rules/src/index.ts"]
     }
   },
   "include": [
