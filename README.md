@@ -1,8 +1,8 @@
-# PyQuit
+# CrisPy
 
-PyQuit is a rule-based static analysis platform combining a Python analyzer, VS Code extension, and interactive documentation to detect and explain Python code issues, with a focus on performance.
+CrisPy is a rule-based static analysis platform combining a Python analyzer, VS Code extension, and interactive documentation to detect and explain Python code issues, with a focus on performance.
 
-## Why PyQuit?
+## Why CrisPy?
 
 - Detect performance issues early in development
 - Provide clear explanations for each rule
@@ -40,7 +40,7 @@ This project is a **PNPM monorepo** managed with **Turborepo**.
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd pyquit
+cd crispy
 
 # Install dependencies
 pnpm install
@@ -174,7 +174,7 @@ pnpm install
 
 ## Rule Naming Convention
 
-Each rule in PyQuit follows a consistent naming convention across the documentation, analyzer, and configuration.
+Each rule in CrisPy follows a consistent naming convention across the documentation, analyzer, and configuration.
 
 ### Rule ID Format
 

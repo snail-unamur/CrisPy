@@ -23,7 +23,7 @@ async function renderMarkdown(content: string) {
 
 export function registerRulePanelCommand(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "pyquit.showRuleDetails",
+    "crispy.showRuleDetails",
     (ruleId: string) => {
       openRulePanel(context, ruleId);
     },
@@ -58,7 +58,7 @@ async function openRulePanel(context: vscode.ExtensionContext, ruleId: string) {
     const markdownContent = Buffer.from(fileData).toString("utf8");
 
     const panel = vscode.window.createWebviewPanel(
-      "pyquitRuleDetails",
+      "CrisPyRuleDetails",
       `Rule: ${ruleId.toUpperCase()}`,
       vscode.ViewColumn.Beside,
       { enableScripts: false },

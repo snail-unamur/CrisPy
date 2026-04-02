@@ -1,26 +1,26 @@
 {
-  "name": "@pyquit/docs",
+  "name": "@crispy/docs",
   "version": "1.0.0",
-  "description": "The doc webpage of pyquit",
+  "description": "The doc webpage of crispy",
   "keywords": [
     "education",
     "doc",
     "python"
   ],
-  "homepage": "https://github.com/snail-unamur/PyQuit#readme",
+  "homepage": "https://github.com/snail-unamur/CrisPy#readme",
   "bugs": {
-    "url": "https://github.com/snail-unamur/PyQuit/issues"
+    "url": "https://github.com/snail-unamur/CrisPy/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snail-unamur/PyQuit.git"
+    "url": "git+https://github.com/snail-unamur/CrisPy.git"
   },
   "license": "MIT",
   "author": "Snail-Unamur",
   "scripts": {
     "dev": "next dev -p 3001 --webpack",
     "build": "next build --webpack",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "clean": "rm -rf .next"
   },
   "dependencies": {
@@ -32,7 +32,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
     "@types/mdx": "^2.0.13",
-    "@pyquit/rules": "workspace:*",
+    "@crispy/rules": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",

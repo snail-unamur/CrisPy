@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import * as path from "node:path";
 import { runLint } from "./runner";
-import { PyQuitCodeActionProvider } from "./ruleCodeActionProvider";
+import { CrisPyCodeActionProvider } from "./ruleCodeActionProvider";
 import { registerRulePanelCommand } from "./rulePanel";
 
 let collection: vscode.DiagnosticCollection;
@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
     }),
     vscode.languages.registerCodeActionsProvider(
       "python",
-      new PyQuitCodeActionProvider(),
+      new CrisPyCodeActionProvider(),
       {
         providedCodeActionKinds: [vscode.CodeActionKind.QuickFix],
       },

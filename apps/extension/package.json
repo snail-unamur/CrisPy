@@ -1,9 +1,9 @@
 {
-  "name": "pyquit",
+  "name": "crispy",
   "version": "1.0.0",
-  "description": "The VScode extension for pyquit",
-  "displayName": "PyQuit",
-  "icon": "media/icon.png",
+  "description": "The VScode extension for crispy",
+  "displayName": "CrisPy",
+  "icon": "media/icon-white.png",
   "galleryBanner": {
     "color": "#1A202C",
     "theme": "dark"
@@ -17,13 +17,13 @@
     "extension",
     "python"
   ],
-  "homepage": "https://github.com/snail-unamur/PyQuit#readme",
+  "homepage": "https://github.com/snail-unamur/CrisPy#readme",
   "bugs": {
-    "url": "https://github.com/snail-unamur/PyQuit/issues"
+    "url": "https://github.com/snail-unamur/CrisPy/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snail-unamur/PyQuit.git"
+    "url": "git+https://github.com/snail-unamur/CrisPy.git"
   },
   "license": "MIT",
   "author": "Snail-Unamur",
@@ -40,39 +40,42 @@
   "contributes": {
     "languages": [
       {
-        "id": "pyquit",
+        "id": "crispy",
         "aliases": [
-          "PyQuit"
+          "CrisPy"
         ],
         "extensions": [
-          ".pyquit"
+          ".crispy"
         ],
         "configuration": "./language/language-configuration.json",
         "mimetypes": [
           "application/json"
         ],
         "icon": {
-          "light": "./media/icon-light.png",
-          "dark": "./media/icon.png"
+          "light": "./media/icon-black.png",
+          "dark": "./media/icon-white.png"
         }
       }
     ],
     "jsonValidation": [
       {
-        "fileMatch": "*.pyquit",
-        "url": "./language/pyquit.schema.json"
+        "fileMatch": "*.crispy",
+        "url": "./language/crispy.schema.json"
       }
     ],
     "grammars": [
       {
-        "language": "pyquit",
-        "scopeName": "source.pyquit",
-        "path": "./language/pyquit.tmLanguage.json"
+        "language": "crispy",
+        "scopeName": "source.crispy",
+        "path": "./language/crispy.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.javascript": "json"
+        }
       }
     ]
   },
   "installationInfo": {
-    "identifier": "snail-unamur.pyquit",
+    "identifier": "snail-unamur.crispy",
     "version": "1.0.1",
     "source": "Local",
     "cacheSize": "2B",
@@ -92,7 +95,7 @@
     "clean": "rm -rf out"
   },
   "dependencies": {
-    "@pyquit/rules": "workspace:*",
+    "@crispy/rules": "workspace:*",
     "marked": "^17.0.4",
     "rehype-pretty-code": "^0.14.1",
     "rehype-stringify": "^10.0.1",

@@ -19,7 +19,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ruleMap } from "@pyquit/rules";
+import { ruleMap } from "@crispy/rules";
 import { cn } from "@/lib/utils";
 
 const rulesArray = Object.entries(ruleMap).map(([id, rule]) => ({
@@ -121,7 +121,7 @@ export function Search({
                   <kbd className="rounded bg-muted px-1.5 py-0.5">↵</kbd> Select
                 </span>
               </div>
-              <span className="font-semibold text-blue-400">PyQuit Rules</span>
+              <span className="font-semibold text-blue-400">CrisPy Rules</span>
             </div>
           </Command>
         </PopoverContent>

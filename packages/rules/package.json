@@ -1,19 +1,19 @@
 {
-  "name": "@pyquit/rules",
+  "name": "@crispy/rules",
   "version": "1.0.0",
-  "description": "The rule database for pyquit",
+  "description": "The rule database for crispy",
   "keywords": [
     "education",
     "rules",
-    "pyquit"
+    "crispy"
   ],
-  "homepage": "https://github.com/snail-unamur/PyQuit#readme",
+  "homepage": "https://github.com/snail-unamur/CrisPy#readme",
   "bugs": {
-    "url": "https://github.com/snail-unamur/PyQuit/issues"
+    "url": "https://github.com/snail-unamur/CrisPy/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snail-unamur/PyQuit.git"
+    "url": "git+https://github.com/snail-unamur/CrisPy.git"
   },
   "license": "MIT",
   "author": "Snail-Unamur",

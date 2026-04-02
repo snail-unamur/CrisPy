@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "PyQuit Rules Configuration",
+  "title": "CrisPy Rules Configuration",
   "type": "object",
   "properties": {
     "prefer-numpy-array": {

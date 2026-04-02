@@ -2,7 +2,7 @@
 
 import { LayoutDashboard, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { ruleMap } from "@pyquit/rules";
+import { ruleMap } from "@crispy/rules";
 
 import {
   SidebarMenu,

@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@pyquit/rules": ["packages/rules/src"]
+      "@crispy/rules": ["packages/rules/src"]
     }
   }
 }
