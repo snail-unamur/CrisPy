@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The VScode extension for crispy",
   "displayName": "CrisPy",
-  "icon": "media/icon.png",
+  "icon": "media/icon-white.png",
   "galleryBanner": {
     "color": "#1A202C",
     "theme": "dark"
@@ -52,8 +52,8 @@
           "application/json"
         ],
         "icon": {
-          "light": "./media/icon-light.png",
-          "dark": "./media/icon.png"
+          "light": "./media/icon-black.png",
+          "dark": "./media/icon-white.png"
         }
       }
     ],
