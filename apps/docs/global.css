@@ -165,6 +165,18 @@
   /* MARKDOWN */
 
   /* Heading */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply flex items-center gap-2;
+  }
+
+  .icon {
+    @apply inline-block;
+  }
   .prose h1 {
     @apply text-4xl mb-4 font-extrabold tracking-tight text-emerald-500;
   }
