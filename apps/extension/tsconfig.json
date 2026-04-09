@@ -7,7 +7,6 @@
     "lib": ["ES2022"],
     "types": ["node", "vscode"],
     "sourceMap": true,
-    "baseUrl": ".",
     "paths": {
       "@crispy/rules": ["../../packages/rules/src/index.ts"]
     }

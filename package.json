@@ -12,11 +12,12 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "dev:docs": "pnpm --filter @crispy/docs dev",
-    "build:rules": "pnpm --filter @crispy/rules build",
+    "build:rules": "pnpm --filter @crispy/rules build && pnpm --filter @crispy/rules generate-schema",
     "build:extension": "pnpm --filter crispy build"
   },
   "devDependencies": {
     "turbo": "^2.0.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.0"
   }
 }

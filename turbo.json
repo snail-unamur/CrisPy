@@ -1,6 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "generate-schema": {
+      "dependsOn": ["^build"],
+      "outputs": ["../apps/extension/language/crispy.schema.json"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "out/**"]
