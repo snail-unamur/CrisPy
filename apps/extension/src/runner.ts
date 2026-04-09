@@ -31,7 +31,6 @@ async function loadWorkspaceConfig(
 
     try {
       await vscode.workspace.fs.stat(configUri);
-
       const content = await vscode.workspace.fs.readFile(configUri);
       return JSON.parse(new TextDecoder().decode(content));
     } catch {
@@ -44,9 +43,11 @@ async function loadWorkspaceConfig(
       ) {
         break;
       }
+
       currentDir = parentDir;
     }
   }
+
   return null;
 }
 
@@ -194,15 +195,21 @@ export async function runLint(
           new vscode.Position(endLine, endCol),
         );
 
-        const diagnostic = new vscode.Diagnostic(
-          range,
-          rule?.title || `Optimization suggestion (${rule?.slug || ruleId})`,
-          severity,
-        );
+        const title =
+          rule?.title || `Optimization suggestion (${rule?.slug || ruleId})`;
 
+        const diagnostic = new vscode.Diagnostic(range, title, severity);
         diagnostic.code = ruleId;
 
-        // priority
+        if (r.message) {
+          diagnostic.relatedInformation = [
+            new vscode.DiagnosticRelatedInformation(
+              new vscode.Location(document.uri, range),
+              r.message,
+            ),
+          ];
+        }
+
         const existing = priorityMap.get(line);
         if (existing) {
           const newPrio = SEVERITY_PRIORITY[diagnostic.severity] ?? 99;

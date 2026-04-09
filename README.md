@@ -238,14 +238,51 @@ Each rule is registered in rules.json using its ID:
 
 - `category` → e.g., performance, readability
 
+### .crispy Configuration Files
+
+CrisPy configuration files (`.crispy`) allow you to customize rule severity levels per project:
+
+```json
+{
+  "prefer-numpy-array": "warning",
+  "avoid-mutable-default-args": "danger",
+  "prefer-explicit-typing": "off"
+}
+```
+
+**How It Works:**
+
+- Config keys use rule `slug` (kebab-case format)
+- Values are severity levels: `off`, `info`, `warning`, `danger`
+- VS Code provides **autocomplete** for all available rules
+
+**Schema Generation:**
+The VS Code schema (`apps/extension/language/crispy.schema.json`) is **automatically generated** from `rules.json`:
+
+```bash
+# Generate schema manually
+pnpm --filter @crispy/rules generate-schema
+
+# Or as part of the build
+pnpm build:rules
+```
+
+The schema generation ensures:
+
+- Autocomplete stays in sync with rules
+- New rules are automatically available for configuration
+- Single source of truth in `rules.json`
+- No manual schema maintenance needed
+
 ### Summary Mapping
 
-| Layer      | Format           | Example             |
-| ---------- | ---------------- | ------------------- |
-| Rule ID    | `PY001`          | `PY001`             |
-| Docs (MDX) | `py001.mdx`      | `py001.mdx`         |
-| Analyzer   | `PY001_<name>`   | `PY001_numpy_array` |
-| Config     | `rules.json` key | `"PY001"`           |
+| Layer      | Format            | Example              |
+| ---------- | ----------------- | -------------------- |
+| Rule ID    | `PY001`           | `PY001`              |
+| Docs (MDX) | `py001.mdx`       | `py001.mdx`          |
+| Analyzer   | `PY001_<name>`    | `PY001_numpy_array`  |
+| Config     | `rules.json` key  | `"PY001"`            |
+| Config     | `slug` in .crispy | `prefer-numpy-array` |
 
 ## Notes
 
