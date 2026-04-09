@@ -1,10 +1,18 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY006 - Slicing de Listes
 
-## Pourquoi
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 La création d'une tranche (`slice`) sur une grande liste produit une copie complète en mémoire. Cela peut doubler ou multiplier la consommation mémoire et provoquer des ralentissements lorsqu'on travaille avec de gros ensembles de données.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 large_list = list(range(10**6))  # 1 M éléments, ~8 Mo
@@ -16,7 +24,7 @@ sub_list3 = large_list[-100:]      # Copie 100 éléments, +800 octets
 Explication:
 Pour chaque tranche, Python alloue une nouvelle liste et copie les éléments. Enchaîner les slices ou en créer plusieurs multiplie l'occupation mémoire et génère de la charge inutile pour le ramasse‑miettes.
 
-## Good Practice
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ### Utiliser `itertools.islice` pour l'itération
 
@@ -63,10 +71,10 @@ Encore une fois, aucun tampon supplémentaire n'est alloué.
 - Vous modifiez la sous‑liste ; dans ce cas la copie est voulue;
 - Vous travaillez avec un tableau NumPy : le slicing retourne une *vue* et ne copie pas les données.
 
-## Comparaison avec[C]
+## <GitCompareArrows  className="icon"/> Comparaison avec[C]
 
 En C, un « slice » n'existe pas tel quel, mais la création d'un tableau temporaire a le même coût mémoire. On privilégie les pointeurs et l'indexation sans recopier.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Un slice de 500 000 éléments occupe +4 Mo de mémoire. Utiliser `islice` maintient l'empreinte au niveau de la liste originale (~8 Mo). Pour plusieurs tranches, les économies deviennent substantielles.

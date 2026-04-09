@@ -1,12 +1,20 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY007 - Itérer sur clés et valeurs avec `dict.items()`
 
-## Pourquoi ?
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 La méthode `dict.items()` renvoie un itérateur de paires `(clé, valeur)`. C'est l'interface standard et la plus lisible pour parcourir simultanément la clé et la valeur d'un dictionnaire.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Anti‑Pattern
 
 ```python
 # Mauvaise pratique
@@ -26,7 +34,7 @@ for k in d:
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 d = {"a": 1, "b": 2}
@@ -43,14 +51,14 @@ for k, v in d.items():
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, une table de hachage expose généralement un itérateur sur des *entrées* `(clé, valeur)`.
 Python fournit `dict.items()` comme abstraction de haut niveau pour reproduire ce comportement. Faire deux opérations séparées (récupérer la clé puis chercher la valeur) reviendrait à redessiner manuellement cet itérateur.
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 L'utilisation de `d[k]` à l'intérieur de la boucle effectue un accès supplémentaire au dictionnaire pour chaque élément. Bien que l'impact soit mineur en petits volumes, sur de grandes structures ou dans des boucles serrées, la surcharge cumulée et le coût cognitif sont réels. `dict.items()` évite cet accès inutile et reste plus clair.
 

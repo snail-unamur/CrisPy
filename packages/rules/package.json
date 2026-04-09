@@ -22,7 +22,11 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -b",
+    "generate-schema": "ts-node src/schema-generator.ts",
+    "build": "tsc -b && pnpm run generate-schema",
     "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
   }
 }
