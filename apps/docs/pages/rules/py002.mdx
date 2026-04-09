@@ -1,10 +1,18 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # Privilégiez la méthode join() (String Join Method)
 
-## Pourquoi ?
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 Utiliser l'opérateur `+` pour concaténer des chaînes dans une boucle crée un nouvel objet chaîne à chaque itération, ce qui engendre une multiplication de la consommation mémoire et des allocations inutiles.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 mots = ["Python", "est", "génial"]
@@ -16,7 +24,7 @@ print(phrase)
 
 Explication : Cette approche crée une nouvelle chaîne à chaque itération, conduisant à une complexité O(n²) en termes de mémoire.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 mots = ["Python", "est", "génial"]
@@ -26,7 +34,7 @@ print(phrase)
 
 Explication : La méthode join() effectue une seule allocation de mémoire, offrant une complexité O(n) et une performance optimale.
 
-## Comparaison avec [un langage particulier]
+## <GitCompareArrows  className="icon"/> Comparaison avec [un langage particulier]
 
 Comment cela fonctionne :
 Par exemple, en C, la concaténation de chaînes nécessite une gestion manuelle de la mémoire et peut être source d'erreurs si l'espace n'est pas correctement alloué.
@@ -37,6 +45,6 @@ char str2[] = "World";
 strcat(str1, str2);  // Nécessite assez d'espace dans str1
 ```
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 L'utilisation de `+` dans une boucle pour concaténer des chaînes est un "anti-pattern". Chaque concaténation recopie toute la chaîne en mémoire, ce qui devient dramatique pour de grandes listes (par exemple, 10 000 mots génèrent environ 100 millions d'allocations).

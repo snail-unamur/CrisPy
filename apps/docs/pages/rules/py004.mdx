@@ -1,13 +1,21 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY004 – Utiliser `zip()` pour itérer sur deux listes en parallèle
 
-## Pourquoi ?
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 `zip()` aligne les éléments de plusieurs itérables.  
 Il permet d'éviter la gestion manuelle des indices.
 
 ---
 
-## ❌ Mauvaise Pratique
+## <BadgeX   className="icon"/> Mauvaise Pratique
 
 ```python
 a = ["Alice", "Bob"]
@@ -17,14 +25,14 @@ for i in range(len(a)):
     print(a[i], b[i])
 ```
 
-### Explanation
+### Explication
 
 Si les listes n'ont pas la même longueur, cela peut entraîner des erreurs (`IndexError`) ou une logique incorrecte.
 Cela mélange la mécanique d'itération avec la logique métier.
 
 ---
 
-## ✅ Good Practice
+##  <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 a = ["Alice", "Bob"]
@@ -34,14 +42,14 @@ for name, age in zip(a, b):
     print(name, age)
 ```
 
-### Explanation
+### Explication
 
 L'intention est explicite : itérer sur des paires `(nom, age)`.
 `zip()` s'arrête automatiquement à l'itérable le plus court, évitant ainsi les erreurs d'indice hors limites.
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, vous itérez sur deux tableaux en utilisant le même indice.
 Vous devez vous assurer manuellement que les deux tableaux ont des tailles compatibles.
@@ -52,7 +60,7 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 `zip()` est un itérateur efficace (aucune nouvelle liste n'est créée par défaut).
 L'avantage principal réside dans la réduction des bugs liés à l'indexation et dans l'écriture d'un code plus clair et direct.

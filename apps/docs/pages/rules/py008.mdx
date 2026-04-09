@@ -1,12 +1,20 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY008 - Utiliser `dict.get()` ou `setdefault()` à la place de `if key in dict`
 
-## 🧠 Pourquoi
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Les méthodes `get()` et `setdefault()` simplifient la gestion des valeurs par défaut, réduisent les branches conditionnelles et rendent le code plus compact.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Anti‑Pattern
 
 ```python
 # Mauvaise pratique
@@ -28,7 +36,7 @@ else:
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 val = d.get(key, 0)
@@ -45,22 +53,22 @@ val = d.setdefault(key, 0)
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 Dans un code C utilisant une table de hachage, on vérifie généralement la présence d'une clé à l'aide d'une fonction puis on gère l'initialisation manuellement.
 Python propose des outils intégrés (`get`, `setdefault`) qui encapsulent cette logique de haut niveau.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 `get()` évite un double accès au dictionnaire et réduit le nombre de branches. Bien que l'écart soit faible en exécution, le code résultant est plus facile à lire et à maintenir.
 
 ---
 
-## ▲ Quand s'en soucier ?
+## Quand s'en soucier ?
 
-- 📌 Vous devez fournir une valeur par défaut si une clé est absente
-- 📌 Vous initialisez/accédez à une clé dans des boucles ou du code critique
+- Vous devez fournir une valeur par défaut si une clé est absente
+- Vous initialisez/accédez à une clé dans des boucles ou du code critique
 
 Dans les autres cas, `if key in d` peut suffire, mais préférez `get()`/`setdefault()` pour simplifier la logique.

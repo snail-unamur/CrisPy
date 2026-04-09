@@ -1,10 +1,18 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY003 - Éviter l'utilisation excessive de variables globales
 
-## Pourquoi ?
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 Les 'globales' rendent le programme difficile à comprendre (dépendances cachées) et compliquent les tests.
 
-## Mauvaises pratiques
+## <BadgeX   className="icon"/> Mauvaises pratiques
 
 ```python
 count = 0
@@ -16,7 +24,7 @@ def inc():
 
 La fonction dépend d’un état externe implicite. Tester inc() nécessite de remettre count à zéro, et l’ordre d’appel change le résultat.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 def inc(count):
@@ -27,10 +35,10 @@ count = inc(count)
 
 La dépendance est explicite via les paramètres. Le code devient plus prévisible, testable et réutilisable.
 
-## Comparaison avec[C]
+## <GitCompareArrows  className="icon"/> Comparaison avec[C]
 
 En C, les 'globales' existent aussi et posent les mêmes problèmes de maintenance et de concurrence. Les bonnes pratiques conseillent aussi de limiter leur usage.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Performance : les 'globales' peuvent être légèrement plus lentes en Python (lookup global vs local), mais l’enjeu principal est la maintenabilité et la testabilité.

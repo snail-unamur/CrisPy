@@ -1,6 +1,14 @@
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY009 - Utiliser `collections.defaultdict()` pour éviter l'initialisation manuelle
 
-## 🧠 Pourquoi
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 `defaultdict` permet de définir une valeur par défaut (liste, entier, ensemble, etc.)
 opérationnelle dès la première affectation, évitant ainsi de répéter le même motif
@@ -8,7 +16,7 @@ d'initialisation.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Anti‑Pattern
 
 ```python
 # mauvaise pratique
@@ -29,7 +37,7 @@ for x in ["a", "b", "a"]:
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 from collections import defaultdict
@@ -56,7 +64,7 @@ d["key"].append("value")
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, l'initialisation automatique n'existe pas : on doit explicitement tester la
 présence d'une clé et créer l'entrée si nécessaire. `defaultdict` encapsule ce
@@ -64,7 +72,7 @@ comportement directement dans l'objet dictionnaire.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 On évite un test d'appartenance explicite (`x not in d`) à chaque itération.
 Cela réduit le nombre d'opérations et rend la boucle plus directe.
