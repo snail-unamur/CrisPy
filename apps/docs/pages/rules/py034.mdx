@@ -1,11 +1,19 @@
 # PY034 – Favoriser la localité mémoire
 
-## Pourquoi ?
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 Les processeurs modernes utilisent un cache mémoire pour accélérer l’accès aux données.
 Lorsque les données sont parcourues de manière contiguë, elles sont chargées efficacement.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 matrix = [[i + j for j in range(1000)] for i in range(1000)]
@@ -18,7 +26,7 @@ for j in range(1000):$
 Explication :
 Parcours colonne → accès non contigu → mauvais usage du cache.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 for i in range(1000):
@@ -29,7 +37,7 @@ for i in range(1000):
 Explication :
 Parcours ligne → accès contigu → cache optimisé.
 
-## Comparaison avec le langage C
+## <GitCompareArrows  className="icon"/> Comparaison avec le langage C
 
 ```c
 for(int i = 0; i < n; i++) {
@@ -41,7 +49,7 @@ for(int i = 0; i < n; i++) {
 
 Les tableaux sont contigus → ordre d’accès critique.
 
-## Comparaison avec Java
+##  <GitCompareArrows  className="icon"/> Comparaison avec Java
 ```java
 for(int i = 0; i < n; i++) {
     for(int j = 0; j < m; j++) {
@@ -58,7 +66,7 @@ Mais :
 
  - parcours colonne peut être beaucoup plus lent
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 - Réduction des cache misses
 

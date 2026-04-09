@@ -1,12 +1,20 @@
 # PY027 – Utiliser l’unpacking pour mettre à jour plusieurs variables
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Le « unpacking » (décomposition) permet d’assigner plusieurs variables en une seule instruction. Cela rend le code plus concis et évite l’utilisation de variables temporaires, améliorant ainsi la lisibilité.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 # Implémentation de l’algorithme d’Euclide sans unpacking
@@ -26,7 +34,7 @@ def gcd(a, b):
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 def gcd(a, b):
@@ -42,19 +50,19 @@ L’affectation multiple est atomique : Python crée un tuple temporaire avec l
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, l’échange de deux variables nécessite une variable temporaire ou une astuce XOR. Python simplifie cette opération grâce au tuple unpacking.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Le gain de performance est marginal, mais l’écriture est plus claire. L’unpacking est implémenté en C et évite des opérations inutiles au niveau Python.
 
 ---
 
-## ▲ Quand s’en soucier ?
+## Quand s’en soucier ?
 
 * Lors de l’échange de deux variables
 * Lors de l’assignation simultanée de plusieurs valeurs, par exemple pour mettre à jour plusieurs indicateurs d’état

@@ -1,10 +1,18 @@
 # PY022 – Préférer `for` à une itération `while` manuelle
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 La fonction **`range()`** est implémentée efficacement en **C** et optimisée pour l’itération.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 i = 0
@@ -16,7 +24,7 @@ while i < n:
 
 Le contrôle manuel de la boucle introduit plus de surcharge et un risque d’erreur plus élevé.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 for i in range(n):
@@ -25,7 +33,7 @@ for i in range(n):
 ```
 range() génère les valeurs de manière efficace sans les stocker toutes en mémoire.
 
-## Comparé au C
+## <GitCompareArrows  className="icon"/> Comparé au C
 
 En C :
 
@@ -40,7 +48,7 @@ Il s'agit d'une boucle compteur simple.
 
 La boucle for avec range() en Python reproduit ce comportement de manière efficace.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Même si les différences de performance sont relativement faibles ici, utiliser for avec range() est :
 

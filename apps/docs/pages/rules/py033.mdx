@@ -1,12 +1,20 @@
 # Préférer le set pour la recherche d'appartenance
 
-## Pourquoi ?
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 En Python, vérifier si un élément existe dans une liste nécessite de parcourir chaque élément un par un. À l'inverse,
 le set (ensemble) utilise une table de hachage(table empreinte valeur),
 ce qui rend la vérification quasi instantanée, quelle que soit la taille de la collection.
 
-## Bad practice
+## <BadgeX   className="icon"/> Bad practice
 
 ```python
 utilisateurs = ["eren", "mikasa", "armin", "levi"]
@@ -20,7 +28,7 @@ if "levi" in utilisateurs:
 Python effectuera potentiellement 1 million de comparaisons pour confirmer qu'un utilisateur n'est pas présent.
 C'est une complexité dite linéaire ou $O(n)$.
 
-## Good Practice
+## <MessageCircleCheck  className="icon"/> Good Practice
 
 ```python
 # On utilise des accolades {} pour un set
@@ -34,7 +42,7 @@ if "charlie" in utilisateurs_bannis:
 **Explication** : Le set calcule une "empreinte" (hash) de l'élément pour savoir exactement où il se trouve en mémoire.
 La vérification se fait en une seule étape. C'est une complexité dite constante ou $O(1)$.
 
-## Comparaison avec le langage C
+##  <GitCompareArrows  className="icon"/> Comparaison avec le langage C
 
 En C, il n'existe pas de type "Set" natif dans la bibliothèque standard comme en Python.
 Pour obtenir la même performance, un développeur C doit implémenter manuellement une Table de Hachage (Hash Table).
@@ -53,7 +61,7 @@ for(int i = 0; i < 4; i++) {
 }
 ```
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 L'impact sur les performances est drastique dès que le volume de données augmente.
 Voici un comparatif de temps théorique pour trouver un élément qui n'est pas dans la collection(list, set, ...):

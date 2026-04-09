@@ -1,12 +1,20 @@
 # PY031 – Suivre l’approche EAFP plutôt que LBYL (Easier to Ask for Forgiveness than Permission)
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 La communauté Python privilégie la philosophie « Easier to Ask for Forgiveness than Permission » (EAFP). Ce style consiste à supposer que les ressources existent et à gérer les problèmes via des exceptions. Le code est plus concis et évite les conditions préalables fragiles.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 import os
@@ -23,7 +31,7 @@ if os.path.exists("file.txt"):
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 import os
@@ -35,9 +43,7 @@ except OSError:
     pass
 ```
 
-### Explication
-
-On assume que l’opération peut se faire et on capture l’exception en cas d’erreur. Cela évite les conditions superflues et gère les éventuelles races conditions.
+Explication : On assume que l’opération peut se faire et on capture l’exception en cas d’erreur. Cela évite les conditions superflues et gère les éventuelles races conditions.
 
 ---
 
@@ -47,13 +53,13 @@ En C, le style LBYL est courant car les exceptions n’existent pas. Python four
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 La gestion des exceptions a un léger coût, mais pour des opérations courantes comme la suppression de fichiers, la différence est négligeable. Le gain en robustesse et en lisibilité l’emporte largement.
 
 ---
 
-## ▲ Quand s’en soucier ?
+## Quand s’en soucier ?
 
 * Lors de l’accès à des fichiers, sockets ou autres ressources qui peuvent être absentes
 * Lorsque plusieurs processus ou threads peuvent modifier l’état entre la vérification et l’action

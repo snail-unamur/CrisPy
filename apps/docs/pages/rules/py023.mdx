@@ -1,12 +1,20 @@
 # PY023 – Éviter les imports génériques (`from module import *`)
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 L’utilisation d’un import générique (`from module import *`) rend difficile de savoir quels noms sont introduits dans l’espace de noms courant. Cela complique les analyses statiques, peut provoquer des collisions de noms et nuit à la lisibilité du code. Il est recommandé de n’importer que les éléments nécessaires.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 # Import générique — déconseillé
@@ -22,7 +30,7 @@ print(sqrt(16))  # on ne sait pas d’où vient sqrt
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 # Import ciblé
@@ -41,19 +49,19 @@ Importer explicitement les fonctions utilisées rend le code plus clair et limit
 
 ---
 
-## Comparaison avec d’autres langages
+## <GitCompareArrows  className="icon"/> Comparaison avec d’autres langages
 
 En C, inclure un en‑tête (`#include <math.h>`) insère toutes les déclarations et peut polluer l’espace de noms. En Python, vous pouvez choisir ce que vous importez et ainsi limiter ces effets.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Le type d’import n’a pas d’impact notable sur les performances. L’objectif principal est la lisibilité et l’isolement des dépendances.
 
 ---
 
-## ▲ Quand s’en soucier ?
+##  Quand s’en soucier ?
 
 - Vous travaillez dans un module partagé et souhaitez éviter les collisions
 - Vous voulez que les dépendances soient explicites

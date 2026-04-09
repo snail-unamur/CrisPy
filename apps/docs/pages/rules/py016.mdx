@@ -1,13 +1,21 @@
 # PY016 – Ne pas masquer les noms intégrés (`list`, `dict`, etc.)
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 Utiliser des noms de variables qui masquent les fonctions intégrées de Python peut provoquer des comportements inattendus.
 
 Une fois qu’un nom intégré est réassigné, la fonction ou le type original n’est plus accessible dans la même portée.
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 list = [1, 2, 3]
@@ -23,7 +31,7 @@ Cela peut provoquer des erreurs plus loin dans le code (par exemple, il devient 
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 my_list = [1, 2, 3]
@@ -39,7 +47,7 @@ Choisir des noms de variables descriptifs permet de conserver l’accès aux fon
 
 ---
 
-## Comparaison avec le C
+## <GitCompareArrows  className="icon"/> Comparaison avec le C
 
 En C :
 
@@ -60,7 +68,7 @@ La résolution des noms suit la règle LEGB (Local, Enclosing, Global, Built-in)
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Masquer une fonction intégrée n’a pas d’impact direct sur les performances.
 

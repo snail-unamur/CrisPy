@@ -1,10 +1,18 @@
 # PY021 – Éviter de reconstruire des listes avec + dans les boucles
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Utiliser l'opérateur **+** pour concaténer des listes crée **une nouvelle liste à chaque fois**.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 
@@ -18,7 +26,7 @@ Chaque utilisation de + crée une nouvelle liste et copie tous les éléments pr
 
 Complexité temporelle : O(n²).
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 result = []
@@ -31,14 +39,14 @@ La méthode extend() modifie la liste en place, sans créer de nouvelle liste.
 
 Complexité temporelle : O(n).
 
-## Comparé au C
+## <GitCompareArrows  className="icon"/> Comparé au C
 
 En C, les tableaux ne peuvent pas grandir dynamiquement.
 Il faut allouer suffisamment de mémoire à l’avance.
 
 Python masque ces opérations de redimensionnement, mais une utilisation naïve peut provoquer de nombreuses réallocations et copies de mémoire.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Utiliser extend() permet :
 

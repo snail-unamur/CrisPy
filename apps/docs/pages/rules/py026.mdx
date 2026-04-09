@@ -1,12 +1,20 @@
 # PY026 – Utiliser les compréhensions de dictionnaire
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Depuis Python 2.7, les compréhensions de dictionnaire permettent de construire des dictionnaires de manière concise et lisible. Cette syntaxe remplace les appels à `dict()` avec une liste de couples, qui sont verbeux et plus difficiles à lire.
 
 ---
 
-## ❌ Anti-Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 numbers = [1, 2, 3]
@@ -22,7 +30,7 @@ my_dict = dict([(n, n * 2) for n in numbers])
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 numbers = [1, 2, 3]
@@ -37,19 +45,19 @@ La compréhension de dictionnaire exprime directement l'intention: pour chaque �
 
 ---
 
-## Comparaison avec d'autres langages
+## <GitCompareArrows  className="icon"/> Comparaison avec d'autres langages
 
 Dans des langages comme Java ou C++, la construction d'une table associée se fait souvent à l'aide de boucles explicites. Python fournit une syntaxe dédiée qui améliore la lisibilité.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Les compréhensions s'exécutent en C et sont légèrement plus rapides que l'utilisation de `dict()` avec une liste de couples. Cependant, l’avantage principal est la clarté.
 
 ---
 
-## ▲ Quand s'en soucier?
+## Quand s'en soucier?
 
 - Lors de la création d'un dictionnaire à partir d'un itérable
 - Pour convertir ou transformer des collections en dictionnaires

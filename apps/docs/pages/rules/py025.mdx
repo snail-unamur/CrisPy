@@ -1,12 +1,20 @@
 # PY025 – Utiliser `isinstance()` pour comparer des types
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 La fonction `isinstance()` est conçue pour vérifier l’appartenance à un type ou à une hiérarchie de types. Elle prend en charge l’héritage : une instance d’une classe dérivée est considérée comme instance de la classe de base. Utiliser `type()` et comparer avec `is` empêche de reconnaître les sous‑classes et rend le code fragile.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 import types
@@ -28,7 +36,7 @@ if type(obj) is types.ListType:
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 # Bon : utilise isinstance
@@ -46,19 +54,19 @@ if isinstance(obj, (int, float)):
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, il n’existe pas de réflexion de type à l’exécution. Le type d’une variable est connu à la compilation. Python permet de vérifier dynamiquement le type, mais il faut utiliser l’outil approprié (`isinstance()`).
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 La différence de performance entre `type()` et `isinstance()` est négligeable. L’enjeu principal est la sécurité et la maintenabilité.
 
 ---
 
-## ▲ Quand s’en soucier ?
+## Quand s’en soucier ?
 
 * Vous vérifiez qu’un argument est d’un type particulier
 * Vous souhaitez supporter des sous‑classes

@@ -1,10 +1,17 @@
 # PY030 – Réduire le coût des objets Python
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## Pourquoi ?
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 Chaque objet Python contient des métadonnées (type, référence, etc.), ce qui augmente fortement la mémoire utilisée.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 numbers = [1, 2, 3, 4, 5]
@@ -13,7 +20,7 @@ numbers = [1, 2, 3, 4, 5]
 Explication :
 Chaque entier est un objet Python → overhead mémoire important.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 ```python
 import numpy as np
 
@@ -24,14 +31,14 @@ numbers = np.array([1, 2, 3, 4, 5]
 Explication :
 NumPy utilise des types compacts en mémoire, similaires à ceux du langage C.
 
-## Comparaison avec le langage C
+## <GitCompareArrows  className="icon"/> Comparaison avec le langage C
 ```c
 int numbers[5] = {1, 2, 3, 4, 5};
 ```
 
 Aucun overhead → mémoire minimale.
 
-## Comparaison avec Java
+## <GitCompareArrows  className="icon"/> Comparaison avec Java
 
 Mauvaise pratique
 ```java
@@ -45,7 +52,7 @@ int[] arr = {1, 2, 3, 4, 5}; // Bon
 
 Integer est un objet (comme Python), tandis que int est un type primitif plus léger.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
  - Réduction de la mémoire utilisée
 

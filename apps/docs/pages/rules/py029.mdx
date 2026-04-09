@@ -1,12 +1,20 @@
 # PY029 – Ordonner correctement les clauses `except` (du spécifique au général)
 
-## 🧠 Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Lorsque plusieurs clauses `except` sont présentes, Python les examine dans l’ordre pour trouver la première qui correspond au type d’exception levé. Si une clause générique (`Exception`) apparaît avant une clause plus spécifique (`ZeroDivisionError`), celle‑ci ne sera jamais exécutée et la précision du traitement des erreurs sera perdue.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 try:
@@ -26,7 +34,7 @@ except ZeroDivisionError as e:
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 try:
@@ -43,19 +51,19 @@ Placez toujours les exceptions les plus spécifiques avant les plus générales.
 
 ---
 
-## Comparaison avec d’autres langages
+## <GitCompareArrows  className="icon"/> Comparaison avec d’autres langages
 
 Des langages comme Java imposent également d’ordonner les clauses `catch` du plus spécifique au plus général. L’erreur est similaire si l’ordre est inversé.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Pas d’impact notable sur les performances, mais un gain substantiel en clarté et en robustesse.
 
 ---
 
-## ▲ Quand s’en soucier ?
+## Quand s’en soucier ?
 
 * À chaque fois que vous gérez plusieurs types d’exceptions
 * Lorsque vous attrapez des sous‑classes d’exception

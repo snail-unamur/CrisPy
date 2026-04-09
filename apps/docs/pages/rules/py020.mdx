@@ -1,10 +1,18 @@
 # PY020 – Préférer les générateurs aux listes temporaires
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Créer des listes intermédiaires consomme de la mémoire inutilement.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 total = sum([x*x for x in data])
@@ -15,7 +23,7 @@ Cela crée une liste temporaire complète avant d'effectuer la somme.
 
 Complexité mémoire : O(n) d'espace supplémentaire.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 total = sum(x*x for x in data)
@@ -26,7 +34,7 @@ Le générateur produit les valeurs de manière paresseuse (lazy evaluation), sa
 
 Complexité mémoire : O(1) d'espace supplémentaire.
 
-## Comparé au C
+## <GitCompareArrows  className="icon"/> Comparé au C
 
 En C, les boucles calculent les valeurs sans créer de conteneurs intermédiaires :
 
@@ -40,7 +48,7 @@ for(int i = 0; i < n; i++) {
 
 En Python, les list comprehensions allouent de la mémoire, sauf si elles sont remplacées par des générateurs.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Les générateurs :
 

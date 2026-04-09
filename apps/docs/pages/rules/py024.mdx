@@ -1,12 +1,19 @@
 # PY024 – Utiliser le gestionnaire de contexte `with` pour ouvrir des fichiers
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## 🧠 Pourquoi
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Ouvrir un fichier sans utiliser le mot‑clé `with` exige de se souvenir de fermer le fichier manuellement. Si une exception est levée avant l’appel à `close()`, le fichier reste ouvert, ce qui peut entraîner des fuites de descripteurs ou corrompre les données.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 # Mauvaise pratique : fermeture manuelle
@@ -24,7 +31,7 @@ f.close()
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 # Utiliser with pour gérer l’ouverture et la fermeture
@@ -39,19 +46,19 @@ L’instruction `with` invoque les méthodes spéciales `__enter__` et `__exit__
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, l’ouverture et la fermeture des fichiers sont manuelles. Dans un code robuste, il faut s’assurer que `fclose()` est toujours appelé, souvent via des blocs `goto` ou des structures RAII en C++. Python simplifie cela avec les context managers.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Aucun impact significatif sur la vitesse. L’important est la robustesse et la prévention des fuites de ressources.
 
 ---
 
-## ▲ Quand s’en soucier ?
+##  Quand s’en soucier ?
 
 * À chaque fois que vous ouvrez un fichier ou une ressource similaire (socket, mutex…)
 * Lorsque des exceptions peuvent interrompre l’exécution

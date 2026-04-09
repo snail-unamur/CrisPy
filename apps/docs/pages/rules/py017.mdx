@@ -1,13 +1,21 @@
 # PY017 – Utiliser `any()` et `all()`
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 Écrire des boucles manuelles avec des variables indicatrices pour vérifier si au moins un élément ou tous les éléments satisfont une condition rend le code plus verbeux et moins lisible.
 
 `any()` et `all()` expriment l’intention de manière concise et idiomatique.
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 found = False
@@ -28,7 +36,7 @@ Elle alourdit le code et peut introduire des erreurs — notamment si l’on oub
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 if any(x % 2 == 0 for x in numbers):
@@ -47,7 +55,7 @@ Ces fonctions sont implémentées en C pour les types intégrés et sont à la f
 
 ---
 
-## Comparaison avec le C
+## <GitCompareArrows  className="icon"/> Comparaison avec le C
 
 En C, il n’existe pas d’équivalent standard à `any` ou `all`.
 
@@ -67,7 +75,7 @@ Cela évite des vérifications inutiles une fois le résultat connu.
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Comme elles sont implémentées en C, `any()` et `all()` sont légèrement plus rapides que des boucles Python équivalentes.
 

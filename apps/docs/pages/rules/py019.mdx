@@ -1,10 +1,18 @@
 # PY019 – Éviter les boucles imbriquées lorsque c’est possible
 
-## Pourquoi
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Les boucles imbriquées multiplient la complexité temporelle et peuvent rapidement devenir inefficaces.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 for a in list1:
@@ -18,7 +26,7 @@ Complexité temporelle : O(n²).
 
 Les performances se dégradent rapidement lorsque la taille des données augmente.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 set2 = set(list2)
@@ -31,7 +39,7 @@ for a in list1:
 
 Complexité temporelle : O(n) en moyenne.
 
-## Comparé au C
+## <GitCompareArrows  className="icon"/> Comparé au C
 
 En C, les boucles imbriquées se comportent de manière similaire :
 
@@ -48,6 +56,6 @@ L’optimisation nécessite généralement de repenser l’algorithme.
 
 Python n’optimise pas automatiquement ce type de structure pour vous.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Réduire une complexité O(n²) à O(n) peut rendre un programme des centaines de fois plus rapide pour de grands volumes de données.

@@ -1,10 +1,18 @@
 # PY015 – Éviter la fragmentation des données
 
-## Pourquoi ?
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
+## <BadgeQuestionMark className="icon"/> Pourquoi ?
 
 Créer beaucoup de petits objets disperse les données en mémoire et réduit l’efficacité du cache.
 
-## Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 data = []
@@ -15,7 +23,7 @@ for i in range(100000):
 Explication :
 Création de milliers de petits objets → fragmentation logique.
 
-## Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 data = [i for i in range(100000)]
@@ -24,7 +32,7 @@ data = [i for i in range(100000)]
 Explication :
 Structure compacte → meilleure localité mémoire.
 
-## Comparaison avec le langage C
+## <GitCompareArrows  className="icon"/> Comparaison avec le langage C
 
 ```c
 int** data = malloc(n * sizeof(int*));
@@ -32,7 +40,7 @@ int** data = malloc(n * sizeof(int*));
 
 Multiples allocations → fragmentation du heap.
 
-## Comparaison avec Java
+## <GitCompareArrows  className="icon"/> Comparaison avec Java
 
 ```java
 List<List<Integer>> data = new ArrayList<>();
@@ -46,7 +54,7 @@ int[] data = new int[n];
 
 Structure compacte → meilleure performance.
 
-## Performance
+## <Zap  className="icon"/> Performance
 
  - Meilleure utilisation du cache
 
