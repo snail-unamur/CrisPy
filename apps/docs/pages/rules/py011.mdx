@@ -1,13 +1,23 @@
-# PY011 – Toujours retourner un type cohérent (éviter de retourner `None` conditionnellement)
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## Pourquoi
+
+# PY011 – Toujours retourner un type cohérent (éviter de retourner "None" conditionnellement)
+
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Une API stable est plus facile à utiliser.  
 Si une fonction retourne parfois `None`, le code appelant doit ajouter des vérifications supplémentaires partout.
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 def find_user(users, name):
@@ -27,7 +37,7 @@ Cela crée des erreurs à l’exécution et multiplie les vérifications de cont
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 def find_user(users, name):
@@ -51,7 +61,7 @@ Dans du code typé, déclarer explicitement `Optional[T]` pour rendre le contrat
 
 ---
 
-## Comparaison avec le C
+## <GitCompareArrows  className="icon"/>  Comparaison avec le C
 
 ### Fonctionnement
 
@@ -62,7 +72,7 @@ Python fournit des exceptions expressives, rendant la gestion des erreurs plus c
 
 ---
 
-## Performance
+## <Zap  className="icon"/>  Performance
 
 Éviter les erreurs à l’exécution améliore la robustesse.
 

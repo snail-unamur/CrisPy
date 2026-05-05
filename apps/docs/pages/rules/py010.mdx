@@ -1,12 +1,23 @@
+
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
+
 # PY010 - Ne pas utiliser d'arguments par défaut mutables
 
-## 🧠 Pourquoi
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 
 Les valeurs d'arguments par défaut sont évaluées **une seule fois** au moment de la définition. Une liste ou un dictionnaire par défaut est donc **partagé entre tous les appels** de la fonction.
 
 ---
 
-## ❌ Anti‑Pattern
+## <BadgeX   className="icon"/> Mauvaise pratique
+
 
 ```python
 def add_item(x, items=[]):
@@ -23,7 +34,7 @@ Le piège : `items=[]` est créé une fois. Les appels suivants réutilisent la
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 def add_item(x, items=None):
@@ -39,7 +50,7 @@ def add_item(x, items=None):
 
 ---
 
-## Comparaison avec C
+## <GitCompareArrows  className="icon"/> Comparaison avec C
 
 En C, les arguments par défaut n'existent pas de cette manière, et une fonction ne stocke pas d'état mutable entre les appels (sauf via des variables statiques ou globales).
 
@@ -47,7 +58,7 @@ Cette faille est spécifique au modèle d'évaluation des paramètres de Python.
 
 ---
 
-## 🔍 Performance
+## <Zap  className="icon"/> Performance
 
 Il ne s'agit pas d'une optimisation de vitesse mais d'une prévention de bogues logiques.
 

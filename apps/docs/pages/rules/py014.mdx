@@ -1,13 +1,23 @@
-# PY014 – Utiliser `set` pour les tests d’appartenance
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## Pourquoi
+# PY014 – Utiliser "set" pour les tests d’appartenance
+
+
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 Chercher un élément dans une liste parcourt la liste jusqu’à trouver l’élément (complexité O(n)).
 
 Les ensembles (`set`) utilisent une table de hachage, ce qui permet des tests d’appartenance en temps constant en moyenne (O(1)).
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 my_list = [1, 2, 3, 4, 5]
@@ -23,7 +33,7 @@ Avec de grandes listes, cela devient lent — surtout si les tests d’appartena
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 my_set = {1, 2, 3, 4, 5}
@@ -39,7 +49,7 @@ Un test d’appartenance calcule le hash de l’élément recherché puis vérif
 
 ---
 
-## Comparaison avec le C
+## <GitCompareArrows  className="icon"/> Comparaison avec le C
 
 En C :
 
@@ -63,7 +73,7 @@ Lors d’un test avec `in` :
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Pour des milliers d’éléments, utiliser un `set` pour des tests d’appartenance répétés est nettement plus rapide qu’une liste.
 

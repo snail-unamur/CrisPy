@@ -8,6 +8,22 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  Puzzle,
+  Handshake,
+  Boxes,
+  Settings,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+  Radar,
+  BookOpen,
+  Layers,
+  CirclePile,
+  ClipboardList,
+} from "lucide-react";
 
 # CrisPy
 
@@ -28,7 +44,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. CrisPy
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
   <Card>
     <CardHeader>
-      <CardTitle>⚡Détecter les problèmes dès leur apparition</CardTitle>
+      <CardTitle> <Radar className="icon"/> Détecter les problèmes dès leur apparition</CardTitle>
     </CardHeader>
     <CardContent>
       Détecter les anti-patterns de performance dès la phase de développement,
@@ -38,7 +54,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. CrisPy
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle>📖 Des explications claires</CardTitle>
+      <CardTitle> <BookOpen className="icon"/>  Des explications claires</CardTitle>
     </CardHeader>
     <CardContent>
       Chaque règle est accompagnée d'une explication en langage clair, d'un
@@ -47,7 +63,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. CrisPy
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle>🧩 Intégration avec VS Code</CardTitle>
+      <CardTitle> <Boxes className="icon"/> Intégration avec VS Code</CardTitle>
     </CardHeader>
     <CardContent>
       Diagnostics intégrés, suggestions de correction rapide et un panneau
@@ -56,7 +72,7 @@ La plupart des outils d'analyse statique vous indiquent _quoi_ ne va pas. CrisPy
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle>♻️ Règles centralisées</CardTitle>
+      <CardTitle> <CirclePile className="icon"/> Règles centralisées</CardTitle>
     </CardHeader>
     <CardContent>
       Les règles sont définies une seule fois et partagées entre l'interface en
@@ -202,7 +218,7 @@ packages/rules/src/rules.json
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
   <Card>
     <CardHeader>
-      <CardTitle className="text-base">📋 Règles</CardTitle>
+      <CardTitle className="text-base"><ClipboardList className="icon"/>  Règles</CardTitle>
       <CardDescription>
         Parcourez toutes les règles avec leurs exemples      
     </CardDescription>
@@ -211,7 +227,7 @@ packages/rules/src/rules.json
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle className="text-base">🖥️ Extension VS Code</CardTitle>
+      <CardTitle className="text-base"><Puzzle className="icon"/> Extension VS Code</CardTitle>
       <CardDescription>
         Guide d'installation, captures d'écran et paramètres de l'extension.
       </CardDescription>
@@ -224,14 +240,14 @@ packages/rules/src/rules.json
 
   <Card>
     <CardHeader>
-      <CardTitle className="text-base">⚙️ Configuration</CardTitle>
+      <CardTitle className="text-base"><Settings className="icon"/>  Configuration</CardTitle>
       <CardDescription>En cour de production...</CardDescription>
     </CardHeader>
     <CardContent>[Consulter la Configuration →](/)</CardContent>
   </Card>
   <Card>
     <CardHeader>
-      <CardTitle className="text-base">🤝 Contribuer</CardTitle>
+      <CardTitle className="text-base"><Handshake className="icon"/>  Contribuer</CardTitle>
       <CardDescription>
         Écrivez vos propres règles et soumettez-les aux développeurs en charge.
       </CardDescription>

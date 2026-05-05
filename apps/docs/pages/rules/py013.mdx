@@ -1,12 +1,22 @@
-# PY013 – Ne pas utiliser `is` pour tester l’égalité de valeur
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## Pourquoi
+# PY013 – Ne pas utiliser "is" pour tester l’égalité de valeur
+
+
+
+## <BadgeQuestionMark className="icon"/>  Pourquoi
 L’opérateur `is` vérifie l’identité des objets, pas l’égalité de valeur.  
 Utiliser `is` pour comparer des nombres, des chaînes ou des listes peut sembler fonctionner avec certains objets mis en cache, mais ce n’est pas fiable.
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 s1 = "bonjour"
@@ -25,7 +35,7 @@ Avec les listes ou d’autres objets mutables, `is` retournera presque toujours 
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 s1 = "bonjour"
@@ -44,7 +54,7 @@ Réservez `is` pour les comparaisons avec `None` ou avec des objets sentinelles 
 
 ---
 
-## Comparaison avec Java
+## <GitCompareArrows  className="icon"/> Comparaison avec Java et C
 
 En Java :
 
@@ -73,7 +83,7 @@ Python met en cache certains petits entiers et certaines chaînes littérales, c
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Il n’existe pas de différence de performance significative entre `is` et `==` pour les types simples.
 

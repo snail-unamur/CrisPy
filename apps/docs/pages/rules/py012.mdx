@@ -1,12 +1,22 @@
-# PY012 – Préférer `namedtuple` / `dataclass` aux tuples anonymes pour plusieurs valeurs
+import {
+  BadgeQuestionMark,
+  BadgeX,
+  MessageCircleCheck,
+  GitCompareArrows,
+  Zap,
+} from "lucide-react";
 
-## Pourquoi
+# PY012 – Préférer "namedtuple" / "dataclass" aux tuples anonymes pour plusieurs valeurs
+
+
+
+## <BadgeQuestionMark className="icon"/> Pourquoi
 Nommer les champs rend le code auto-documenté  
 et réduit les erreurs d’indexation.
 
 ---
 
-## ❌ Mauvaise pratique
+## <BadgeX   className="icon"/> Mauvaise pratique
 
 ```python
 def stats(nums):
@@ -22,7 +32,7 @@ Les erreurs liées aux index sont fréquentes et difficiles à détecter.
 
 ---
 
-## ✅ Bonne pratique
+## <MessageCircleCheck  className="icon"/> Bonne pratique
 
 ```python
 from dataclasses import dataclass
@@ -47,7 +57,7 @@ Le code devient plus lisible, explicite et plus sûr.
 
 ---
 
-## Comparaison avec le C
+## <GitCompareArrows  className="icon"/> Comparaison avec le C
 
 ### Comment cela fonctionne
 En C, on utiliserait généralement une `struct` nommée :
@@ -64,7 +74,7 @@ La `dataclass` en Python fournit un équivalent de haut niveau avec génération
 
 ---
 
-## Performance
+## <Zap  className="icon"/> Performance
 
 Le principal avantage est la lisibilité et la maintenabilité.
 
