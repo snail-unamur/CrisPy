@@ -216,5 +216,6 @@ out
 
 # analyser in extensoin only for build
 apps/extension/analyzer
+apps/extension/docs
 
 **/*.vsix

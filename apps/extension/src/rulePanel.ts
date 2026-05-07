@@ -38,9 +38,7 @@ async function openRulePanel(context: vscode.ExtensionContext, ruleId: string) {
 
     const ruleUri = vscode.Uri.joinPath(
       context.extensionUri,
-      "..",
       "docs",
-      "pages",
       "rules",
       fileName,
     );

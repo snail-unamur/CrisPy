@@ -1,6 +1,6 @@
 {
   "name": "crispy-snail-unamur",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The VScode extension for crispy",
   "displayName": "CrisPy - Python Analyzer",
   "icon": "media/icon-white.png",
@@ -90,8 +90,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "node scripts/copy-analyzer.js && node esbuild.js",
-    "build:prod": "cross-env NODE_ENV=production node scripts/copy-analyzer.js && cross-env NODE_ENV=production node esbuild.js",
+    "build": "node scripts/copy-analyzer-doc.js && node esbuild.js",
+    "build:prod": "cross-env NODE_ENV=production node scripts/copy-analyzer-doc.js && cross-env NODE_ENV=production node esbuild.js",
     "package": "pnpm build:prod && vsce package --no-dependencies",
     "vsce:publish": "pnpm build:prod && vsce publish --no-dependencies",
     "clean": "rm -rf out analyzer"
