@@ -1,6 +1,6 @@
 {
   "name": "crispy-snail-unamur",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The VScode extension for crispy",
   "displayName": "CrisPy - Python Analyzer",
   "icon": "media/icon-white.png",
