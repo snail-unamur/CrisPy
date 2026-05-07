@@ -7,7 +7,6 @@
     "noEmit": true,
     "incremental": true,
     "allowJs": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "@crispy/rules": ["../../packages/rules/src/index.ts"]
