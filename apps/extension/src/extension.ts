@@ -31,7 +31,6 @@ export function activate(context: vscode.ExtensionContext) {
     context.extensionPath,
     // "..", #copied in build script, so not needed here
     "analyzer",
-    "src",
     "main.py",
   );
 

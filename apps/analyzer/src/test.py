@@ -13,8 +13,8 @@ for mot in mots:
     phrase += mot + " "
 print(phrase)
  
-# PY003
-count = 0
+# PY003 
+count = 0  
 def inc():
     global count
     count += 1
@@ -82,12 +82,12 @@ if found:
 positives = [1, 2, -1]
 all_positive = True
 for x in positives:
-    if x <= 0:
+    if x <= 0: 
         all_positive = False
         break
 
 if all_positive:
-    print("All numbers are positive")
+    print("All numbers are positive") 
 
 # PY023
 from math import *
