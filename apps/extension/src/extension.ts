@@ -29,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   const analyzerPath = path.join(
     context.extensionPath,
-    "..",
+    // "..", #copied in build script, so not needed here
     "analyzer",
     "src",
     "main.py",

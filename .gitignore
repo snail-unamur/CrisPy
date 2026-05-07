@@ -212,3 +212,9 @@ out
 .temp
 
 **/tsconfig.tsbuildinfo
+
+
+# analyser in extensoin only for build
+apps/extension/analyzer
+
+**/*.vsix

@@ -90,9 +90,11 @@
     "package.json"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "clean": "rm -rf out"
+    "build": "node scripts/copy-analyzer.js && node esbuild.js",
+    "build:prod": "cross-env NODE_ENV=production node scripts/copy-analyzer.js && cross-env NODE_ENV=production node esbuild.js",
+    "package": "pnpm build:prod && vsce package --no-dependencies",
+    "publish": "pnpm build:prod && vsce publish --no-dependencies",
+    "clean": "rm -rf out analyzer"
   },
   "dependencies": {
     "@crispy/rules": "workspace:*",
@@ -108,6 +110,8 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
+    "cross-env": "^10.1.0",
+    "esbuild": "^0.28.0",
     "typescript": "^5.4.0"
   }
 }

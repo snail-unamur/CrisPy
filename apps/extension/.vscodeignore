@@ -4,3 +4,23 @@
 **/pnpm-lock.yaml
 **/tsconfig*.json
 ../../.git/**
+
+# Source & config (not needed at runtime)
+src/
+scripts/
+tsconfig.json
+esbuild.js
+.env*
+*.map
+
+# Monorepo stuff
+node_modules/
+../../*
+
+# Keep everything else (out/, analyzer/, language/, media/)
+!out/**
+!analyzer/**
+!language/**
+!media/**
+!README.md
+!package.json
