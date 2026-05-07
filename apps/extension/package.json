@@ -1,5 +1,5 @@
 {
-  "name": "crispy",
+  "name": "crispy-snail-unamur",
   "version": "1.0.0",
   "description": "The VScode extension for crispy",
   "displayName": "CrisPy",
@@ -93,7 +93,7 @@
     "build": "node scripts/copy-analyzer.js && node esbuild.js",
     "build:prod": "cross-env NODE_ENV=production node scripts/copy-analyzer.js && cross-env NODE_ENV=production node esbuild.js",
     "package": "pnpm build:prod && vsce package --no-dependencies",
-    "publish": "pnpm build:prod && vsce publish --no-dependencies",
+    "vsce:publish": "pnpm build:prod && vsce publish --no-dependencies",
     "clean": "rm -rf out analyzer"
   },
   "dependencies": {
